@@ -1,5 +1,12 @@
 package gui;
 
+import database.Loan;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class CreateLongTermLoan extends javax.swing.JFrame {
 
     /**
@@ -37,6 +44,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,7 +154,10 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
                         .addGap(241, 241, 241))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(271, 271, 271))))
+                        .addGap(271, 271, 271))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(261, 261, 261))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +194,9 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,6 +207,58 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                String customerIDString = jTextField1.getText();
+        int    customerID = Integer.parseInt(customerIDString);
+        String accountIDString = jTextField2.getText(); //This should pull from the database.
+        int    accountID = Integer.parseInt(accountIDString);
+        String loanLengthString = (String)jComboBox1.getSelectedItem();    
+        int    loanLength = Integer.parseInt(loanLengthString);
+        String interestRateString = jTextField3.getText();
+        double interestRate = Double.parseDouble(interestRateString);
+        String depositString = jTextField4.getText(); //This should pull from the database.
+        double    deposit = Double.parseDouble(depositString);
+        String monthlyPaymentString = jTextField5.getText();
+        double monthlyPayment = Double.parseDouble(monthlyPaymentString);
+        
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        
+        String monthString = (String)jComboBox2.getSelectedItem();   
+        String dayString = (String)jComboBox3.getSelectedItem();   
+        String yearString = (String)jComboBox4.getSelectedItem();   
+        
+        int month = Integer.parseInt(monthString);
+        int day = Integer.parseInt(dayString);
+        int year = Integer.parseInt(yearString);
+        month -= 1;
+        year -= 1900;
+        
+        Date startDate = new Date(year, month, day);
+        
+        Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+        calendar.setTime(startDate);
+        calendar.add(Calendar.DATE, 30);
+        Date nextPayment;
+        nextPayment = calendar.getTime();
+        
+        String startDateString = formatter.format(startDate);
+        String nextPaymentString = formatter.format(nextPayment);
+        
+        if (accountIDString.equals("")){
+            jLabel10.setText("Enter ALL Text");
+        }else if(customerIDString.equals("")){
+            jLabel10.setText("Enter ALL Text");
+        }else if(interestRateString.equals("")){
+            jLabel10.setText("Enter ALL Text");
+        }else if(depositString.equals("")){
+            jLabel10.setText("Enter ALL Text");
+        }else if(monthlyPaymentString.equals("")){
+            jLabel10.setText("Enter ALL Text");
+        }
+        else{
+                Loan newLoan = new Loan(customerID, accountID, "Long", interestRate, monthlyPayment, deposit, nextPaymentString, deposit, false, startDateString);//SAVINGS HARD CODED
+                newLoan.addRecord(newLoan);
+        }
+        
         dispose();
         ManagerActionScreen mas = new ManagerActionScreen();
         mas.setResizable(false);
@@ -249,6 +314,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
