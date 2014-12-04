@@ -23,6 +23,11 @@ public class Savings extends Account
         this.year = year;
     }
     
+    public Savings(int accNum, int custID, double accTot, String accType)
+    {
+        super(accNum, custID, accTot, accType);
+    }
+    
     public void setInterestRate(double rate)
     {
         interestRate = rate;

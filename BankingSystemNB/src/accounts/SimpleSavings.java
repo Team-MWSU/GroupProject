@@ -6,7 +6,7 @@ package accounts;
  */
 public class SimpleSavings extends Savings
 {
-    public SimpleSavings(int accNum, int custID, double accTot, String accType,  int day, int month, int year)
+    public SimpleSavings(int accNum, int custID, double accTot, String accType, int day, int month, int year)
     {
         super(accNum, custID, accTot, accType, day, month, year);
     }

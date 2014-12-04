@@ -398,6 +398,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         dispose();
         DebitSavingsAccount dsa = new DebitSavingsAccount();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        dsa.customerID = customerID;
+        DebitSavingsAccount.jLabel6.setText(jLabel10.getText());
         dsa.setResizable(false);
         dsa.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
