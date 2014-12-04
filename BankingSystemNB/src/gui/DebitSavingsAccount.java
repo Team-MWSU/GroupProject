@@ -213,7 +213,7 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
                     newSavings.Value = savings1.getAccountTotal();
                     System.out.println(savings1.getAccountTotal());
                     newSavings.updateRecord(newSavings);
-                    Transaction newTrans = new Transaction(1, startDateString, "Debit", debitAmount, accountID);
+                    Transaction newTrans = new Transaction(0, startDateString, "Debit", debitAmount, accountID);
                     newSavings.addTrans(newTrans);
                     
         dispose();
