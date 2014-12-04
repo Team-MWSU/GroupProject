@@ -219,9 +219,6 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         int year = Integer.parseInt(yearString);
         int day = Integer.parseInt(dayString);
         
-        //monthString = Integer.toString(month);
-        //yearString = Integer.toString(year);
-        
         String date = "" + year + "-" + month + "-" + day + "";
         
         if (customerIDString.equals("")){
@@ -238,7 +235,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
              * 3. Passing savings account 99. Needs to be NULL
              */
             Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, 99, accountType, 0.0, true);
-            newChecking.insertRecord(newChecking);
+            newChecking.addRecord(newChecking);
         }
         dispose();
         ManagerActionScreen mas = new ManagerActionScreen();
