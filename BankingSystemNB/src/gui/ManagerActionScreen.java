@@ -476,6 +476,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         dispose();
         CreateCreditCard ccc = new CreateCreditCard();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        ccc.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        ccc.jLabel7.setText(customerIDString);
         ccc.setResizable(false);
         ccc.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed

@@ -12,6 +12,10 @@ public class CreateCreditCard extends javax.swing.JFrame {
     /**
      * Creates new form CreateCreditCard
      */
+    
+    public int customerID;
+    public String customerIDString;
+    
     public CreateCreditCard() {
         initComponents();
     }
@@ -31,7 +35,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox();
         jComboBox4 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -41,6 +44,9 @@ public class CreateCreditCard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,8 +65,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
         jComboBox4.setToolTipText("Year");
 
         jLabel3.setText("Customer ID");
-
-        jTextField1.setToolTipText("Customer ID");
 
         jLabel4.setText("Card Number");
 
@@ -90,6 +94,14 @@ public class CreateCreditCard extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Penalty");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,29 +127,29 @@ public class CreateCreditCard extends javax.swing.JFrame {
                                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
                                             .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel4)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jLabel6))
-                                            .addGap(54, 54, 54)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jTextField4)
-                                                .addComponent(jTextField3)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jLabel8))
+                                        .addGap(54, 54, 54)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField4)
+                                            .addComponent(jTextField3)
+                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField1)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(277, 277, 277)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(246, 246, 246)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 243, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(245, 245, 245)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +165,7 @@ public class CreateCreditCard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -167,8 +179,12 @@ public class CreateCreditCard extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,10 +195,10 @@ public class CreateCreditCard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String customerIDString = jTextField1.getText();
         String accountIDString = jTextField2.getText(); //This should pull from the database.
         String interestRateString = jTextField4.getText();
         String depositString = jTextField3.getText(); //This should pull from the database.
+        String penaltyString = jTextField1.getText();
         
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -198,6 +214,9 @@ public class CreateCreditCard extends javax.swing.JFrame {
         
         Date startDate = new Date(year, month, day);
         
+        /*
+        * This adds 30 days to the date the card was created
+        */
         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
         calendar.setTime(startDate);
         calendar.add(Calendar.DATE, 30);
@@ -209,8 +228,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
         
         if (accountIDString.equals("")){
             jLabel10.setText("Enter ALL Text");
-        }else if(customerIDString.equals("")){
-            jLabel10.setText("Enter ALL Text");
         }else if(interestRateString.equals("")){
             jLabel10.setText("Enter ALL Text");
         }else if(depositString.equals("")){
@@ -220,17 +237,29 @@ public class CreateCreditCard extends javax.swing.JFrame {
             /*
              * What are the penatlies?
              */                                
-                int    customerID = Integer.parseInt(customerIDString);
                 int    accountID = Integer.parseInt(accountIDString);
                 double interestRate = Double.parseDouble(interestRateString);
                 double    deposit = Double.parseDouble(depositString);
-                CCard newCard = new CCard(customerID, accountID, interestRate, deposit, 0.0, deposit, nextPaymentString, "What");//SAVINGS HARD CODED
+                CCard newCard = new CCard(customerID, accountID, interestRate, deposit, deposit, 0.0, nextPaymentString, penaltyString);
                 newCard.addRecord(newCard);
         
-               dispose();
-               ManagerActionScreen mas = new ManagerActionScreen();
-               mas.setResizable(false);
-               mas.setVisible(true);
+                customerIDString = Integer.toString(customerID);
+                
+                people.Customer searchCustomer = new people.Customer();
+                searchCustomer.search(customerID);
+
+                dispose();
+                ManagerActionScreen mas = new ManagerActionScreen();
+                ManagerActionScreen.jLabel10.setText(customerIDString);
+                ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+                ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+                mas.setResizable(false);
+                mas.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -240,6 +269,10 @@ public class CreateCreditCard extends javax.swing.JFrame {
         mas.setResizable(false);
         mas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +321,8 @@ public class CreateCreditCard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
