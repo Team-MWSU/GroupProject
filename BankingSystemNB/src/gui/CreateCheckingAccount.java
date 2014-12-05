@@ -8,6 +8,10 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
     /**
      * Creates new form CreateCheckingAccount
      */
+    
+    public int customerID;
+    public String customerIDString;
+    
     public CreateCheckingAccount() {
         initComponents();
     }
@@ -27,7 +31,6 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox();
         jComboBox4 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -39,6 +42,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,8 +61,6 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         jComboBox4.setToolTipText("Year");
 
         jLabel3.setText("Customer ID");
-
-        jTextField1.setToolTipText("Customer ID");
 
         jLabel4.setText("Account Number");
 
@@ -131,7 +133,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                                         .addComponent(jTextField4))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,11 +147,10 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel3)
                                                 .addGap(37, 37, 37)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jTextField2)
-                                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField2)
+                                            .addComponent(jComboBox5, 0, 109, Short.MAX_VALUE)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addComponent(jLabel1))
                         .addGap(238, 238, 238))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -171,9 +172,9 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -194,7 +195,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -203,14 +204,17 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String customerIDString = jTextField1.getText(); //This should pull from the database.   
+ 
         String accountIDString = jTextField2.getText(); //This should pull from the database.
         String accountType = (String)jComboBox5.getSelectedItem();          
         String depositString = jTextField3.getText(); //This should pull from the database.
+        String linkedAccountString = jTextField4.getText();
         
         String monthString = (String)jComboBox2.getSelectedItem();   
         String dayString = (String)jComboBox3.getSelectedItem();   
         String yearString = (String)jComboBox4.getSelectedItem();   
+        
+        customerIDString = Integer.toString(customerID);
         
         int month = Integer.parseInt(monthString);
         int year = Integer.parseInt(yearString);
@@ -218,11 +222,9 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         
         String date = "" + year + "-" + month + "-" + day + "";
         
-        if (customerIDString.equals("")){
+        if (depositString.equals("")){
             jLabel10.setText("Enter ALL Text");
         }else if(accountIDString.equals("")){
-            jLabel10.setText("Enter ALL Text");
-        }else if(depositString.equals("")){
             jLabel10.setText("Enter ALL Text");
         }
         else{
@@ -231,17 +233,28 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
              * 2. avg balance is 0.0
              * 3. Passing -1 will be NULL
              */                          
-            
-            int    linkedAccount = -1;
-            int    customerID = Integer.parseInt(customerIDString);                             
+                                
             int    accountID = Integer.parseInt(accountIDString);
             double    deposit = Double.parseDouble(depositString);
+            int    linkedAccount = Integer.parseInt(linkedAccountString);
+            System.out.println(linkedAccount);
             
-            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
+            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, 99, accountType, 0.0, true);
             newChecking.addRecord(newChecking);
+            
+            people.Customer searchCustomer = new people.Customer();
+            searchCustomer.search(customerID);
             
             dispose();
             ManagerActionScreen mas = new ManagerActionScreen();
+            ManagerActionScreen.jLabel10.setText(customerIDString);
+            ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+            ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+            ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+            ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+            ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+            ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+            ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
             mas.setResizable(false);
             mas.setVisible(true);
         }
@@ -311,7 +324,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
+    public static javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

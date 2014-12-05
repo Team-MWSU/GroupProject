@@ -436,6 +436,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
         CreateCheckingAccount cca = new CreateCheckingAccount();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        cca.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cca.jLabel8.setText(customerIDString);
         cca.setResizable(false);
         cca.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

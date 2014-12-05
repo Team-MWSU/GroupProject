@@ -12,6 +12,7 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
      * Creates new form DebitSavingsAccount
      */
     public int customerID;
+    public String customerIDString;
     
     public DebitSavingsAccount() {
         initComponents();
@@ -82,8 +83,6 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel6.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,8 +215,21 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
                     Transaction newTrans = new Transaction(0, startDateString, "Debit", debitAmount, accountID);
                     newSavings.addTrans(newTrans);
 
+                    customerIDString = Integer.toString(customerID);
+
+                    people.Customer searchCustomer = new people.Customer();
+                    searchCustomer.search(customerID);
+
                     dispose();
                     ManagerActionScreen mas = new ManagerActionScreen();
+                    ManagerActionScreen.jLabel10.setText(customerIDString);
+                    ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                    ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                    ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                    ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                    ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                    ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+                    ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
                     mas.setResizable(false);
                     mas.setVisible(true);
                 }
