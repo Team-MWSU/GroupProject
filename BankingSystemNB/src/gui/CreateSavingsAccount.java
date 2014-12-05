@@ -176,10 +176,8 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String accountIDString = jTextField2.getText(); //This should pull from the database.
-        int    accountID = Integer.parseInt(accountIDString);
         String accountType = (String)jComboBox1.getSelectedItem();          
         String depositString = jTextField3.getText(); //This should pull from the database.
-        double    deposit = Double.parseDouble(depositString);
         
         String monthString = (String)jComboBox2.getSelectedItem();   
         String dayString = (String)jComboBox3.getSelectedItem();   
@@ -199,8 +197,10 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
         else{
             /*
              * 1. customerID IS HARDCODED 
-             */
-            
+             */                            
+            int    accountID = Integer.parseInt(accountIDString);
+            double    deposit = Double.parseDouble(depositString);
+
             if(accountType.equals("Simple Savings"))
             {
                 Savings newSavings = new Savings(accountID, 2, deposit, "savings", day, month, year);//SAVINGS HARD CODED
@@ -212,12 +212,12 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
                  * NEED TO IMPLEMENT CD
                  */
             }
+
+            dispose();
+            ManagerActionScreen mas = new ManagerActionScreen();
+            mas.setResizable(false);
+            mas.setVisible(true);
         }
-        
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

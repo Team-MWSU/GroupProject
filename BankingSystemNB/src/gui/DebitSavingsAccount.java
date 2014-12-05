@@ -167,9 +167,7 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String accountIDString = jTextField2.getText(); //This should pull from the database.
-        int    accountID = Integer.parseInt(accountIDString);
         String debitAmountString = jTextField3.getText();
-        int    debitAmount = Integer.parseInt(debitAmountString);
         
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -192,7 +190,9 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
         }else if(debitAmountString.equals("")){
             jLabel10.setText("Enter ALL Text");
         }
-        else{                                             
+        else{            
+            int    accountID = Integer.parseInt(accountIDString);
+            int    debitAmount = Integer.parseInt(debitAmountString);
             Savings newSavings = new Savings();
             newSavings = newSavings.getRecord(accountID);
             
@@ -215,11 +215,11 @@ public class DebitSavingsAccount extends javax.swing.JFrame {
                     newSavings.updateRecord(newSavings);
                     Transaction newTrans = new Transaction(0, startDateString, "Debit", debitAmount, accountID);
                     newSavings.addTrans(newTrans);
-                    
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+
+                    dispose();
+                    ManagerActionScreen mas = new ManagerActionScreen();
+                    mas.setResizable(false);
+                    mas.setVisible(true);
                 }
             }
         }
