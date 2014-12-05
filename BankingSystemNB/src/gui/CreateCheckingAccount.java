@@ -229,13 +229,15 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
             /*
              * 1. Interest is 0.0
              * 2. avg balance is 0.0
-             * 3. Passing savings account 99. Needs to be NULL
-             */                                     
+             * 3. Passing -1 will be NULL
+             */                          
+            
+            int    linkedAccount = -1;
             int    customerID = Integer.parseInt(customerIDString);                             
             int    accountID = Integer.parseInt(accountIDString);
             double    deposit = Double.parseDouble(depositString);
             
-            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, 99, accountType, 0.0, true);
+            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
             newChecking.addRecord(newChecking);
             
             dispose();
