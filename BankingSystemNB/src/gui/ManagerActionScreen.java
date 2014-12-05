@@ -490,8 +490,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+
         dispose();
         CloseAccount ca = new CloseAccount();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        ca.customerID = customerID;
         ca.setResizable(false);
         ca.setVisible(true);
     }//GEN-LAST:event_jButton16ActionPerformed
