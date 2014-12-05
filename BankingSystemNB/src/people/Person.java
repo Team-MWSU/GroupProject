@@ -29,6 +29,7 @@ public class Person extends People {
          * Search to Find Object
          *  - search (By ID)
       	 *  - search (By Last Name)
+         *      - Doesn't currently function. Isn't implemented in the GUI.
          *
 	 * Prints the Object
 	 *  - print
@@ -183,7 +184,7 @@ public class Person extends People {
         //Delete Person
         public void delete(){
                 String statement = "DELETE FROM "+databaseCallTableName+" WHERE "+databaseCallID+" = "+this.ID;
-		db.delete(statement);
+		db.insert(statement);
         }
         
 	//Print Person
