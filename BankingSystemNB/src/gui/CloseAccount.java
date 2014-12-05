@@ -5,6 +5,9 @@ public class CloseAccount extends javax.swing.JFrame {
     /**
      * Creates new form CloseAccount
      */
+    
+    public int customerID;
+    
     public CloseAccount() {
         initComponents();
     }
@@ -147,6 +150,7 @@ public class CloseAccount extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
         CloseSavingsAccount csa = new CloseSavingsAccount();
+        csa.customerID = this.customerID;
         csa.setResizable(false);
         csa.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -207,17 +207,11 @@ public class CreateShortTermLoan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String customerIDString = jTextField1.getText();
-        int    customerID = Integer.parseInt(customerIDString);
         String accountIDString = jTextField2.getText(); //This should pull from the database.
-        int    accountID = Integer.parseInt(accountIDString);
         String loanLengthString = (String)jComboBox1.getSelectedItem();    
-        int    loanLength = Integer.parseInt(loanLengthString);
         String interestRateString = jTextField3.getText();
-        double interestRate = Double.parseDouble(interestRateString);
         String depositString = jTextField4.getText(); //This should pull from the database.
-        double    deposit = Double.parseDouble(depositString);
         String monthlyPaymentString = jTextField5.getText();
-        double monthlyPayment = Double.parseDouble(monthlyPaymentString);
         
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -253,15 +247,22 @@ public class CreateShortTermLoan extends javax.swing.JFrame {
         }else if(monthlyPaymentString.equals("")){
             jLabel10.setText("Enter ALL Text");
         }
-        else{
+        else{                         
+                int    customerID = Integer.parseInt(customerIDString);
+                int    accountID = Integer.parseInt(accountIDString);
+                int    loanLength = Integer.parseInt(loanLengthString);
+                double interestRate = Double.parseDouble(interestRateString);
+                double    deposit = Double.parseDouble(depositString);
+                double monthlyPayment = Double.parseDouble(monthlyPaymentString);
+                
                 Loan newLoan = new Loan(customerID, accountID, "Short", interestRate, monthlyPayment, deposit, nextPaymentString, deposit, false, startDateString);//SAVINGS HARD CODED
                 newLoan.addRecord(newLoan);
+                
+                dispose();
+                ManagerActionScreen mas = new ManagerActionScreen();
+                mas.setResizable(false);
+                mas.setVisible(true);
         }
-        
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

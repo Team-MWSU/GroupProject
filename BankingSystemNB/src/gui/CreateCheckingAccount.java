@@ -203,13 +203,10 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String customerIDString = jTextField1.getText(); //This should pull from the database.
-        int    customerID = Integer.parseInt(customerIDString);                             
+        String customerIDString = jTextField1.getText(); //This should pull from the database.   
         String accountIDString = jTextField2.getText(); //This should pull from the database.
-        int    accountID = Integer.parseInt(accountIDString);
         String accountType = (String)jComboBox5.getSelectedItem();          
         String depositString = jTextField3.getText(); //This should pull from the database.
-        double    deposit = Double.parseDouble(depositString);
         
         String monthString = (String)jComboBox2.getSelectedItem();   
         String dayString = (String)jComboBox3.getSelectedItem();   
@@ -232,15 +229,22 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
             /*
              * 1. Interest is 0.0
              * 2. avg balance is 0.0
-             * 3. Passing savings account 99. Needs to be NULL
-             */
-            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, 99, accountType, 0.0, true);
+             * 3. Passing -1 will be NULL
+             */                          
+            
+            int    linkedAccount = -1;
+            int    customerID = Integer.parseInt(customerIDString);                             
+            int    accountID = Integer.parseInt(accountIDString);
+            double    deposit = Double.parseDouble(depositString);
+            
+            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
             newChecking.addRecord(newChecking);
+            
+            dispose();
+            ManagerActionScreen mas = new ManagerActionScreen();
+            mas.setResizable(false);
+            mas.setVisible(true);
         }
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

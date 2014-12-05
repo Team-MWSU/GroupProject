@@ -179,14 +179,10 @@ public class CreateCreditCard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                       String customerIDString = jTextField1.getText();
-        int    customerID = Integer.parseInt(customerIDString);
+        String customerIDString = jTextField1.getText();
         String accountIDString = jTextField2.getText(); //This should pull from the database.
-        int    accountID = Integer.parseInt(accountIDString);
         String interestRateString = jTextField4.getText();
-        double interestRate = Double.parseDouble(interestRateString);
         String depositString = jTextField3.getText(); //This should pull from the database.
-        double    deposit = Double.parseDouble(depositString);
         
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -223,15 +219,19 @@ public class CreateCreditCard extends javax.swing.JFrame {
         else{
             /*
              * What are the penatlies?
-             */
+             */                                
+                int    customerID = Integer.parseInt(customerIDString);
+                int    accountID = Integer.parseInt(accountIDString);
+                double interestRate = Double.parseDouble(interestRateString);
+                double    deposit = Double.parseDouble(depositString);
                 CCard newCard = new CCard(customerID, accountID, interestRate, deposit, 0.0, deposit, nextPaymentString, "What");//SAVINGS HARD CODED
                 newCard.addRecord(newCard);
-        }
         
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+               dispose();
+               ManagerActionScreen mas = new ManagerActionScreen();
+               mas.setResizable(false);
+               mas.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

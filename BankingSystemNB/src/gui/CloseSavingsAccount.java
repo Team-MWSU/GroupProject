@@ -5,6 +5,9 @@ public class CloseSavingsAccount extends javax.swing.JFrame {
     /**
      * Creates new form CloseSavingsAccount
      */
+    
+    public int customerID;
+    
     public CloseSavingsAccount() {
         initComponents();
     }
