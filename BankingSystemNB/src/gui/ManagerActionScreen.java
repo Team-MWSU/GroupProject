@@ -447,6 +447,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
         CreateShortTermLoan cstl = new CreateShortTermLoan();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        cstl.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cstl.jLabel11.setText(customerIDString);
         cstl.setResizable(false);
         cstl.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -454,6 +458,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
         CreateLongTermLoan cltl = new CreateLongTermLoan();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        cltl.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cltl.jLabel9.setText(customerIDString);
         cltl.setResizable(false);
         cltl.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
