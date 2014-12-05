@@ -70,19 +70,7 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
 
         jTextField2.setToolTipText("Account Number");
 
-<<<<<<< HEAD
         jLabel5.setText("Interest Rate");
-=======
-        jLabel5.setText("Account Type");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simple Savings", "CD" }));
-        jComboBox1.setToolTipText("Account Type");
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
->>>>>>> origin/master
 
         jLabel6.setText("Deposit Amount");
 
@@ -247,7 +235,6 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
         mas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
-<<<<<<< HEAD
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
@@ -255,11 +242,7 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-=======
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
->>>>>>> origin/master
+
 
     /**
      * @param args the command line arguments
