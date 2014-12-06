@@ -239,7 +239,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
             int    linkedAccount = Integer.parseInt(linkedAccountString);
             System.out.println(linkedAccount);
             
-            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, 99, accountType, 0.0, true);
+            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
             newChecking.addRecord(newChecking);
             
             people.Customer searchCustomer = new people.Customer();
