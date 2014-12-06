@@ -4,6 +4,13 @@
  */
 package gui;
 
+import database.CD;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author Joel Jacobsen
@@ -13,6 +20,10 @@ public class CreateCD extends javax.swing.JFrame {
     /**
      * Creates new form CreateCD
      */
+    
+    public int customerID;
+    public String customerIDString;
+    
     public CreateCD() {
         initComponents();
     }
@@ -45,6 +56,7 @@ public class CreateCD extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,10 +135,6 @@ public class CreateCD extends javax.swing.JFrame {
                                 .addGap(215, 215, 215)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2)
                                             .addComponent(jLabel3)
@@ -151,7 +159,13 @@ public class CreateCD extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))))
                         .addGap(0, 243, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -192,9 +206,11 @@ public class CreateCD extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(29, 29, 29)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -210,10 +226,83 @@ public class CreateCD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+        String accountIDString = jTextField1.getText(); //This should pull from the database.
+        String depositString = jTextField2.getText(); //This should pull from the database.
+        String penaltyString = jTextField4.getText();
+        String interestRateString = jTextField3.getText();
+        
+        String monthString = (String)jComboBox2.getSelectedItem();   
+        String dayString = (String)jComboBox3.getSelectedItem();   
+        String yearString = (String)jComboBox4.getSelectedItem();   
+        
+        int month = Integer.parseInt(monthString);
+        int day = Integer.parseInt(dayString);
+        int year = Integer.parseInt(yearString);
+        month -= 1;
+        year -= 1900;                
+        
+        java.util.Date utilDate = new java.util.Date(year, month, day);//FOR JAVA DATES  
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");      
+        String date = formatter.format(utilDate);
+                
+        monthString = (String)jComboBox5.getSelectedItem();   
+        dayString = (String)jComboBox6.getSelectedItem();   
+        yearString = (String)jComboBox7.getSelectedItem();   
+        
+        month = Integer.parseInt(monthString);
+        day = Integer.parseInt(dayString);
+        year = Integer.parseInt(yearString);
+        month -= 1;
+        year -= 1900;                
+        
+        java.util.Date matureDate = new java.util.Date(year, month, day);//FOR JAVA DATES  
+        String matureDateString = formatter.format(matureDate);
+        
+        /*
+        * This adds 10 days to the maturity date in order to create a rollOver period
+        */
+        Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+        calendar.setTime(matureDate);
+        calendar.add(Calendar.DATE, 10);
+        Date rollOverDate;
+        rollOverDate = calendar.getTime();
+        String rollOverDateString = formatter.format(rollOverDate);
+        
+        if (accountIDString.equals("")){
+            jLabel8.setText("Enter ALL Text");
+        }else if(depositString.equals("")){
+            jLabel8.setText("Enter ALL Text");
+        }else if(interestRateString.equals("")){
+            jLabel8.setText("Enter ALL Text");
+        }else if(penaltyString.equals("")){
+            jLabel8.setText("Enter ALL Text");
+        }
+        else{                   
+            int    accountID = Integer.parseInt(accountIDString);
+            double    deposit = Double.parseDouble(depositString);
+            double interestRate = Double.parseDouble(interestRateString);
+                
+		CD newCD = new CD(customerID, accountID, deposit, interestRate, matureDateString, date, rollOverDateString, penaltyString);
+		newCD.addRecord(newCD);
+            
+            customerIDString = Integer.toString(customerID);
+                
+                        people.Customer searchCustomer = new people.Customer();
+            searchCustomer.search(customerID);
+            
+            dispose();
+            ManagerActionScreen mas = new ManagerActionScreen();
+            ManagerActionScreen.jLabel10.setText(customerIDString);
+            ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+            ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+            ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+            ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+            ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+            ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+            ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+            mas.setResizable(false);
+            mas.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -266,6 +355,7 @@ public class CreateCD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

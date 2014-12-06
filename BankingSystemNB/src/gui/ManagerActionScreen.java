@@ -567,6 +567,8 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         dispose();
         CreateCD crcd = new CreateCD();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        crcd.customerID = customerID;
         crcd.setResizable(false);
         crcd.setVisible(true);
     }//GEN-LAST:event_jButton20ActionPerformed
