@@ -8,6 +8,7 @@ public class CloseSavingsAccount extends javax.swing.JFrame {
      */
     
     public int customerID;
+    public String customerIDString;
     
     public CloseSavingsAccount() {
         initComponents();
@@ -159,10 +160,23 @@ public class CloseSavingsAccount extends javax.swing.JFrame {
                 newSavings.Active = false;
                 newSavings.updateRecord(newSavings);
                 
-                dispose();
-                ManagerActionScreen mas = new ManagerActionScreen();
-                mas.setResizable(false);
-                mas.setVisible(true);
+            customerIDString = Integer.toString(customerID);
+                
+            people.Customer searchCustomer = new people.Customer();
+            searchCustomer.search(customerID);
+            
+            dispose();
+            ManagerActionScreen mas = new ManagerActionScreen();
+            ManagerActionScreen.jLabel10.setText(customerIDString);
+            ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+            ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+            ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+            ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+            ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+            ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+            ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+            mas.setResizable(false);
+            mas.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

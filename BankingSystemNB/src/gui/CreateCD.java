@@ -287,7 +287,7 @@ public class CreateCD extends javax.swing.JFrame {
             
             customerIDString = Integer.toString(customerID);
                 
-                        people.Customer searchCustomer = new people.Customer();
+            people.Customer searchCustomer = new people.Customer();
             searchCustomer.search(customerID);
             
             dispose();
