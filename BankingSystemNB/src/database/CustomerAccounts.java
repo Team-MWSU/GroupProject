@@ -19,4 +19,37 @@ public class CustomerAccounts {
 		AccountID=ANum;
 		AccountType=AType;
 	}
+        
+        public int getCustomerID(){
+            return CustID;
+        }
+        
+        public int getAccountID(){
+            return AccountID;
+        }
+        
+        public String getAccountType(){
+            return AccountType;
+        }
+        
+        public String toString(){
+            //Added for testing
+            //Used the following code to test in another class.
+            /*
+            
+                List<CustomerAccounts> theAccountList = theCustomer.getCustomerAccounts();
+        
+                for(int i = 0; i < theAccountList.size(); i++){
+                    System.out.println(theAccountList.get(i));
+                }
+            
+            */
+            
+            String customerID = Integer.toString(CustID);
+            String accountID = Integer.toString(AccountID);
+            
+            String printedString = "Customer ID: " + customerID + "\tAccountID: " + accountID + "\tAccount Type: " + AccountType;
+            
+            return printedString;
+        }
 }
