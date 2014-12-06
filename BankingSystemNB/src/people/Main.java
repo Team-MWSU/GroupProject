@@ -8,8 +8,8 @@ public class Main {
 		Employee testEmployee = new Employee(1, "Jessica", "Fjellman", "234222345", "5243 North Road St.", "Saint Joseph", "MO", "23451");
 		Manager testManager = new Manager(1, "Jaren", "Fjellman", "486638593", "2343 South St.", "Des Moines", "IA", "50022");
 		Teller testTeller = new Teller(1, "Jacob", "Fjellman", "582756283", "1 West St.", "Saint Joseph", "MO", "23451");
-		people.Customer testCustomer = new people.Customer(1, "Lily", "Fjellman", "363879283", "5243 East Road Ave.", "Atlantic", "IA", "50022");
-                database.Customer testDBCustomer = new database.Customer("MyLastName", "MyFirstName", 1);
+		//people.Customer testCustomer = new people.Customer(1, "Lily", "Fjellman", "363879283", "5243 East Road Ave.", "Atlantic", "IA", "50022");
+                //database.Customer testDBCustomer = new database.Customer("MyLastName", "MyFirstName", 1);
                 
                 
 
@@ -21,18 +21,18 @@ public class Main {
 		System.out.println();
 		testTeller.print();
 		System.out.println();
-		testCustomer.print();
-                System.out.println();
+		//testCustomer.print();
+                //System.out.println();
                 
-                Customer searchCustomerTest = new Customer();
+                //Customer searchCustomerTest = new Customer();
                 
                 //testCustomer.delete();
                 //testCustomer.add();
                 
-                searchCustomerTest.search(6789);
-                searchCustomerTest.print();
+                //searchCustomerTest.search(6789);
+                //searchCustomerTest.print();
                 
-                testDBCustomer.search(6789);
+                //testDBCustomer.search(6789);
 		
 	}//End method main
 
