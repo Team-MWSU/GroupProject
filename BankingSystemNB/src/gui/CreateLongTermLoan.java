@@ -12,6 +12,10 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
     /**
      * Creates new form CreateLongTermLoan
      */
+    
+    public int customerID;
+    public String customerIDString;
+    
     public CreateLongTermLoan() {
         initComponents();
     }
@@ -40,11 +44,11 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,8 +93,6 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setToolTipText("Customer ID");
-
         jLabel4.setText("Loan ID");
 
         jTextField3.setToolTipText("Loan Interest Rate");
@@ -133,8 +135,8 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
                                         .addComponent(jLabel4))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel5)
@@ -147,7 +149,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel7)
                                         .addComponent(jLabel8))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -164,7 +166,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +175,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -207,7 +209,6 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String customerIDString = jTextField1.getText();
         String accountIDString = jTextField2.getText(); //This should pull from the database.
         String loanLengthString = (String)jComboBox1.getSelectedItem();    
         String interestRateString = jTextField3.getText();
@@ -239,8 +240,6 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
         
         if (accountIDString.equals("")){
             jLabel10.setText("Enter ALL Text");
-        }else if(customerIDString.equals("")){
-            jLabel10.setText("Enter ALL Text");
         }else if(interestRateString.equals("")){
             jLabel10.setText("Enter ALL Text");
         }else if(depositString.equals("")){
@@ -249,7 +248,6 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
             jLabel10.setText("Enter ALL Text");
         }
         else{                                 
-        int    customerID = Integer.parseInt(customerIDString);
         int    accountID = Integer.parseInt(accountIDString); 
         int    loanLength = Integer.parseInt(loanLengthString);
         double interestRate = Double.parseDouble(interestRateString);
@@ -258,10 +256,23 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
                 Loan newLoan = new Loan(customerID, accountID, "Long", interestRate, monthlyPayment, deposit, nextPaymentString, deposit, false, startDateString);//SAVINGS HARD CODED
                 newLoan.addRecord(newLoan);
         
-            dispose();
-            ManagerActionScreen mas = new ManagerActionScreen();
-            mas.setResizable(false);
-            mas.setVisible(true);
+                customerIDString = Integer.toString(customerID);
+                
+                people.Customer searchCustomer = new people.Customer();
+                searchCustomer.search(customerID);
+
+                dispose();
+                ManagerActionScreen mas = new ManagerActionScreen();
+                ManagerActionScreen.jLabel10.setText(customerIDString);
+                ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+                ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+                mas.setResizable(false);
+                mas.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -322,7 +333,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

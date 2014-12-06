@@ -436,6 +436,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
         CreateCheckingAccount cca = new CreateCheckingAccount();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        cca.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cca.jLabel8.setText(customerIDString);
         cca.setResizable(false);
         cca.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -443,6 +447,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
         CreateShortTermLoan cstl = new CreateShortTermLoan();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        cstl.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cstl.jLabel11.setText(customerIDString);
         cstl.setResizable(false);
         cstl.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -450,6 +458,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
         CreateLongTermLoan cltl = new CreateLongTermLoan();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        cltl.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cltl.jLabel9.setText(customerIDString);
         cltl.setResizable(false);
         cltl.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -464,6 +476,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         dispose();
         CreateCreditCard ccc = new CreateCreditCard();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        ccc.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        ccc.jLabel7.setText(customerIDString);
         ccc.setResizable(false);
         ccc.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
