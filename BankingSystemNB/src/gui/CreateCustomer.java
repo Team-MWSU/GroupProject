@@ -1,6 +1,9 @@
 package gui;
 
 import people.Customer;
+import accounts.Account;
+import database.CustomerAccounts;
+import java.util.ArrayList;
 
 public class CreateCustomer extends javax.swing.JFrame {
 
@@ -247,9 +250,10 @@ public class CreateCustomer extends javax.swing.JFrame {
         }else if(customerZipCode.equals("")){
             jLabel10.setText("Enter ALL Text");
         }else{
+            ArrayList<CustomerAccounts> accountList = new ArrayList<CustomerAccounts>();
             Customer newCust = new Customer(customerID, customerFirstName, customerLastName, 
                     customerSSN, customerStreetAddress, customerCity, customerState, 
-                    customerZipCode);
+                    customerZipCode, accountList);
             newCust.add();
             /*
                 There should be code to move the customer to the database here.
