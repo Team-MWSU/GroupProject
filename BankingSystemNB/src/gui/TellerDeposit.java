@@ -4,6 +4,14 @@
  */
 package gui;
 
+import accounts.Savings;
+import accounts.Checking;
+import database.Transaction;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author Joel Jacobsen
@@ -42,6 +50,7 @@ public class TellerDeposit extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,29 +105,34 @@ public class TellerDeposit extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(175, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(292, 292, 292))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(262, 262, 262))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(144, 144, 144)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,6 +163,18 @@ public class TellerDeposit extends javax.swing.JFrame {
         String inMonth = jComboBox3.getSelectedItem().toString();
         String inYear  = jComboBox4.getSelectedItem().toString();
         String amount = jTextField2.getText();
+        Transaction newTrans;
+        double depositAmount = Double.parseDouble(amount);
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        
+        int year = Integer.parseInt(inYear);
+        year = year - 1900;
+        int month = Integer.parseInt(inMonth);
+        int day = Integer.parseInt(inDay);
+        
+        Date date = new Date(year, month, day);
+        
+        String startDate = formatter.format(date);
         
         if (inDay.equals("")){
             jLabel5.setText("Enter ALL Text");
@@ -165,8 +191,29 @@ public class TellerDeposit extends javax.swing.JFrame {
             switch(accountType)
             {
                 case "Savings":
+                    database.Savings newSavings = new database.Savings();
+                    newSavings = newSavings.getRecord(accountID);
+                    Savings workingSavings = new Savings(accountID, newSavings.CustNum, newSavings.Value, "savings");
+                        workingSavings.credit(depositAmount);
+                        System.out.println(workingSavings.getAccountTotal());
+                        newSavings.Value = workingSavings.getAccountTotal();
+                        newSavings.updateRecord(newSavings);
+                        System.out.println(newSavings.Value);
+                        newTrans = new Transaction(0, startDate, "Teller Deposit", depositAmount, accountID);
+                        newSavings.addTrans(newTrans);
                     break;
                 case "Checking":
+                    database.Checking newChecking = new database.Checking();
+                    newChecking = newChecking.getRecord(accountID);
+                    Checking workingChecking = new Checking(accountID, newChecking.OwnerID, newChecking.Balance, "checking", newChecking.Type);
+
+                        workingChecking.credit(depositAmount);
+                        System.out.println(workingChecking.getAccountTotal());
+                        newChecking.Balance = workingChecking.getAccountTotal();
+                        newChecking.updateRecord(newChecking);
+                        System.out.println(newChecking.Balance);
+                        newTrans = new Transaction(0, startDate, "Teller Deposit", depositAmount, accountID);
+                        newChecking.addTrans(newTrans);
                     break;
                 case "Loans":
                     break;
@@ -240,6 +287,7 @@ public class TellerDeposit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
