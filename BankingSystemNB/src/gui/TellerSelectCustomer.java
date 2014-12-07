@@ -4,6 +4,15 @@
  */
 package gui;
 
+import database.CustomerAccounts;
+import database.SQLDriver;
+import static gui.Customer.checkingAccountList;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Joel Jacobsen
@@ -13,6 +22,9 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
     /**
      * Creates new form TellerSelectCustomer
      */
+    
+    public int customerID;
+    
     public TellerSelectCustomer() {
         initComponents();
     }
@@ -108,16 +120,22 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String customerIDString = jTextField1.getText();
-                
+        SQLDriver db = new SQLDriver();
+        
         if (customerIDString.equals("")){
-            jLabel3.setText("Enter ALL Text");
+            jLabel3.setText("Enter Customer ID");
         }else{
-            int customerID = Integer.parseInt(customerIDString);
+            customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
             searchCustomer.search(customerID);
+        
+            List<CustomerAccounts> theAccountList = searchCustomer.getCustomerAccounts();
+       
             
-            dispose();
-            TellerActionScreen tas = new TellerActionScreen();
+            
+            
+            //Set the Customer General Info
+            TellerActionScreen co = new TellerActionScreen();
             TellerActionScreen.jLabel10.setText(customerIDString);
             TellerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
             TellerActionScreen.jLabel12.setText(searchCustomer.getLastName());
@@ -126,8 +144,200 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
             TellerActionScreen.jLabel16.setText(searchCustomer.getCity());
             TellerActionScreen.jLabel15.setText(searchCustomer.getState());
             TellerActionScreen.jLabel14.setText(searchCustomer.getZipCode());
-            tas.setResizable(false);
-            tas.setVisible(true);
+            
+            //Set the Customer Account Info
+            DefaultTableModel modelSavings = (DefaultTableModel) TellerActionScreen.jTableSavings.getModel();
+            DefaultTableModel modelChecking = (DefaultTableModel) TellerActionScreen.jTableChecking.getModel();
+            DefaultTableModel modelLoans = (DefaultTableModel) TellerActionScreen.jTableLoans.getModel();
+            DefaultTableModel modelCD = (DefaultTableModel) TellerActionScreen.jTableCD.getModel();
+            DefaultTableModel modelCreditCard = (DefaultTableModel) TellerActionScreen.jTableCreditCard.getModel();
+            
+            //This code works VERY well, but it involves adding an additional .jar file. I'll try another way.
+            /*
+            String[] differentAccounts = {"savings", "checking", "loan", "cd", "ccard"};
+            String[] differentLabels = {"OwnerID", "CustID", "CustID", "CustID", "CustID", "CustID"};
+            JTable[] differentTables = {
+                TellerActionScreen.jTableSavings,
+                TellerActionScreen.jTableChecking,
+                TellerActionScreen.jTableLoans,
+                TellerActionScreen.jTableCD,
+                TellerActionScreen.jTableCreditCard
+            };
+            for(int i = 0; i<differentAccounts.length; i++){
+                SQLDriver db = new SQLDriver();
+                String statement = "SELECT * FROM " + differentAccounts[i] + " WHERE " + differentLabels[i] + "="+searchCustomer.getID()+";";
+                ResultSet rs = (ResultSet)db.select(statement);
+                differentTables[i].setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            */
+
+            List<String> tempCheckingAcctList = new ArrayList<String>();
+            for(int i=0; i<theAccountList.size(); i++){
+                String accountType = (theAccountList.get(i)).getAccountType();
+                
+                int    accountID = (theAccountList.get(i)).getAccountID();
+                
+                String accountIDString = Integer.toString(accountID);
+                
+                
+                
+                switch (accountType){
+                    
+                    case "Savings":
+                        String statementSavings = "SELECT * FROM savings WHERE AccountID = " + accountID + ";";
+                        ResultSet resSavings = (ResultSet)db.select(statementSavings);
+                        try{
+                            while (resSavings.next()){    
+                                double interestRate = resSavings.getDouble("Interest");
+                                double balance = resSavings.getDouble("Balance");
+                                double overdraft = resSavings.getDouble("Overdraft");
+                                Date opened = resSavings.getDate("Opened");
+                                int active = resSavings.getInt("Active");
+                                String activeOut;
+                                
+                                if (active == 1){
+                                    activeOut = "Yes";
+                                }else{
+                                    activeOut = "No";
+                                }
+                                                              
+                                modelSavings.addRow(new Object[]{accountID, balance, interestRate, 
+                                    overdraft, opened, activeOut});
+                            }
+                        }catch (Exception ex){
+                            ex.printStackTrace();
+                        }
+                        
+                        break;
+                    case "Checking":
+                        String statementChecking = "SELECT * FROM checking WHERE AccountID = " + accountID + ";";
+                        ResultSet resChecking = (ResultSet)db.select(statementChecking);
+                        try{
+                            while (resChecking.next()){    
+                                double interestRate = resChecking.getDouble("Interest");
+                                double balance = resChecking.getDouble("Value");
+                                double overdraftAccount = resChecking.getDouble("SavingsAcct");
+                                Date opened = resChecking.getDate("Opened");
+                                int active = resChecking.getInt("Active");
+                                String type = resChecking.getString("Type");
+                                double averageBalance = resChecking.getDouble("AvgBal");
+                                String activeOut;
+                                
+                                if (active == 1){
+                                    activeOut = "Yes";
+                                }else{
+                                    activeOut = "No";
+                                }
+                                                              
+                                modelChecking.addRow(new Object[]{accountID, type,  balance, interestRate, 
+                                    overdraftAccount, averageBalance, opened, activeOut});
+                                
+                                tempCheckingAcctList.add(accountIDString);
+                            }
+                        }catch (Exception ex){
+                            ex.printStackTrace();
+                        }
+
+                        break;
+                    case "Loan":
+                        String statementLoan = "SELECT * FROM loan WHERE AccountID = " + accountID + ";";
+                        ResultSet resLoan = (ResultSet)db.select(statementLoan);
+                        try{
+                            while (resLoan.next()){    
+                                double interestRate = resLoan.getDouble("Interest");
+                                String loanType = resLoan.getString("Type");
+                                double monthly = resLoan.getDouble("Monthly");
+                                double totalAmt = resLoan.getDouble("TotalAmt");
+                                double currAmt = resLoan.getDouble("CurrAmt");
+                                Date nextPmt = resLoan.getDate("NextDue");
+                                Date lastFull = resLoan.getDate("LastFull");
+                                int flag = resLoan.getInt("Flag");
+                                String flagOut;
+                                
+                                if (flag == 1){
+                                    flagOut = "Yes";
+                                }else{
+                                    flagOut = "No";
+                                }
+                                
+                                int active = resLoan.getInt("Active");
+                                String activeOut;
+                                
+                                if (active == 1){
+                                    activeOut = "Yes";
+                                }else{
+                                    activeOut = "No";
+                                }
+                                                              
+                                modelLoans.addRow(new Object[]{accountID, loanType, interestRate, 
+                                    monthly, nextPmt, currAmt, flagOut, lastFull, activeOut});
+                            }
+                        }catch (Exception ex){
+                            ex.printStackTrace();
+                        }
+                        break;
+                    case "CD":
+                        String statementCD = "SELECT * FROM cd WHERE AccountID = " + accountID + ";";
+                        ResultSet resCD = (ResultSet)db.select(statementCD);
+                        try{
+                            while (resCD.next()){    
+                                double interestRate = resCD.getDouble("Interest");
+                                double value = resCD.getDouble("Value");
+                                Date opened = resCD.getDate("Opened");
+                                Date maturityDate = resCD.getDate("Maturity");
+                                Date rolloverDate = resCD.getDate("Rollover");
+                                String penalty = resCD.getString("Penalty");
+                                                              
+                                modelCD.addRow(new Object[]{accountID, value, interestRate, 
+                                    opened, maturityDate, rolloverDate, penalty});
+                            }
+                        }catch (Exception ex){
+                            ex.printStackTrace();
+                        }
+                        break;
+                    case "Credit Card":
+                        String statementCreditCard = "SELECT * FROM ccard WHERE AccountID = " + accountID + ";";
+                        ResultSet resCreditCard = (ResultSet)db.select(statementCreditCard);
+                        try{
+                            while (resCreditCard.next()){    
+                                double interestRate = resCreditCard.getDouble("Interest");
+                                double totalCredit = resCreditCard.getDouble("TotalCredit");
+                                double openCredit = resCreditCard.getDouble("OpenCredit");
+                                double usedCredit = resCreditCard.getDouble("UsedCredit");
+                                Date nextDue = resCreditCard.getDate("NextDue");
+                                String penalty = resCreditCard.getString("Penalty");
+                                int active = resCreditCard.getInt("Active");
+                                String activeOut;
+                                
+                                if (active == 1){
+                                    activeOut = "Yes";
+                                }else{
+                                    activeOut = "No";
+                                }
+
+                                                              
+                                modelCreditCard.addRow(new Object[]{accountID, interestRate, totalCredit,
+                                    openCredit, usedCredit, nextDue, penalty, activeOut});
+                            }
+                        }catch (Exception ex){
+                            ex.printStackTrace();
+                        }
+                        break;
+                        
+                }
+ 
+
+            }
+      
+            checkingAccountList = tempCheckingAcctList.toArray(new String[tempCheckingAcctList.size()]);
+                
+            for (int i=0; i<checkingAccountList.length; i++){
+                    
+            }
+            
+            dispose();
+            co.setResizable(false);
+            co.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

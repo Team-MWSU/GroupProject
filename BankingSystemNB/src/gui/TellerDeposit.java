@@ -13,6 +13,10 @@ public class TellerDeposit extends javax.swing.JFrame {
     /**
      * Creates new form TellerDeposit
      */
+    
+    public int accountID;
+    public String accountType;
+    
     public TellerDeposit() {
         initComponents();
     }
@@ -29,7 +33,6 @@ public class TellerDeposit extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
         jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -38,6 +41,7 @@ public class TellerDeposit extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,8 +52,6 @@ public class TellerDeposit extends javax.swing.JFrame {
         jComboBox3.setToolTipText("Day");
 
         jTextField2.setToolTipText("Amount for Deposit");
-
-        jTextField1.setToolTipText("Account Number");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Teller Deposit");
@@ -71,7 +73,7 @@ public class TellerDeposit extends javax.swing.JFrame {
 
         jLabel4.setText("Amount");
 
-        jButton7.setText("Back");
+        jButton7.setText("Close");
         jButton7.setToolTipText("Return to Previous Screen");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,15 +103,14 @@ public class TellerDeposit extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField1)
-                        .addComponent(jTextField2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(292, 292, 292))
         );
         layout.setVerticalGroup(
@@ -125,15 +126,15 @@ public class TellerDeposit extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +148,6 @@ public class TellerDeposit extends javax.swing.JFrame {
         String inDay   = jComboBox2.getSelectedItem().toString();
         String inMonth = jComboBox3.getSelectedItem().toString();
         String inYear  = jComboBox4.getSelectedItem().toString();
-        String accountNumber = jTextField1.getText();
         String amount = jTextField2.getText();
         
         if (inDay.equals("")){
@@ -156,31 +156,42 @@ public class TellerDeposit extends javax.swing.JFrame {
             jLabel5.setText("Enter ALL Text");
         }else if(inMonth.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(accountNumber.equals("")){
-            jLabel5.setText("Enter ALL Text");
         }else if(amount.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else{
-            System.out.print(inDay + "/");
-            System.out.print(inMonth + "/");
-            System.out.print(inYear + "/");
-            System.out.print(": $" + amount + " - Account#" + accountNumber  + "\n");
             /*
                 Again, this needs to push to the database instead. 
             */
+            switch(accountType)
+            {
+                case "Savings":
+                    break;
+                case "Checking":
+                    break;
+                case "Loans":
+                    break;
+                case "CD":
+                    break;
+                case "CCard":
+                    break;
+                default:
+                    break;
+            }
+            
+            
 
             dispose();
-            TellerActionScreen tas = new TellerActionScreen();
-            tas.setResizable(false);
-            tas.setVisible(true);
+            //TellerActionScreen tas = new TellerActionScreen();
+            //tas.setResizable(false);
+            //tas.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         dispose();
-        TellerActionScreen tas = new TellerActionScreen();
-        tas.setResizable(false);
-        tas.setVisible(true);
+        //TellerActionScreen tas = new TellerActionScreen();
+        //tas.setResizable(false);
+        //tas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -228,7 +239,7 @@ public class TellerDeposit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
