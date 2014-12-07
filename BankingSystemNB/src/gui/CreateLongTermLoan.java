@@ -253,7 +253,7 @@ public class CreateLongTermLoan extends javax.swing.JFrame {
         double interestRate = Double.parseDouble(interestRateString);
         double    deposit = Double.parseDouble(depositString);
         double monthlyPayment = Double.parseDouble(monthlyPaymentString);
-                Loan newLoan = new Loan(customerID, accountID, "Long", interestRate, monthlyPayment, deposit, nextPaymentString, deposit, false, startDateString);//SAVINGS HARD CODED
+                Loan newLoan = new Loan(customerID, accountID, "Long", interestRate, monthlyPayment, deposit, nextPaymentString, deposit, false, startDateString, true);//SAVINGS HARD CODED
                 newLoan.addRecord(newLoan);
         
                 customerIDString = Integer.toString(customerID);

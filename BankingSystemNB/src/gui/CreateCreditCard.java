@@ -240,7 +240,7 @@ public class CreateCreditCard extends javax.swing.JFrame {
                 int    accountID = Integer.parseInt(accountIDString);
                 double interestRate = Double.parseDouble(interestRateString);
                 double    deposit = Double.parseDouble(depositString);
-                CCard newCard = new CCard(customerID, accountID, interestRate, deposit, deposit, 0.0, nextPaymentString, penaltyString);
+                CCard newCard = new CCard(customerID, accountID, interestRate, deposit, deposit, 0.0, nextPaymentString, penaltyString, true);
                 newCard.addRecord(newCard);
         
                 customerIDString = Integer.toString(customerID);
