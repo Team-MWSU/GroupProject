@@ -118,6 +118,8 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public people.Customer searchCustomer = new people.Customer();
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String customerIDString = jTextField1.getText();
         SQLDriver db = new SQLDriver();
@@ -125,8 +127,13 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
         if (customerIDString.equals("")){
             jLabel3.setText("Enter Customer ID");
         }else{
+<<<<<<< Updated upstream
             customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
+=======
+            int customerID = Integer.parseInt(customerIDString);
+            //people.Customer searchCustomer = new people.Customer();
+>>>>>>> Stashed changes
             searchCustomer.search(customerID);
         
             List<CustomerAccounts> theAccountList = searchCustomer.getCustomerAccounts();

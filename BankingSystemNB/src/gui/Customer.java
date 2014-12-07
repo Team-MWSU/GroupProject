@@ -19,6 +19,7 @@ public class Customer extends javax.swing.JFrame {
     public static people.Customer testCustomer= new people.Customer();
     
     static public String[] checkingAccountList;
+    static public String[] creditCardAccountList;
     /**
      * Creates new form Customer
      */
@@ -178,6 +179,7 @@ public class Customer extends javax.swing.JFrame {
             */
 
             List<String> tempCheckingAcctList = new ArrayList<String>();
+            List<String> tempCreditCardAcctList = new ArrayList<String>();
             for(int i=0; i<theAccountList.size(); i++){
                 String accountType = (theAccountList.get(i)).getAccountType();
                 
@@ -321,6 +323,7 @@ public class Customer extends javax.swing.JFrame {
                                     activeOut = "No";
                                 }
 
+                                tempCreditCardAcctList.add(accountIDString);
                                                               
                                 modelCreditCard.addRow(new Object[]{accountID, interestRate, totalCredit,
                                     openCredit, usedCredit, nextDue, penalty, activeOut});
@@ -336,10 +339,7 @@ public class Customer extends javax.swing.JFrame {
             }
       
             checkingAccountList = tempCheckingAcctList.toArray(new String[tempCheckingAcctList.size()]);
-                
-            for (int i=0; i<checkingAccountList.length; i++){
-                    
-            }
+            creditCardAccountList = tempCreditCardAcctList.toArray(new String[tempCreditCardAcctList.size()]);
             
             dispose();
             co.setResizable(false);
