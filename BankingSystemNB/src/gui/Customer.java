@@ -4,6 +4,7 @@ import database.CustomerAccounts;
 import database.SQLDriver;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
 //import net.proteanit.sql.DbUtils;
 //import javax.swing.JTable;
@@ -17,6 +18,7 @@ public class Customer extends javax.swing.JFrame {
     //Global Variables
     public static people.Customer testCustomer= new people.Customer();
     
+    static public String[] checkingAccountList;
     /**
      * Creates new form Customer
      */
@@ -175,10 +177,15 @@ public class Customer extends javax.swing.JFrame {
             }
             */
 
+            List<String> tempCheckingAcctList = new ArrayList<String>();
             for(int i=0; i<theAccountList.size(); i++){
                 String accountType = (theAccountList.get(i)).getAccountType();
                 
                 int    accountID = (theAccountList.get(i)).getAccountID();
+                
+                String accountIDString = Integer.toString(accountID);
+                
+                
                 
                 switch (accountType){
                     
@@ -230,6 +237,8 @@ public class Customer extends javax.swing.JFrame {
                                                               
                                 modelChecking.addRow(new Object[]{accountID, type,  balance, interestRate, 
                                     overdraftAccount, averageBalance, opened, activeOut});
+                                
+                                tempCheckingAcctList.add(accountIDString);
                             }
                         }catch (Exception ex){
                             ex.printStackTrace();
@@ -323,8 +332,15 @@ public class Customer extends javax.swing.JFrame {
                         
                 }
  
+
             }
       
+            checkingAccountList = tempCheckingAcctList.toArray(new String[tempCheckingAcctList.size()]);
+                
+            for (int i=0; i<checkingAccountList.length; i++){
+                    
+            }
+            
             dispose();
             co.setResizable(false);
             co.setVisible(true);
