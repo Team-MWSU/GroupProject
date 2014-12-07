@@ -5,6 +5,7 @@
 package gui;
 
 import database.CCard;
+import database.Transaction;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +21,7 @@ public class ViewCreditCardStatement extends javax.swing.JFrame {
      */
     
     public int customerID;
+    public String customerIDString;
     
     public ViewCreditCardStatement() {
         initComponents();
@@ -57,30 +59,10 @@ public class ViewCreditCardStatement extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Transaction", "Account", "Date", "Amount", "Description"
+                "Transaction ID", "Account", "Date", "Amount", "Description"
             }
         ) {
             Class[] types = new Class [] {
@@ -121,31 +103,27 @@ public class ViewCreditCardStatement extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,10 +135,25 @@ public class ViewCreditCardStatement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+
+                    
+                    customerIDString = Integer.toString(customerID);
+
+                    people.Customer searchCustomer = new people.Customer();
+                    searchCustomer.search(customerID);
+
+                    dispose();
+                    ManagerActionScreen mas = new ManagerActionScreen();
+                    ManagerActionScreen.jLabel10.setText(customerIDString);
+                    ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                    ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                    ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                    ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                    ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                    ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+                    ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+                    mas.setResizable(false);
+                    mas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -173,7 +166,7 @@ public class ViewCreditCardStatement extends javax.swing.JFrame {
         {
             int accountID = Integer.parseInt(accountIDString);
             CCard newCard = new CCard();
-            newCard.getRecord(accountID);
+            newCard = newCard.getRecord(accountID);
             if(newCard.CardID == 0)
             {
                 jLabel2.setText("Account Does Not Exist");
@@ -189,7 +182,21 @@ public class ViewCreditCardStatement extends javax.swing.JFrame {
                     List transList;
                     transList = newCard.getAllTrans(accountID);
                     Object[][] temp = new Object[transList.size()][5];
-                    String[] columnNames = new String[] {"Transaction", "Account", "Date", "Amount", "Description"};
+                    
+                    
+                    for(int i = 0; i < transList.size(); i++)
+                    {
+                        Transaction tempTrans = new Transaction();
+                        tempTrans = (Transaction)transList.get(i);
+                        temp[i][0] = tempTrans.TransactionID;
+                        temp[i][1] = tempTrans.Account;
+                        temp[i][2] = tempTrans.TransDate;
+                        temp[i][3] = tempTrans.Value;
+                        temp[i][4] = tempTrans.Description;
+                        
+                    }
+                    
+                    String[] columnNames = new String[] {"Transaction ID", "Account", "Date", "Amount", "Description"};
                     
                     jTable1.setModel(new DefaultTableModel(temp, columnNames));
                 }
