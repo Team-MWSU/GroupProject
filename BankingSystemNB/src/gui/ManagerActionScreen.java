@@ -2,6 +2,8 @@ package gui;
 
 public class ManagerActionScreen extends javax.swing.JFrame {
 
+    public int customerID;
+    
     /**
      * Creates new form ManagerActionScreen
      */
@@ -20,18 +22,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
-        jButtonDebitSavingsAccount = new javax.swing.JButton();
-        jButtonDebitCheckingAccount = new javax.swing.JButton();
-        jButtonStopPayment = new javax.swing.JButton();
-        jButtonSetSavingsIR = new javax.swing.JButton();
-        jButtonSetCheckingIR = new javax.swing.JButton();
-        jButtonDeposit = new javax.swing.JButton();
-        jButtonWithdrawl = new javax.swing.JButton();
-        jButtonCloseAccount = new javax.swing.JButton();
-        jButtonEditInfo = new javax.swing.JButton();
-        jButtonViewCCStatement = new javax.swing.JButton();
-        jButtonViewCDRollNotice = new javax.swing.JButton();
-        jButtonViewLoanStatement = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -48,7 +38,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButtonCreateObject = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -65,6 +54,38 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTableCreditCard = new javax.swing.JTable();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenuCreate = new javax.swing.JMenu();
+        jMenuItemCreateSavings = new javax.swing.JMenuItem();
+        jMenuItemCreateChecking = new javax.swing.JMenuItem();
+        jMenuItemCreateCD = new javax.swing.JMenuItem();
+        jMenuItemCreateSTL = new javax.swing.JMenuItem();
+        jMenuItemCreateLTL = new javax.swing.JMenuItem();
+        jMenuItemCreateATMCard = new javax.swing.JMenuItem();
+        jMenuItemCreateCreditCard = new javax.swing.JMenuItem();
+        jMenuEdit = new javax.swing.JMenu();
+        jMenuItemEditCustInfo = new javax.swing.JMenuItem();
+        jMenuClose = new javax.swing.JMenu();
+        jMenuItemCloseSavings = new javax.swing.JMenuItem();
+        jMenuItemCloseChecking = new javax.swing.JMenuItem();
+        jMenuItemCloseCD = new javax.swing.JMenuItem();
+        jMenuItemCloseShortLoan = new javax.swing.JMenuItem();
+        jMenuItemCloseLongLoan = new javax.swing.JMenuItem();
+        jMenuItemCloseATMCard = new javax.swing.JMenuItem();
+        jMenuItemCloseCreditCard = new javax.swing.JMenuItem();
+        jMenuTransaction = new javax.swing.JMenu();
+        jMenuItemTransAccDeposit = new javax.swing.JMenuItem();
+        jMenuItemTransAccWithdrawl = new javax.swing.JMenuItem();
+        jMenuItemTransStopPayment = new javax.swing.JMenuItem();
+        jMenuItemTransDebitSvnsAcct = new javax.swing.JMenuItem();
+        jMenuItemTransDebitCknAcct = new javax.swing.JMenuItem();
+        jMenuView = new javax.swing.JMenu();
+        jMenuItemViewCDRollNotice = new javax.swing.JMenuItem();
+        jMenuItemViewLoanStatement = new javax.swing.JMenuItem();
+        jMenuItemViewCCStatement = new javax.swing.JMenuItem();
+        jMenuInterestRate = new javax.swing.JMenu();
+        jMenuItemSetSavingsIR = new javax.swing.JMenuItem();
+        jMenuItemSetCheckingIR = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,100 +97,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
-            }
-        });
-
-        jButtonDebitSavingsAccount.setText("Debit Savings Account");
-        jButtonDebitSavingsAccount.setToolTipText("Debit Savings Account");
-        jButtonDebitSavingsAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDebitSavingsAccountActionPerformed(evt);
-            }
-        });
-
-        jButtonDebitCheckingAccount.setText("Debit Checking Account");
-        jButtonDebitCheckingAccount.setToolTipText("Debit Checking Account");
-        jButtonDebitCheckingAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDebitCheckingAccountActionPerformed(evt);
-            }
-        });
-
-        jButtonStopPayment.setText("Stop Payment");
-        jButtonStopPayment.setToolTipText("Stop Payment");
-        jButtonStopPayment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonStopPaymentActionPerformed(evt);
-            }
-        });
-
-        jButtonSetSavingsIR.setText("Set Savings Interest Rate");
-        jButtonSetSavingsIR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSetSavingsIRActionPerformed(evt);
-            }
-        });
-
-        jButtonSetCheckingIR.setText("Set Checking Interest Rate");
-        jButtonSetCheckingIR.setToolTipText("Set Checking Interest Rate");
-        jButtonSetCheckingIR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSetCheckingIRActionPerformed(evt);
-            }
-        });
-
-        jButtonDeposit.setText("Deposit");
-        jButtonDeposit.setToolTipText("Deposit");
-        jButtonDeposit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDepositActionPerformed(evt);
-            }
-        });
-
-        jButtonWithdrawl.setText("Withdrawl");
-        jButtonWithdrawl.setToolTipText("Withdrawl");
-        jButtonWithdrawl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonWithdrawlActionPerformed(evt);
-            }
-        });
-
-        jButtonCloseAccount.setText("Close Account");
-        jButtonCloseAccount.setToolTipText("Close Account");
-        jButtonCloseAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCloseAccountActionPerformed(evt);
-            }
-        });
-
-        jButtonEditInfo.setText("Edit Customer Info");
-        jButtonEditInfo.setToolTipText("Edit Customer Info");
-        jButtonEditInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditInfoActionPerformed(evt);
-            }
-        });
-
-        jButtonViewCCStatement.setText("View CC Statement");
-        jButtonViewCCStatement.setToolTipText("View Credit Card Statement");
-        jButtonViewCCStatement.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonViewCCStatementActionPerformed(evt);
-            }
-        });
-
-        jButtonViewCDRollNotice.setText("View CD Rollover Notice");
-        jButtonViewCDRollNotice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonViewCDRollNoticeActionPerformed(evt);
-            }
-        });
-
-        jButtonViewLoanStatement.setText("View Loan Statement");
-        jButtonViewLoanStatement.setToolTipText("View Loan Statement");
-        jButtonViewLoanStatement.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonViewLoanStatementActionPerformed(evt);
             }
         });
 
@@ -189,13 +116,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
         jLabel9.setText("Zip Code:");
 
-        jButtonCreateObject.setText("Create Object");
-        jButtonCreateObject.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCreateObjectActionPerformed(evt);
-            }
-        });
-
         jTableSavings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -210,11 +130,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Savings", jPanel1);
@@ -241,11 +161,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Checking", jPanel2);
@@ -264,11 +184,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Loans", jPanel3);
@@ -287,11 +207,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("CD", jPanel4);
@@ -310,251 +230,332 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Credit Card", jPanel5);
+
+        jMenuCreate.setText("Create");
+
+        jMenuItemCreateSavings.setText("Savings Account");
+        jMenuItemCreateSavings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateSavingsActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateSavings);
+
+        jMenuItemCreateChecking.setText("Checking Account");
+        jMenuItemCreateChecking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateCheckingActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateChecking);
+
+        jMenuItemCreateCD.setText("CD");
+        jMenuItemCreateCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateCDActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateCD);
+
+        jMenuItemCreateSTL.setText("Short-Term Loan");
+        jMenuItemCreateSTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateSTLActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateSTL);
+
+        jMenuItemCreateLTL.setText("Long-Term Loan");
+        jMenuItemCreateLTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateLTLActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateLTL);
+
+        jMenuItemCreateATMCard.setText("ATM Card");
+        jMenuItemCreateATMCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateATMCardActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateATMCard);
+
+        jMenuItemCreateCreditCard.setText("Credit Card");
+        jMenuItemCreateCreditCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateCreditCardActionPerformed(evt);
+            }
+        });
+        jMenuCreate.add(jMenuItemCreateCreditCard);
+
+        jMenuBar2.add(jMenuCreate);
+
+        jMenuEdit.setText("Edit");
+
+        jMenuItemEditCustInfo.setText("Edit Customer Info");
+        jMenuItemEditCustInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditCustInfoActionPerformed(evt);
+            }
+        });
+        jMenuEdit.add(jMenuItemEditCustInfo);
+
+        jMenuBar2.add(jMenuEdit);
+
+        jMenuClose.setText("Close");
+
+        jMenuItemCloseSavings.setText("Savings Account");
+        jMenuItemCloseSavings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseSavingsActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseSavings);
+
+        jMenuItemCloseChecking.setText("Checking Account");
+        jMenuItemCloseChecking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseCheckingActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseChecking);
+
+        jMenuItemCloseCD.setText("CD");
+        jMenuItemCloseCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseCDActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseCD);
+
+        jMenuItemCloseShortLoan.setText("Short-Term Loan");
+        jMenuItemCloseShortLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseShortLoanActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseShortLoan);
+
+        jMenuItemCloseLongLoan.setText("Long-Term Loan");
+        jMenuItemCloseLongLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseLongLoanActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseLongLoan);
+
+        jMenuItemCloseATMCard.setText("ATM Card");
+        jMenuItemCloseATMCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseATMCardActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseATMCard);
+
+        jMenuItemCloseCreditCard.setText("Credit Card");
+        jMenuItemCloseCreditCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseCreditCardActionPerformed(evt);
+            }
+        });
+        jMenuClose.add(jMenuItemCloseCreditCard);
+
+        jMenuBar2.add(jMenuClose);
+
+        jMenuTransaction.setText("Transaction");
+
+        jMenuItemTransAccDeposit.setText("Account Deposit");
+        jMenuItemTransAccDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTransAccDepositActionPerformed(evt);
+            }
+        });
+        jMenuTransaction.add(jMenuItemTransAccDeposit);
+
+        jMenuItemTransAccWithdrawl.setText("Account Withdrawl");
+        jMenuItemTransAccWithdrawl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTransAccWithdrawlActionPerformed(evt);
+            }
+        });
+        jMenuTransaction.add(jMenuItemTransAccWithdrawl);
+
+        jMenuItemTransStopPayment.setText("Stop Payment");
+        jMenuItemTransStopPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTransStopPaymentActionPerformed(evt);
+            }
+        });
+        jMenuTransaction.add(jMenuItemTransStopPayment);
+
+        jMenuItemTransDebitSvnsAcct.setText("Debit Savings Account");
+        jMenuItemTransDebitSvnsAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTransDebitSvnsAcctActionPerformed(evt);
+            }
+        });
+        jMenuTransaction.add(jMenuItemTransDebitSvnsAcct);
+
+        jMenuItemTransDebitCknAcct.setText("Debit Checking Account");
+        jMenuItemTransDebitCknAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTransDebitCknAcctActionPerformed(evt);
+            }
+        });
+        jMenuTransaction.add(jMenuItemTransDebitCknAcct);
+
+        jMenuBar2.add(jMenuTransaction);
+
+        jMenuView.setText("View");
+
+        jMenuItemViewCDRollNotice.setText("CD Rollover Notice");
+        jMenuItemViewCDRollNotice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemViewCDRollNoticeActionPerformed(evt);
+            }
+        });
+        jMenuView.add(jMenuItemViewCDRollNotice);
+
+        jMenuItemViewLoanStatement.setText("Loan Statement");
+        jMenuItemViewLoanStatement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemViewLoanStatementActionPerformed(evt);
+            }
+        });
+        jMenuView.add(jMenuItemViewLoanStatement);
+
+        jMenuItemViewCCStatement.setText("Credit Card Statement");
+        jMenuItemViewCCStatement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemViewCCStatementActionPerformed(evt);
+            }
+        });
+        jMenuView.add(jMenuItemViewCCStatement);
+
+        jMenuBar2.add(jMenuView);
+
+        jMenuInterestRate.setText("Interest Rate");
+
+        jMenuItemSetSavingsIR.setText("Set Savings Interest Rate");
+        jMenuItemSetSavingsIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSetSavingsIRActionPerformed(evt);
+            }
+        });
+        jMenuInterestRate.add(jMenuItemSetSavingsIR);
+
+        jMenuItemSetCheckingIR.setText("Set Checking Interest Rate");
+        jMenuItemSetCheckingIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSetCheckingIRActionPerformed(evt);
+            }
+        });
+        jMenuInterestRate.add(jMenuItemSetCheckingIR);
+
+        jMenuBar2.add(jMenuInterestRate);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(61, 61, 61)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonEditInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16))))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jButtonDebitSavingsAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButtonDebitCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonStopPayment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButtonCreateObject, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
+                                .addGap(73, 73, 73)
                                 .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButtonViewLoanStatement, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonViewCDRollNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonViewCCStatement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButtonSetSavingsIR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonWithdrawl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonCloseAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonSetCheckingIR))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonCloseAccount, jButtonDebitCheckingAccount, jButtonDebitSavingsAccount, jButtonDeposit, jButtonSetCheckingIR, jButtonSetSavingsIR, jButtonStopPayment, jButtonViewCCStatement, jButtonViewCDRollNotice, jButtonViewLoanStatement, jButtonWithdrawl});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
                 .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jLabel6)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel7))
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 4, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel8))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonEditInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButtonSetSavingsIR, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonCreateObject, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonSetCheckingIR, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jButtonViewCDRollNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButtonDebitSavingsAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButtonViewLoanStatement, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(50, 50, 50))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(44, 44, 44)
-                                                    .addComponent(jButtonStopPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addComponent(jButtonDebitCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(44, 44, 44)))))
-                                    .addComponent(jButtonViewCCStatement, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButtonDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonWithdrawl, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50))
-                            .addComponent(jButtonCloseAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(156, 156, 156)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(201, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel7))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel5))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonCloseAccount, jButtonDebitCheckingAccount, jButtonDebitSavingsAccount, jButtonDeposit, jButtonEditInfo, jButtonSetCheckingIR, jButtonSetSavingsIR, jButtonStopPayment, jButtonViewCCStatement, jButtonViewCDRollNotice, jButtonViewLoanStatement, jButtonWithdrawl});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonDebitSavingsAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDebitSavingsAccountActionPerformed
-        dispose();
-        DebitSavingsAccount dsa = new DebitSavingsAccount();
-        int customerID = Integer.parseInt(jLabel10.getText());
-        dsa.customerID = customerID;
-        DebitSavingsAccount.jLabel6.setText(jLabel10.getText());
-        dsa.setResizable(false);
-        dsa.setVisible(true);
-    }//GEN-LAST:event_jButtonDebitSavingsAccountActionPerformed
-
-    private void jButtonDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDepositActionPerformed
-        dispose();
-        ManagerDeposit md = new ManagerDeposit();
-        md.setResizable(false);
-        md.setVisible(true);
-    }//GEN-LAST:event_jButtonDepositActionPerformed
-
-    private void jButtonDebitCheckingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDebitCheckingAccountActionPerformed
-        dispose();
-        DebitCheckingAccount dca = new DebitCheckingAccount();
-        dca.setResizable(false);
-        dca.setVisible(true);
-    }//GEN-LAST:event_jButtonDebitCheckingAccountActionPerformed
-
-    private void jButtonStopPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopPaymentActionPerformed
-        dispose();
-        ManagerStopPayment msp = new ManagerStopPayment();
-        msp.setResizable(false);
-        msp.setVisible(true);
-    }//GEN-LAST:event_jButtonStopPaymentActionPerformed
-
-    private void jButtonSetSavingsIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSetSavingsIRActionPerformed
-        dispose();
-        SetSavingsInterestRate ssir = new SetSavingsInterestRate();
-        ssir.setResizable(false);
-        ssir.setVisible(true);
-    }//GEN-LAST:event_jButtonSetSavingsIRActionPerformed
-
-    private void jButtonSetCheckingIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSetCheckingIRActionPerformed
-        dispose();
-        SetCheckingInterestRate scir = new SetCheckingInterestRate();
-        scir.setResizable(false);
-        scir.setVisible(true);
-    }//GEN-LAST:event_jButtonSetCheckingIRActionPerformed
-
-    private void jButtonWithdrawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWithdrawlActionPerformed
-        dispose();
-        ManagerWithdrawl mw = new ManagerWithdrawl();
-        mw.setResizable(false);
-        mw.setVisible(true);
-    }//GEN-LAST:event_jButtonWithdrawlActionPerformed
-
-    private void jButtonCloseAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseAccountActionPerformed
-
-        dispose();
-        CloseAccount ca = new CloseAccount();
-        int customerID = Integer.parseInt(jLabel10.getText());
-        ca.customerID = customerID;
-        ca.setResizable(false);
-        ca.setVisible(true);
-    }//GEN-LAST:event_jButtonCloseAccountActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         dispose();
@@ -563,41 +564,207 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         ms.setVisible(true);
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jButtonEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditInfoActionPerformed
+    private void jMenuItemCreateSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSavingsActionPerformed
+        dispose();
+        CreateSavingsAccount cas = new CreateSavingsAccount();
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        cas.customerID = customerID;
+        cas.setResizable(false);
+        cas.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCreateSavingsActionPerformed
+
+    private void jMenuItemCreateCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCDActionPerformed
+        dispose();
+        CreateCD crcd = new CreateCD();
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        crcd.customerID = customerID;
+        crcd.setResizable(false);
+        crcd.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCreateCDActionPerformed
+
+    private void jMenuItemCreateLTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateLTLActionPerformed
+        dispose();
+        CreateLongTermLoan cltl = new CreateLongTermLoan();
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        cltl.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cltl.jLabel9.setText(customerIDString);
+        cltl.setResizable(false);
+        cltl.setVisible(true);          
+    }//GEN-LAST:event_jMenuItemCreateLTLActionPerformed
+
+    private void jMenuItemCreateATMCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateATMCardActionPerformed
+        dispose();
+        CreateATMCard catmc = new CreateATMCard();
+        catmc.setResizable(false);
+        catmc.setVisible(true);   
+    }//GEN-LAST:event_jMenuItemCreateATMCardActionPerformed
+
+    private void jMenuItemTransAccWithdrawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransAccWithdrawlActionPerformed
+        dispose();
+        ManagerWithdrawl mw = new ManagerWithdrawl();
+        mw.setResizable(false);
+        mw.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTransAccWithdrawlActionPerformed
+
+    private void jMenuItemSetSavingsIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSetSavingsIRActionPerformed
+        dispose();
+        SetSavingsInterestRate ssir = new SetSavingsInterestRate();
+        ssir.setResizable(false);
+        ssir.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSetSavingsIRActionPerformed
+
+    private void jMenuItemViewCDRollNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewCDRollNoticeActionPerformed
+        dispose();
+        ViewCDRolloverNotice vcdrn = new ViewCDRolloverNotice();
+        vcdrn.setResizable(false);
+        vcdrn.setVisible(true);
+    }//GEN-LAST:event_jMenuItemViewCDRollNoticeActionPerformed
+
+    private void jMenuItemViewLoanStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewLoanStatementActionPerformed
+        dispose();
+        ViewLoanStatement vls = new ViewLoanStatement();
+        vls.setResizable(false);
+        vls.setVisible(true);
+    }//GEN-LAST:event_jMenuItemViewLoanStatementActionPerformed
+
+    private void jMenuItemTransDebitCknAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransDebitCknAcctActionPerformed
+        dispose();
+        DebitCheckingAccount dca = new DebitCheckingAccount();
+        dca.setResizable(false);
+        dca.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTransDebitCknAcctActionPerformed
+
+    private void jMenuItemCreateSTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSTLActionPerformed
+        dispose();
+        CreateShortTermLoan cstl = new CreateShortTermLoan();
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        cstl.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cstl.jLabel11.setText(customerIDString);
+        cstl.setResizable(false);
+        cstl.setVisible(true);          
+    }//GEN-LAST:event_jMenuItemCreateSTLActionPerformed
+
+    private void jMenuItemCreateCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCheckingActionPerformed
+        dispose();        
+        CreateCheckingAccount cca = new CreateCheckingAccount();
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        cca.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        cca.jLabel8.setText(customerIDString);
+        cca.setResizable(false);
+        cca.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemCreateCheckingActionPerformed
+
+    private void jMenuItemCreateCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCreditCardActionPerformed
+        dispose();
+        CreateCreditCard ccc = new CreateCreditCard();
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        ccc.customerID = customerID;
+        String customerIDString = Integer.toString(customerID);
+        ccc.jLabel7.setText(customerIDString);
+        ccc.setResizable(false);
+        ccc.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemCreateCreditCardActionPerformed
+
+    private void jMenuItemSetCheckingIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSetCheckingIRActionPerformed
+        dispose();
+        SetCheckingInterestRate scir = new SetCheckingInterestRate();
+        scir.setResizable(false);
+        scir.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSetCheckingIRActionPerformed
+
+    private void jMenuItemTransStopPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransStopPaymentActionPerformed
+        dispose();
+        ManagerStopPayment msp = new ManagerStopPayment();
+        msp.setResizable(false);
+        msp.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTransStopPaymentActionPerformed
+
+    private void jMenuItemEditCustInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditCustInfoActionPerformed
         dispose();
         EditCustomerInfo eci = new EditCustomerInfo();
         eci.setResizable(false);
         eci.setVisible(true);
-    }//GEN-LAST:event_jButtonEditInfoActionPerformed
+    }//GEN-LAST:event_jMenuItemEditCustInfoActionPerformed
 
-    private void jButtonViewCCStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewCCStatementActionPerformed
+    private void jMenuItemViewCCStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewCCStatementActionPerformed
         dispose();
         ViewCreditCardStatement vccs = new ViewCreditCardStatement();
         int customerID = Integer.parseInt(jLabel10.getText());
         vccs.customerID = customerID;
         vccs.setResizable(false);
         vccs.setVisible(true);
-    }//GEN-LAST:event_jButtonViewCCStatementActionPerformed
+    }//GEN-LAST:event_jMenuItemViewCCStatementActionPerformed
 
-    private void jButtonViewCDRollNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewCDRollNoticeActionPerformed
+    private void jMenuItemTransDebitSvnsAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransDebitSvnsAcctActionPerformed
         dispose();
-        ViewCDRolloverNotice vcdrn = new ViewCDRolloverNotice();
-        vcdrn.setResizable(false);
-        vcdrn.setVisible(true);
-    }//GEN-LAST:event_jButtonViewCDRollNoticeActionPerformed
+        DebitSavingsAccount dsa = new DebitSavingsAccount();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        dsa.customerID = customerID;
+        DebitSavingsAccount.jLabel6.setText(jLabel10.getText());
+        dsa.setResizable(false);
+        dsa.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTransDebitSvnsAcctActionPerformed
 
-    private void jButtonViewLoanStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewLoanStatementActionPerformed
+    private void jMenuItemTransAccDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransAccDepositActionPerformed
         dispose();
-        ViewLoanStatement vls = new ViewLoanStatement();
-        vls.setResizable(false);
-        vls.setVisible(true);
-    }//GEN-LAST:event_jButtonViewLoanStatementActionPerformed
+        ManagerDeposit md = new ManagerDeposit();
+        md.setResizable(false);
+        md.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTransAccDepositActionPerformed
 
-    private void jButtonCreateObjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateObjectActionPerformed
-        ManagerCreate managerCreateScreen = new ManagerCreate();
-        managerCreateScreen.setResizable(false);
-        managerCreateScreen.setVisible(true);
-    }//GEN-LAST:event_jButtonCreateObjectActionPerformed
+    private void jMenuItemCloseShortLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseShortLoanActionPerformed
+        dispose();
+        CloseShortTermLoan cstl = new CloseShortTermLoan();
+        cstl.setResizable(false);
+        cstl.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseShortLoanActionPerformed
+
+    private void jMenuItemCloseSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseSavingsActionPerformed
+        dispose();
+        CloseSavingsAccount csa = new CloseSavingsAccount();
+        csa.customerID = this.customerID;
+        csa.setResizable(false);
+        csa.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseSavingsActionPerformed
+
+    private void jMenuItemCloseCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCheckingActionPerformed
+        dispose();
+        CloseCheckingAccount cca = new CloseCheckingAccount();
+        cca.customerID = this.customerID;
+        cca.setResizable(false);
+        cca.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseCheckingActionPerformed
+
+    private void jMenuItemCloseCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCDActionPerformed
+        dispose();
+        CloseCD ccd = new CloseCD();
+        ccd.setResizable(false);
+        ccd.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseCDActionPerformed
+
+    private void jMenuItemCloseLongLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseLongLoanActionPerformed
+        dispose();
+        CloseLongTermLoan cltl = new CloseLongTermLoan();
+        cltl.setResizable(false);
+        cltl.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseLongLoanActionPerformed
+
+    private void jMenuItemCloseATMCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseATMCardActionPerformed
+        dispose();
+        CloseATMCard catmc = new CloseATMCard();
+        catmc.setResizable(false);
+        catmc.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseATMCardActionPerformed
+
+    private void jMenuItemCloseCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCreditCardActionPerformed
+        dispose();
+        CloseCreditCard ccc = new CloseCreditCard();
+        ccc.setResizable(false);
+        ccc.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCloseCreditCardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -635,19 +802,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonCloseAccount;
-    private javax.swing.JButton jButtonCreateObject;
-    private javax.swing.JButton jButtonDebitCheckingAccount;
-    private javax.swing.JButton jButtonDebitSavingsAccount;
-    private javax.swing.JButton jButtonDeposit;
-    private javax.swing.JButton jButtonEditInfo;
-    private javax.swing.JButton jButtonSetCheckingIR;
-    private javax.swing.JButton jButtonSetSavingsIR;
-    private javax.swing.JButton jButtonStopPayment;
-    private javax.swing.JButton jButtonViewCCStatement;
-    private javax.swing.JButton jButtonViewCDRollNotice;
-    private javax.swing.JButton jButtonViewLoanStatement;
-    private javax.swing.JButton jButtonWithdrawl;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
     public static javax.swing.JLabel jLabel11;
@@ -665,6 +819,38 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuClose;
+    private javax.swing.JMenu jMenuCreate;
+    private javax.swing.JMenu jMenuEdit;
+    private javax.swing.JMenu jMenuInterestRate;
+    private javax.swing.JMenuItem jMenuItemCloseATMCard;
+    private javax.swing.JMenuItem jMenuItemCloseCD;
+    private javax.swing.JMenuItem jMenuItemCloseChecking;
+    private javax.swing.JMenuItem jMenuItemCloseCreditCard;
+    private javax.swing.JMenuItem jMenuItemCloseLongLoan;
+    private javax.swing.JMenuItem jMenuItemCloseSavings;
+    private javax.swing.JMenuItem jMenuItemCloseShortLoan;
+    private javax.swing.JMenuItem jMenuItemCreateATMCard;
+    private javax.swing.JMenuItem jMenuItemCreateCD;
+    private javax.swing.JMenuItem jMenuItemCreateChecking;
+    private javax.swing.JMenuItem jMenuItemCreateCreditCard;
+    private javax.swing.JMenuItem jMenuItemCreateLTL;
+    private javax.swing.JMenuItem jMenuItemCreateSTL;
+    private javax.swing.JMenuItem jMenuItemCreateSavings;
+    private javax.swing.JMenuItem jMenuItemEditCustInfo;
+    private javax.swing.JMenuItem jMenuItemSetCheckingIR;
+    private javax.swing.JMenuItem jMenuItemSetSavingsIR;
+    private javax.swing.JMenuItem jMenuItemTransAccDeposit;
+    private javax.swing.JMenuItem jMenuItemTransAccWithdrawl;
+    private javax.swing.JMenuItem jMenuItemTransDebitCknAcct;
+    private javax.swing.JMenuItem jMenuItemTransDebitSvnsAcct;
+    private javax.swing.JMenuItem jMenuItemTransStopPayment;
+    private javax.swing.JMenuItem jMenuItemViewCCStatement;
+    private javax.swing.JMenuItem jMenuItemViewCDRollNotice;
+    private javax.swing.JMenuItem jMenuItemViewLoanStatement;
+    private javax.swing.JMenu jMenuTransaction;
+    private javax.swing.JMenu jMenuView;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
