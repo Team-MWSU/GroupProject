@@ -648,7 +648,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCreateSTLActionPerformed
 
     private void jMenuItemCreateCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCheckingActionPerformed
-        dispose();        
+        //dispose();        
         CreateCheckingAccount cca = new CreateCheckingAccount();
         int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cca.customerID = customerID;
