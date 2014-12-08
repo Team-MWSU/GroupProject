@@ -20,6 +20,11 @@ public class Customer extends javax.swing.JFrame {
     
     static public String[] checkingAccountList;
     static public String[] creditCardAccountList;
+    static public String[] savingsAccountList;
+    static public String[] shortTermLoanAccountList;
+    static public String[] longTermLoanAccountList;
+    
+    static public String[] accountTypesList;
     /**
      * Creates new form Customer
      */
@@ -137,9 +142,6 @@ public class Customer extends javax.swing.JFrame {
             searchCustomer.search(customerID);
         
             List<CustomerAccounts> theAccountList = searchCustomer.getCustomerAccounts();
-       
-            
-            
             
             //Set the Customer General Info
             SelectCustomerOption co = new SelectCustomerOption();
@@ -180,14 +182,18 @@ public class Customer extends javax.swing.JFrame {
 
             List<String> tempCheckingAcctList = new ArrayList<String>();
             List<String> tempCreditCardAcctList = new ArrayList<String>();
+            List<String> tempSavingsAcctList = new ArrayList<String>();
+            List<String> tempShortTermAcctList = new ArrayList<String>();
+            List<String> tempLongTermAcctList = new ArrayList<String>();
+            
+            List<String> tempTypeAccountList = new ArrayList<String>();
+            
             for(int i=0; i<theAccountList.size(); i++){
                 String accountType = (theAccountList.get(i)).getAccountType();
                 
                 int    accountID = (theAccountList.get(i)).getAccountID();
                 
                 String accountIDString = Integer.toString(accountID);
-                
-                
                 
                 switch (accountType){
                     
@@ -211,6 +217,8 @@ public class Customer extends javax.swing.JFrame {
                                                               
                                 modelSavings.addRow(new Object[]{accountID, balance, interestRate, 
                                     overdraft, opened, activeOut});
+                                
+                                tempSavingsAcctList.add(accountIDString);
                             }
                         }catch (Exception ex){
                             ex.printStackTrace();
@@ -279,10 +287,28 @@ public class Customer extends javax.swing.JFrame {
                                                               
                                 modelLoans.addRow(new Object[]{accountID, loanType, interestRate, 
                                     monthly, nextPmt, currAmt, flagOut, lastFull, activeOut});
+                                
+                                if (loanType.equals("Short")){
+                                    tempShortTermAcctList.add(accountIDString);
+                                    
+                                    if (tempTypeAccountList.contains("Short-Term Loan")){
+                                    //Skip adding Type to tempTypeAccountList
+                                    }else{
+                                        tempTypeAccountList.add("Short-Term Loan");
+                                    }
+                                }else{
+                                    tempLongTermAcctList.add(accountIDString);
+                                    
+                                    if (tempTypeAccountList.contains("Long-Term Loan")){
+                                    //Skip adding Type to tempTypeAccountList
+                                    }else{
+                                        tempTypeAccountList.add("Long-Term Loan");
+                                    }
+                                }
                             }
                         }catch (Exception ex){
                             ex.printStackTrace();
-                        }
+                        }                       
                         break;
                     case "CD":
                         String statementCD = "SELECT * FROM cd WHERE AccountID = " + accountID + ";";
@@ -331,6 +357,12 @@ public class Customer extends javax.swing.JFrame {
                         }catch (Exception ex){
                             ex.printStackTrace();
                         }
+                        
+                        if (tempTypeAccountList.contains("Credit Card")){
+                            //Skip adding Type to tempTypeAccountList
+                        }else{
+                            tempTypeAccountList.add("Credit Card");
+                        }
                         break;
                         
                 }
@@ -339,7 +371,12 @@ public class Customer extends javax.swing.JFrame {
             }
       
             checkingAccountList = tempCheckingAcctList.toArray(new String[tempCheckingAcctList.size()]);
-            creditCardAccountList = tempCreditCardAcctList.toArray(new String[tempCreditCardAcctList.size()]);
+            savingsAccountList = tempSavingsAcctList.toArray(new String[tempSavingsAcctList.size()]);
+            creditCardAccountList = tempCreditCardAcctList.toArray(new String[tempCreditCardAcctList.size()]);  
+            shortTermLoanAccountList = tempShortTermAcctList.toArray(new String[tempShortTermAcctList.size()]);
+            longTermLoanAccountList = tempLongTermAcctList.toArray(new String[tempLongTermAcctList.size()]);
+
+            accountTypesList = tempTypeAccountList.toArray(new String[tempTypeAccountList.size()]);
             
             dispose();
             co.setResizable(false);
