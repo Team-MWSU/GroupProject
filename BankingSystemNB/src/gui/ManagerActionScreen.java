@@ -717,14 +717,14 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTransAccDepositActionPerformed
 
     private void jMenuItemCloseShortLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseShortLoanActionPerformed
-        dispose();
+        //dispose();
         CloseShortTermLoan cstl = new CloseShortTermLoan();
         cstl.setResizable(false);
         cstl.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseShortLoanActionPerformed
 
     private void jMenuItemCloseSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseSavingsActionPerformed
-        dispose();
+        //dispose();
         CloseSavingsAccount csa = new CloseSavingsAccount();
         csa.customerID = this.customerID;
         csa.setResizable(false);
@@ -732,7 +732,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCloseSavingsActionPerformed
 
     private void jMenuItemCloseCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCheckingActionPerformed
-        dispose();
+        //dispose();
         CloseCheckingAccount cca = new CloseCheckingAccount();
         cca.customerID = this.customerID;
         cca.setResizable(false);
@@ -740,28 +740,28 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCloseCheckingActionPerformed
 
     private void jMenuItemCloseCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCDActionPerformed
-        dispose();
+        //dispose();
         CloseCD ccd = new CloseCD();
         ccd.setResizable(false);
         ccd.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseCDActionPerformed
 
     private void jMenuItemCloseLongLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseLongLoanActionPerformed
-        dispose();
+        //dispose();
         CloseLongTermLoan cltl = new CloseLongTermLoan();
         cltl.setResizable(false);
         cltl.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseLongLoanActionPerformed
 
     private void jMenuItemCloseATMCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseATMCardActionPerformed
-        dispose();
+        //dispose();
         CloseATMCard catmc = new CloseATMCard();
         catmc.setResizable(false);
         catmc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseATMCardActionPerformed
 
     private void jMenuItemCloseCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCreditCardActionPerformed
-        dispose();
+        //dispose();
         CloseCreditCard ccc = new CloseCreditCard();
         ccc.setResizable(false);
         ccc.setVisible(true);
