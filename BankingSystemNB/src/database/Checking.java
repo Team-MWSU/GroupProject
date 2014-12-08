@@ -160,7 +160,7 @@ public class Checking {
 		if (newCheck.SavingsAcct == -1)
 		{	
 		
-			String statement = "UPDATE checking SET CustID="+newCheck.OwnerID+", Value="+newCheck.Balance+", Interest = "+newCheck.Interest+", Opened=\""+newCheck.Opened+"\","+"NULL"+", Type=\""+newCheck.Type+"\", AvgBal="+newCheck.AvgBal+", Active="+newCheck.Active+" WHERE AccountID="+newCheck.AccountID;
+			String statement = "UPDATE checking SET CustID="+newCheck.OwnerID+", Value="+newCheck.Balance+", Interest = "+newCheck.Interest+", Opened=\""+newCheck.Opened+"\", SavingsAcct="+"NULL"+", Type=\""+newCheck.Type+"\", AvgBal="+newCheck.AvgBal+", Active="+newCheck.Active+" WHERE AccountID="+newCheck.AccountID;
 			System.out.println(statement);
 			db.insert(statement);
 		}

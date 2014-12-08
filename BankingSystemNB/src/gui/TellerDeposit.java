@@ -164,7 +164,6 @@ public class TellerDeposit extends javax.swing.JFrame {
         String inYear  = jComboBox4.getSelectedItem().toString();
         String amount = jTextField2.getText();
         Transaction newTrans;
-        double depositAmount = Double.parseDouble(amount);
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         
         int year = Integer.parseInt(inYear);
@@ -188,6 +187,7 @@ public class TellerDeposit extends javax.swing.JFrame {
             /*
                 Again, this needs to push to the database instead. 
             */
+            double depositAmount = Double.parseDouble(amount);
             switch(accountType)
             {
                 case "Savings":
@@ -201,6 +201,7 @@ public class TellerDeposit extends javax.swing.JFrame {
                         System.out.println(newSavings.Value);
                         newTrans = new Transaction(0, startDate, "Teller Deposit", depositAmount, accountID);
                         newSavings.addTrans(newTrans);
+                        dispose();
                     break;
                 case "Checking":
                     database.Checking newChecking = new database.Checking();
@@ -210,14 +211,21 @@ public class TellerDeposit extends javax.swing.JFrame {
                         workingChecking.credit(depositAmount);
                         System.out.println(workingChecking.getAccountTotal());
                         newChecking.Balance = workingChecking.getAccountTotal();
+                        if(newChecking.SavingsAcct == 0)
+                        {
+                            newChecking.SavingsAcct = -1;
+                        }
                         newChecking.updateRecord(newChecking);
                         System.out.println(newChecking.Balance);
                         newTrans = new Transaction(0, startDate, "Teller Deposit", depositAmount, accountID);
                         newChecking.addTrans(newTrans);
+                        dispose();
                     break;
                 case "Loans":
+                    jLabel5.setText("Can't deposit into Loan");
                     break;
                 case "CD":
+                    jLabel5.setText("Can't deposit into CD");
                     break;
                 case "CCard":
                     break;
@@ -227,7 +235,7 @@ public class TellerDeposit extends javax.swing.JFrame {
             
             
 
-            dispose();
+            //dispose();
             //TellerActionScreen tas = new TellerActionScreen();
             //tas.setResizable(false);
             //tas.setVisible(true);
