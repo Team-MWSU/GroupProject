@@ -30,7 +30,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabelCustomerID = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -492,7 +492,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -522,15 +522,15 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addComponent(jLabel6)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelCustomerID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel7))
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -568,7 +568,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSavingsActionPerformed
         dispose();
         CreateSavingsAccount cas = new CreateSavingsAccount();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cas.customerID = customerID;
         cas.setResizable(false);
         cas.setVisible(true);
@@ -577,7 +577,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCDActionPerformed
         dispose();
         CreateCD crcd = new CreateCD();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         crcd.customerID = customerID;
         crcd.setResizable(false);
         crcd.setVisible(true);
@@ -586,7 +586,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateLTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateLTLActionPerformed
         dispose();
         CreateLongTermLoan cltl = new CreateLongTermLoan();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cltl.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cltl.jLabel9.setText(customerIDString);
@@ -639,7 +639,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateSTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSTLActionPerformed
         dispose();
         CreateShortTermLoan cstl = new CreateShortTermLoan();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cstl.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cstl.jLabel11.setText(customerIDString);
@@ -650,7 +650,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCheckingActionPerformed
         dispose();        
         CreateCheckingAccount cca = new CreateCheckingAccount();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cca.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cca.jLabel8.setText(customerIDString);
@@ -661,7 +661,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCreditCardActionPerformed
         dispose();
         CreateCreditCard ccc = new CreateCreditCard();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         ccc.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         ccc.jLabel7.setText(customerIDString);
@@ -684,7 +684,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTransStopPaymentActionPerformed
 
     private void jMenuItemEditCustInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditCustInfoActionPerformed
-        dispose();
         EditCustomerInfo eci = new EditCustomerInfo();
         eci.setResizable(false);
         eci.setVisible(true);
@@ -693,7 +692,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemViewCCStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewCCStatementActionPerformed
         dispose();
         ViewCreditCardStatement vccs = new ViewCreditCardStatement();
-        int customerID = Integer.parseInt(jLabel10.getText());
+        int customerID = Integer.parseInt(jLabelCustomerID.getText());
         vccs.customerID = customerID;
         vccs.setResizable(false);
         vccs.setVisible(true);
@@ -702,9 +701,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemTransDebitSvnsAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransDebitSvnsAcctActionPerformed
         dispose();
         DebitSavingsAccount dsa = new DebitSavingsAccount();
-        int customerID = Integer.parseInt(jLabel10.getText());
+        int customerID = Integer.parseInt(jLabelCustomerID.getText());
         dsa.customerID = customerID;
-        DebitSavingsAccount.jLabel6.setText(jLabel10.getText());
+        DebitSavingsAccount.jLabel6.setText(jLabelCustomerID.getText());
         dsa.setResizable(false);
         dsa.setVisible(true);
     }//GEN-LAST:event_jMenuItemTransDebitSvnsAcctActionPerformed
@@ -804,7 +803,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
-    public static javax.swing.JLabel jLabel10;
     public static javax.swing.JLabel jLabel11;
     public static javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel13;
@@ -820,6 +818,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public static javax.swing.JLabel jLabelCustomerID;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuClose;
     private javax.swing.JMenu jMenuCreate;

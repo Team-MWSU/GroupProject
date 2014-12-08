@@ -250,7 +250,7 @@ public class CreateCreditCard extends javax.swing.JFrame {
 
                 dispose();
                 ManagerActionScreen mas = new ManagerActionScreen();
-                ManagerActionScreen.jLabel10.setText(customerIDString);
+                ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
                 ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
                 ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
                 ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());

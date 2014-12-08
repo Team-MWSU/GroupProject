@@ -123,13 +123,13 @@ public class ManagerCreate extends javax.swing.JFrame {
             ManagerScreen.mas.dispose();
             if(objectType.equals("Savings Account")){
                 CreateSavingsAccount cas = new CreateSavingsAccount();
-                int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+                int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
                 cas.customerID = customerID;
                 cas.setResizable(false);
                 cas.setVisible(true);
             }else if(objectType.equals("Checking Account")){
                 CreateCheckingAccount cca = new CreateCheckingAccount();
-                int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+                int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
                 cca.customerID = customerID;
                 String customerIDString = Integer.toString(customerID);
                 cca.jLabel8.setText(customerIDString);
@@ -137,14 +137,14 @@ public class ManagerCreate extends javax.swing.JFrame {
                 cca.setVisible(true);    
             }else if(objectType.equals("CD")){
                 CreateCD crcd = new CreateCD();
-                int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+                int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
                 crcd.customerID = customerID;
                 crcd.setResizable(false);
                 crcd.setVisible(true);
 
             }else if(objectType.equals("Short-Term Loan")){
                 CreateShortTermLoan cstl = new CreateShortTermLoan();
-                int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+                int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
                 cstl.customerID = customerID;
                 String customerIDString = Integer.toString(customerID);
                 cstl.jLabel11.setText(customerIDString);
@@ -152,7 +152,7 @@ public class ManagerCreate extends javax.swing.JFrame {
                 cstl.setVisible(true);                
             }else if(objectType.equals("Long-Term Loan")){
                 CreateLongTermLoan cltl = new CreateLongTermLoan();
-                int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+                int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
                 cltl.customerID = customerID;
                 String customerIDString = Integer.toString(customerID);
                 cltl.jLabel9.setText(customerIDString);
@@ -164,7 +164,7 @@ public class ManagerCreate extends javax.swing.JFrame {
                 catmc.setVisible(true);                
             }else if(objectType.equals("Credit Card")){
                 CreateCreditCard ccc = new CreateCreditCard();
-                int customerID = Integer.parseInt(ManagerActionScreen.jLabel10.getText());
+                int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
                 ccc.customerID = customerID;
                 String customerIDString = Integer.toString(customerID);
                 ccc.jLabel7.setText(customerIDString);

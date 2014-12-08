@@ -148,7 +148,7 @@ public class ManagerScreen extends javax.swing.JFrame {
             
             dispose();
             
-            ManagerActionScreen.jLabel10.setText(customerIDString);
+            ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
             ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
             ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
             ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
