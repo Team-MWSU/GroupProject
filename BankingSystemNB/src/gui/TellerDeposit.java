@@ -193,7 +193,13 @@ public class TellerDeposit extends javax.swing.JFrame {
                 case "Savings":
                     database.Savings newSavings = new database.Savings();
                     newSavings = newSavings.getRecord(accountID);
-                    Savings workingSavings = new Savings(accountID, newSavings.CustNum, newSavings.Value, "savings");
+                    if(newSavings.Active == false)
+                    {
+                        jLabel5.setText("Account is Inactive");
+                    }
+                    else
+                    {
+                        Savings workingSavings = new Savings(accountID, newSavings.CustNum, newSavings.Value, "savings");
                         workingSavings.credit(depositAmount);
                         System.out.println(workingSavings.getAccountTotal());
                         newSavings.Value = workingSavings.getAccountTotal();
@@ -202,6 +208,7 @@ public class TellerDeposit extends javax.swing.JFrame {
                         newTrans = new Transaction(0, startDate, "Teller Deposit", depositAmount, accountID);
                         newSavings.addTrans(newTrans);
                         dispose();
+                    }
                     break;
                 case "Checking":
                     database.Checking newChecking = new database.Checking();
