@@ -9,9 +9,6 @@ import java.util.Date;
 //import net.proteanit.sql.DbUtils;
 //import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import accounts.Savings;
-import accounts.Checking;
-import accounts.*;
 
 public class Customer extends javax.swing.JFrame {
 

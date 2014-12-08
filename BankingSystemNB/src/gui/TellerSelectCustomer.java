@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import database.CustomerAccounts;
@@ -13,10 +9,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Joel Jacobsen
- */
 public class TellerSelectCustomer extends javax.swing.JFrame {
 
     /**

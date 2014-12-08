@@ -1,7 +1,10 @@
 package gui;
 
 public class ManagerScreen extends javax.swing.JFrame {
-
+    
+    static ManagerActionScreen mas = new ManagerActionScreen();
+    
+    
     /**
      * Creates new form ManagerScreen
      */
@@ -135,7 +138,7 @@ public class ManagerScreen extends javax.swing.JFrame {
             searchCustomer.search(customerID);
             
             dispose();
-            ManagerActionScreen mas = new ManagerActionScreen();
+            
             ManagerActionScreen.jLabel10.setText(customerIDString);
             ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
             ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
