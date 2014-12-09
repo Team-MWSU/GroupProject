@@ -75,6 +75,10 @@ public class Customer {
 		try
 		{
 			ResultSet res = (ResultSet)db.select(statement);
+                        if (!res.isBeforeFirst())
+                        {
+                            return null;
+                        }
 			while (res.next())
 			{
 				LName = res.getString(1);
