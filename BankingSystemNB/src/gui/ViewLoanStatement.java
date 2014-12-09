@@ -4,6 +4,11 @@
  */
 package gui;
 
+import database.Loan;
+import database.Transaction;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Joel Jacobsen
@@ -13,6 +18,9 @@ public class ViewLoanStatement extends javax.swing.JFrame {
     /**
      * Creates new form ViewLoanStatement
      */
+    public int customerID;
+    public String customerIDString;
+    
     public ViewLoanStatement() {
         initComponents();
     }
@@ -28,6 +36,11 @@ public class ViewLoanStatement extends javax.swing.JFrame {
 
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,25 +55,69 @@ public class ViewLoanStatement extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Loan Statement");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "TransactionID", "Account", "Date", "Amount", "Description"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setText("Search Account");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jLabel1)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(712, 712, 712)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -69,11 +126,77 @@ public class ViewLoanStatement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+                    customerIDString = Integer.toString(customerID);
+
+                    people.Customer searchCustomer = new people.Customer();
+                    searchCustomer.search(customerID);
+
+                    dispose();
+                    ManagerActionScreen mas = new ManagerActionScreen();
+                    ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
+                    ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                    ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                    ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                    ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                    ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                    ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+                    ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+                    mas.setResizable(false);
+                    mas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         String accountIDString = jTextField1.getText();
+         
+        if(accountIDString.equals(""))
+        {
+            jLabel2.setText("Enter account number");
+        }
+        else
+        {
+            int accountID = Integer.parseInt(accountIDString);
+            Loan newLoan = new Loan();
+            newLoan = newLoan.getRecord(accountID);
+            if(newLoan.LoanID == 0)
+            {
+                jLabel2.setText("Account Does Not Exist");
+            }
+            else
+            {
+                if(newLoan.OwnerID != customerID)
+                {
+                    jLabel2.setText("Customer Does Not Own Account");
+                }
+                else
+                {
+                    List transList;
+                    transList = newLoan.getAllTrans(accountID);
+                    Object[][] temp = new Object[transList.size()][5];
+                    
+                    
+                    for(int i = 0; i < transList.size(); i++)
+                    {
+                        Transaction tempTrans = new Transaction();
+                        tempTrans = (Transaction)transList.get(i);
+                        temp[i][0] = tempTrans.TransactionID;
+                        temp[i][1] = tempTrans.Account;
+                        temp[i][2] = tempTrans.TransDate;
+                        temp[i][3] = tempTrans.Value;
+                        temp[i][4] = tempTrans.Description;
+                        
+                    }
+                    
+                    String[] columnNames = new String[] {"Transaction ID", "Account", "Date", "Amount", "Description"};
+                    
+                    jTable1.setModel(new DefaultTableModel(temp, columnNames));
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,7 +233,12 @@ public class ViewLoanStatement extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
