@@ -449,10 +449,99 @@ public class TellerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
+        //dispose();        
+        int col = 0;
+        int selectedIndex;
+        int selectedRow = -1;
+        int accountID;
         TellerWithdrawl tw = new TellerWithdrawl();
-        tw.setResizable(false);
-        tw.setVisible(true);
+        selectedIndex = jTabbedPane1.getSelectedIndex();
+        switch(selectedIndex)
+        {
+            case 0://Savings
+                selectedRow = (jTableSavings.getSelectedRow());
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableSavings.getValueAt(selectedRow, col);
+                    tw.accountID = accountID;
+                    tw.accountType = "Savings";
+                    tw.jLabel6.setText(Integer.toString(accountID));
+                    tw.setResizable(false);
+                    tw.setVisible(true);
+                }
+                break;
+            case 1://Checking
+                selectedRow = (jTableChecking.getSelectedRow());
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableChecking.getValueAt(selectedRow, col);
+                    tw.accountID = accountID;
+                    tw.accountType = "Checking";
+                    tw.jLabel6.setText(Integer.toString(accountID));
+                    tw.setResizable(false);
+                    tw.setVisible(true);
+                }
+                break;
+            case 2://Loans
+                selectedRow = (jTableLoans.getSelectedRow());                
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableLoans.getValueAt(selectedRow, col);
+                    tw.accountID = accountID;
+                    tw.accountType = "Loans";
+                    tw.jLabel6.setText(Integer.toString(accountID));
+                    tw.setResizable(false);
+                    tw.setVisible(true);
+                }
+                break;
+            case 3://CD
+                selectedRow = (jTableCD.getSelectedRow());                
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableCD.getValueAt(selectedRow, col);
+                    tw.accountID = accountID;
+                    tw.accountType = "CD";
+                    tw.jLabel6.setText(Integer.toString(accountID));
+                    tw.setResizable(false);
+                    tw.setVisible(true);
+                }
+                break;
+            case 4://Credit Card
+                selectedRow = (jTableCreditCard.getSelectedRow());
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableCreditCard.getValueAt(selectedRow, col);
+                    tw.accountID = accountID;
+                    tw.accountType = "CCard";
+                    tw.jLabel6.setText(Integer.toString(accountID));
+                    tw.setResizable(false);
+                    tw.setVisible(true);
+                }
+                break;
+            default:
+                jLabel18.setText("Select an Account");
+                break;
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
