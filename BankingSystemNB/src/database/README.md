@@ -90,6 +90,8 @@ CREATE TABLE checking(
   Type varchar(10) NOT NULL,
   AvgBal decimal(12,2),
   Active boolean NOT NULL,
+  Card Varchar(16),
+  CardDate date,
   PRIMARY KEY (AccountID),
   FOREIGN KEY (CustID) REFERENCES customer(CustID),
   FOREIGN KEY (SavingsAcct) REFERENCES savings(AccountID)
