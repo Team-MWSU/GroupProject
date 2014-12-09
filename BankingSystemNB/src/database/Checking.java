@@ -201,13 +201,19 @@ public class Checking {
 				tempTrans.TransDate = res.getString(3);
 				tempTrans.Description = res.getString(5);
 				tempTrans.Value = res.getDouble(4);
+                                return tempTrans;
 			}
-			return tempTrans;
+
+                        if (res.isBeforeFirst())
+                        {
+                            return null;
+                        }
 		}
 		catch (Exception ex)
 		{
 			
 		}
+
 		return null;
 	}
 }
