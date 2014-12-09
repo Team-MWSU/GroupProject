@@ -216,4 +216,10 @@ public class Checking {
 
 		return null;
 	}
+        
+        public void addCard(Checking check, String CardNum, String CardDate)
+        {
+            String statement = "UPDATE checking SET Card=\""+CardNum+"\", CardDate=\""+CardDate+"\" WHERE AccountID="+check.AccountID+";";
+            db.insert(statement);
+        }
 }
