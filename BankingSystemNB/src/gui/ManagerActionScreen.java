@@ -659,6 +659,8 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemViewLoanStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewLoanStatementActionPerformed
         dispose();
         ViewLoanStatement vls = new ViewLoanStatement();
+        int customerID = Integer.parseInt(jLabelCustomerID.getText());
+        vls.customerID = customerID;
         vls.setResizable(false);
         vls.setVisible(true);
     }//GEN-LAST:event_jMenuItemViewLoanStatementActionPerformed
