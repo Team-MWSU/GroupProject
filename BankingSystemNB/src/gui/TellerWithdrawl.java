@@ -4,6 +4,13 @@
  */
 package gui;
 
+import accounts.Checking;
+import accounts.Savings;
+import database.Transaction;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Joel Jacobsen
@@ -13,6 +20,10 @@ public class TellerWithdrawl extends javax.swing.JFrame {
     /**
      * Creates new form TellerWithdrawl
      */
+    
+    public int accountID;
+    public String accountType;
+    
     public TellerWithdrawl() {
         initComponents();
     }
@@ -34,12 +45,12 @@ public class TellerWithdrawl extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         jComboBox4 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Withdrawl");
         jButton1.setToolTipText("Withdrawl");
@@ -53,7 +64,7 @@ public class TellerWithdrawl extends javax.swing.JFrame {
 
         jLabel3.setText("Account Number");
 
-        jButton7.setText("Back");
+        jButton7.setText("Close");
         jButton7.setToolTipText("Return to Previous Screen");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,8 +82,6 @@ public class TellerWithdrawl extends javax.swing.JFrame {
 
         jTextField2.setToolTipText("Amount for Deposit");
 
-        jTextField1.setToolTipText("Account Number");
-
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024" }));
         jComboBox4.setToolTipText("Year");
 
@@ -87,13 +96,12 @@ public class TellerWithdrawl extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(285, 285, 285))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(265, 265, 265))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(191, 191, 191)
@@ -115,7 +123,7 @@ public class TellerWithdrawl extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextField2)
-                                .addComponent(jTextField1)))))
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(0, 277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,8 +140,8 @@ public class TellerWithdrawl extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,9 +149,9 @@ public class TellerWithdrawl extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -153,8 +161,18 @@ public class TellerWithdrawl extends javax.swing.JFrame {
         String inDay   = jComboBox2.getSelectedItem().toString();
         String inMonth = jComboBox3.getSelectedItem().toString();
         String inYear  = jComboBox4.getSelectedItem().toString();
-        String accountNumber = jTextField1.getText();
         String amount = jTextField2.getText();
+        Transaction newTrans;
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        
+        int year = Integer.parseInt(inYear);
+        year = year - 1900;
+        int month = Integer.parseInt(inMonth);
+        int day = Integer.parseInt(inDay);
+        
+        Date date = new Date(year, month, day);
+        
+        String startDate = formatter.format(date);
         
         if (inDay.equals("")){
             jLabel5.setText("Enter ALL Text");
@@ -162,31 +180,94 @@ public class TellerWithdrawl extends javax.swing.JFrame {
             jLabel5.setText("Enter ALL Text");
         }else if(inMonth.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(accountNumber.equals("")){
-            jLabel5.setText("Enter ALL Text");
         }else if(amount.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else{
-            System.out.print(inDay + "/");
-            System.out.print(inMonth + "/");
-            System.out.print(inYear + "/");
-            System.out.print(": $" + amount + " - Account#" + accountNumber  + "\n");
             /*
                 Again, this needs to push to the database instead. 
             */
-
-            dispose();
-            TellerActionScreen tas = new TellerActionScreen();
-            tas.setResizable(false);
-            tas.setVisible(true);
+            double debitAmount = Double.parseDouble(amount);
+            switch(accountType)
+            {
+                case "Savings":
+                    database.Savings newSavings = new database.Savings();
+                    newSavings = newSavings.getRecord(accountID);
+                    if(newSavings.Active == false)
+                    {
+                        jLabel5.setText("Account is Inactive");
+                    }
+                    else
+                    {
+                        Savings workingSavings = new Savings(accountID, newSavings.CustNum, newSavings.Value, "savings");
+                        if(workingSavings.getAccountTotal() < debitAmount)
+                        {
+                            jLabel5.setText("Not Enough Funds");
+                        }
+                        else
+                        {
+                            workingSavings.withdraw(debitAmount);
+                            System.out.println(workingSavings.getAccountTotal());
+                            newSavings.Value = workingSavings.getAccountTotal();
+                            newSavings.updateRecord(newSavings);
+                            System.out.println(newSavings.Value);
+                            newTrans = new Transaction(0, startDate, "Teller Withdraw", debitAmount, accountID);
+                            newSavings.addTrans(newTrans);
+                            dispose();
+                        }
+                    }
+                    break;
+                case "Checking":
+                    database.Checking newChecking = new database.Checking();
+                    newChecking = newChecking.getRecord(accountID);
+                    Checking workingChecking = new Checking(accountID, newChecking.OwnerID, newChecking.Balance, "checking", newChecking.Type);
+                        if(workingChecking.getAccountTotal() < debitAmount)
+                        {
+                            jLabel5.setText("Not Enough Funds");
+                        }
+                        else
+                        {
+                            workingChecking.debit(debitAmount);
+                            System.out.println(workingChecking.getAccountTotal());
+                            if(workingChecking.getAccountTotal() < 1000 && newChecking.Type.equals("GD"))
+                            {
+                                newChecking.Type = "TMB";
+                            }
+                            newChecking.Balance = workingChecking.getAccountTotal();
+                            if(newChecking.SavingsAcct == 0)
+                            {
+                                newChecking.SavingsAcct = -1;
+                            }
+                            newChecking.updateRecord(newChecking);
+                            System.out.println(newChecking.Balance);
+                            newTrans = new Transaction(0, startDate, "Teller Withdraw", debitAmount, accountID);
+                            newChecking.addTrans(newTrans);
+                            dispose();
+                        }
+                    break;
+                case "Loans":
+                    jLabel5.setText("Can't withdraw from Loan");
+                    break;
+                case "CD":
+                    jLabel5.setText("Can't withdraw from CD");
+                    break;
+                case "CCard":
+                    jLabel5.setText("Can't withdraw from Credit Card");
+                    break;
+                default:
+                    break;
+            }
         }
+            //dispose();
+            //TellerActionScreen tas = new TellerActionScreen();
+            //tas.setResizable(false);
+            //tas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         dispose();
-        TellerActionScreen tas = new TellerActionScreen();
-        tas.setResizable(false);
-        tas.setVisible(true);
+        //TellerActionScreen tas = new TellerActionScreen();
+        //tas.setResizable(false);
+        //tas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -234,7 +315,7 @@ public class TellerWithdrawl extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

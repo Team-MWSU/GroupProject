@@ -20,6 +20,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -86,6 +87,13 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jMenuInterestRate = new javax.swing.JMenu();
         jMenuItemSetSavingsIR = new javax.swing.JMenuItem();
         jMenuItemSetCheckingIR = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItemExportCSV = new javax.swing.JMenuItem();
+        jMenuItemAdjustTime = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,11 +138,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Savings", jPanel1);
@@ -161,11 +169,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Checking", jPanel2);
@@ -184,11 +192,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Loans", jPanel3);
@@ -207,11 +215,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("CD", jPanel4);
@@ -230,11 +238,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Credit Card", jPanel5);
@@ -463,6 +471,32 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenuInterestRate);
 
+        jMenu1.setText("Tools");
+
+        jMenuItem4.setText("One more thing..");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItemExportCSV.setText("Export Late Notices (.csv)");
+        jMenuItemExportCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExportCSVActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemExportCSV);
+
+        jMenuItemAdjustTime.setText("Move Clock Forward");
+        jMenuItemAdjustTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAdjustTimeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemAdjustTime);
+
+        jMenuItem1.setText("Reload Database");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar2.add(jMenu1);
+
         setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -505,10 +539,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -768,6 +802,14 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         ccc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseCreditCardActionPerformed
 
+    private void jMenuItemAdjustTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdjustTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAdjustTimeActionPerformed
+
+    private void jMenuItemExportCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportCSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemExportCSVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -821,11 +863,16 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public static javax.swing.JLabel jLabelCustomerID;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuClose;
     private javax.swing.JMenu jMenuCreate;
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenu jMenuInterestRate;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItemAdjustTime;
     private javax.swing.JMenuItem jMenuItemCloseATMCard;
     private javax.swing.JMenuItem jMenuItemCloseCD;
     private javax.swing.JMenuItem jMenuItemCloseChecking;
@@ -841,6 +888,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCreateSTL;
     private javax.swing.JMenuItem jMenuItemCreateSavings;
     private javax.swing.JMenuItem jMenuItemEditCustInfo;
+    private javax.swing.JMenuItem jMenuItemExportCSV;
     private javax.swing.JMenuItem jMenuItemSetCheckingIR;
     private javax.swing.JMenuItem jMenuItemSetSavingsIR;
     private javax.swing.JMenuItem jMenuItemTransAccDeposit;
