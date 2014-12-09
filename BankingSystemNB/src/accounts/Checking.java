@@ -17,7 +17,7 @@ public class Checking extends Account
     protected int checkNO;
     protected int checkDay, checkMonth, checkYear;
     protected boolean opened = true;
-    protected String checkingType;
+    private String checkingType;
     
     public Checking(int accNum, int custID, double accTot, String accType, String checkingType)
     {
@@ -94,8 +94,22 @@ public class Checking extends Account
     public void add(){
                 java.util.Date utilDate = new java.util.Date();
                 java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		String statement = "INSERT INTO "+databaseCallTableName+" VALUES ('"+this.customerID+"','"+this.accountNumber+"',"+this.accountTotal+",'"+"0.0"+"','"+sqlDate+"','"+"1"+"','"+this.checkingType+"','"+"0.0"+"','"+"1"+"');";
+		String statement = "INSERT INTO "+databaseCallTableName+" VALUES ('"+this.customerID+"','"+this.accountNumber+"',"+this.accountTotal+",'"+"0.0"+"','"+sqlDate+"','"+"1"+"','"+this.getCheckingType()+"','"+"0.0"+"','"+"1"+"');";
 		db.insert(statement);
 	}
+
+    /**
+     * @return the checkingType
+     */
+    public String getCheckingType() {
+        return checkingType;
+    }
+
+    /**
+     * @param checkingType the checkingType to set
+     */
+    public void setCheckingType(String checkingType) {
+        this.checkingType = checkingType;
+    }
 }
 
