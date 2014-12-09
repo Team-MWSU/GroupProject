@@ -4,6 +4,7 @@
  */
 package gui;
 
+import static gui.ManagerActionScreen.jLabelCustomerID;
 /**
  *
  * @author Joel Jacobsen
@@ -16,6 +17,7 @@ public class TellerActionScreen extends javax.swing.JFrame {
     public TellerActionScreen() {
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -547,6 +549,8 @@ public class TellerActionScreen extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
         TellerStopPayment tsp = new TellerStopPayment();
+        int customerID = Integer.parseInt(jLabel10.getText());
+        tsp.customerID = customerID;
         tsp.setResizable(false);
         tsp.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
