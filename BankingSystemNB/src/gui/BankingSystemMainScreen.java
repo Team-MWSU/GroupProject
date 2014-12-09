@@ -11,42 +11,42 @@ public class BankingSystemMainScreen extends javax.swing.JFrame
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonManagerScreen = new javax.swing.JButton();
+        jButtonTellerSelectCustomer = new javax.swing.JButton();
+        jButtonCustomer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText(" Banking System Main Screen");
 
-        jButton1.setText("Manager");
-        jButton1.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(75, 25));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonManagerScreen.setText("Manager");
+        jButtonManagerScreen.setMaximumSize(new java.awt.Dimension(75, 25));
+        jButtonManagerScreen.setMinimumSize(new java.awt.Dimension(75, 25));
+        jButtonManagerScreen.setPreferredSize(new java.awt.Dimension(75, 25));
+        jButtonManagerScreen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonManagerScreenActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Teller");
-        jButton2.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton2.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton2.setPreferredSize(new java.awt.Dimension(75, 25));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTellerSelectCustomer.setText("Teller");
+        jButtonTellerSelectCustomer.setMaximumSize(new java.awt.Dimension(75, 25));
+        jButtonTellerSelectCustomer.setMinimumSize(new java.awt.Dimension(75, 25));
+        jButtonTellerSelectCustomer.setPreferredSize(new java.awt.Dimension(75, 25));
+        jButtonTellerSelectCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonTellerSelectCustomerActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Customer");
-        jButton3.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton3.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton3.setPreferredSize(new java.awt.Dimension(75, 25));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCustomer.setText("Customer");
+        jButtonCustomer.setMaximumSize(new java.awt.Dimension(75, 25));
+        jButtonCustomer.setMinimumSize(new java.awt.Dimension(75, 25));
+        jButtonCustomer.setPreferredSize(new java.awt.Dimension(75, 25));
+        jButtonCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonCustomerActionPerformed(evt);
             }
         });
 
@@ -55,11 +55,11 @@ public class BankingSystemMainScreen extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 50, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonManagerScreen, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(jButtonTellerSelectCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -72,11 +72,11 @@ public class BankingSystemMainScreen extends javax.swing.JFrame
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(36, 36, 36)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonManagerScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonTellerSelectCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -84,26 +84,26 @@ public class BankingSystemMainScreen extends javax.swing.JFrame
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCustomerActionPerformed
         dispose();
         Customer c = new Customer();
         c.setResizable(false);
         c.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonCustomerActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonManagerScreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonManagerScreenActionPerformed
         dispose();
         ManagerScreen ms = new ManagerScreen();
         ms.setResizable(false);
         ms.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonManagerScreenActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonTellerSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTellerSelectCustomerActionPerformed
         dispose();
         TellerSelectCustomer ts = new TellerSelectCustomer();
         ts.setResizable(false);
         ts.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonTellerSelectCustomerActionPerformed
     
     public static void main(String args[]) 
     {
@@ -140,9 +140,9 @@ public class BankingSystemMainScreen extends javax.swing.JFrame
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonCustomer;
+    private javax.swing.JButton jButtonManagerScreen;
+    private javax.swing.JButton jButtonTellerSelectCustomer;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
