@@ -152,7 +152,8 @@ public class ATM extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(401, 274));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAuthorizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAuthorizeActionPerformed
