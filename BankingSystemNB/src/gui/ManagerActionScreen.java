@@ -602,7 +602,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSavingsActionPerformed
         //dispose();
         CreateSavingsAccount cas = new CreateSavingsAccount();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cas.customerID = customerID;
         cas.setResizable(false);
         cas.setVisible(true);
@@ -611,7 +611,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCDActionPerformed
         //dispose();
         CreateCD crcd = new CreateCD();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         crcd.customerID = customerID;
         crcd.setResizable(false);
         crcd.setVisible(true);
@@ -620,7 +620,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateLTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateLTLActionPerformed
         //dispose();
         CreateLongTermLoan cltl = new CreateLongTermLoan();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cltl.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cltl.jLabel9.setText(customerIDString);
@@ -659,7 +659,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemViewLoanStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewLoanStatementActionPerformed
         //dispose();
         ViewLoanStatement vls = new ViewLoanStatement();
-        int customerID = Integer.parseInt(jLabelCustomerID.getText());
+        customerID = Integer.parseInt(jLabelCustomerID.getText());
         vls.customerID = customerID;
         vls.setResizable(false);
         vls.setVisible(true);
@@ -675,7 +675,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateSTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSTLActionPerformed
         //dispose();
         CreateShortTermLoan cstl = new CreateShortTermLoan();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cstl.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cstl.jLabel11.setText(customerIDString);
@@ -686,7 +686,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCheckingActionPerformed
         //dispose();        
         CreateCheckingAccount cca = new CreateCheckingAccount();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cca.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cca.jLabel8.setText(customerIDString);
@@ -697,7 +697,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCreateCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateCreditCardActionPerformed
         //dispose();
         CreateCreditCard ccc = new CreateCreditCard();
-        int customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         ccc.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         ccc.jLabel7.setText(customerIDString);
@@ -728,7 +728,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemViewCCStatementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewCCStatementActionPerformed
         //dispose();
         ViewCreditCardStatement vccs = new ViewCreditCardStatement();
-        int customerID = Integer.parseInt(jLabelCustomerID.getText());
+        customerID = Integer.parseInt(jLabelCustomerID.getText());
         vccs.customerID = customerID;
         vccs.setResizable(false);
         vccs.setVisible(true);
@@ -737,7 +737,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemTransDebitSvnsAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransDebitSvnsAcctActionPerformed
         //dispose();
         DebitSavingsAccount dsa = new DebitSavingsAccount();
-        int customerID = Integer.parseInt(jLabelCustomerID.getText());
+        customerID = Integer.parseInt(jLabelCustomerID.getText());
         dsa.customerID = customerID;
         DebitSavingsAccount.jLabel6.setText(jLabelCustomerID.getText());
         dsa.setResizable(false);
@@ -761,6 +761,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCloseSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseSavingsActionPerformed
         //dispose();
         CloseSavingsAccount csa = new CloseSavingsAccount();
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         csa.customerID = this.customerID;
         csa.setResizable(false);
         csa.setVisible(true);
@@ -769,6 +770,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCloseCheckingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCheckingActionPerformed
         //dispose();
         CloseCheckingAccount cca = new CloseCheckingAccount();
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cca.customerID = this.customerID;
         cca.setResizable(false);
         cca.setVisible(true);
@@ -798,6 +800,8 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCloseCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCreditCardActionPerformed
         //dispose();
         CloseCreditCard ccc = new CloseCreditCard();
+        customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        ccc.customerID = this.customerID;
         ccc.setResizable(false);
         ccc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseCreditCardActionPerformed
