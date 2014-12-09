@@ -4,12 +4,21 @@
  */
 package gui;
 
+import java.util.Scanner;
 /**
  *
  * @author Joel Jacobsen
  */
 public class TellerStopPayment extends javax.swing.JFrame {
 
+    int customerID;
+    String customerIDString;
+    
+    private boolean isNumeric(String input)
+    {
+        Scanner scan = new Scanner(input);
+        return scan.hasNextInt();
+    }
     /**
      * Creates new form TellerStopPayment
      */
@@ -153,38 +162,77 @@ public class TellerStopPayment extends javax.swing.JFrame {
         String inYear  = jComboBox4.getSelectedItem().toString();
         String customerID = jTextField1.getText();
         String checkNumber = jTextField2.getText();
+        database.Checking checking = new database.Checking();
+        database.Customer testCust = new database.Customer();
+
         
         if (inDay.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else if(inMonth.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(inMonth.equals("")){
+        }else if(inYear.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(customerID.equals("")){
-            jLabel5.setText("Enter ALL Text");
-        }else if(checkNumber.equals("")){
-            jLabel5.setText("Enter ALL Text");
+        }else if(customerID.equals("")||(!isNumeric(customerID))){
+            jLabel5.setText("Invalid Customer Number");
+        }else if(checkNumber.equals("")||(!isNumeric(checkNumber))){
+            jLabel5.setText("Invalid Customer Number");
+        }else if (testCust.search(Integer.parseInt(customerID))==null){
+            jLabel5.setText("Customer Not Found");
+        }else if (checking.getTrans(Integer.parseInt(checkNumber))!=null){
+            jLabel5.setText("Check already used");
         }else{
-            System.out.print(inDay + "/");
-            System.out.print(inMonth + "/");
-            System.out.print(inYear + "/");
-            System.out.print(": CustomerID =" + customerID + " - Check# = " + checkNumber  + "\n");
+            int CheckNum = Integer.parseInt(checkNumber);
+            int CustNum = Integer.parseInt(customerID);
+            String sb = new String(inYear+"-"+inMonth+"-"+inDay);
+            database.Transaction newTrans = new database.Transaction(CheckNum, sb, "STOP", 0, CustNum);
+            checking.addTrans(newTrans);
+            //System.out.print(inDay + "/");
+            //System.out.print(inMonth + "/");
+            //System.out.print(inYear + "/");
+            //System.out.print(": CustomerID =" + customerID + " - Check# = " + checkNumber  + "\n");
             /*
                 Again, this needs to push to the database instead. 
             */
 
-            dispose();
-            TellerActionScreen tas = new TellerActionScreen();
-            tas.setResizable(false);
-            tas.setVisible(true);
+                    customerIDString = customerID;
+
+                    people.Customer searchCustomer = new people.Customer();
+                    searchCustomer.search(CustNum);
+
+                    dispose();
+                    TellerActionScreen tas = new TellerActionScreen();
+                    TellerActionScreen.jLabel10.setText(customerIDString);
+                    TellerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                    TellerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                    TellerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                    TellerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                    TellerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                    TellerActionScreen.jLabel17.setText(searchCustomer.getState());
+                    TellerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+                    tas.setResizable(false);
+                    tas.setVisible(true);
+                                          
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        dispose();
-        TellerActionScreen tas = new TellerActionScreen();
-        tas.setResizable(false);
-        tas.setVisible(true);
+                    customerIDString = Integer.toString(customerID);
+
+                    people.Customer searchCustomer = new people.Customer();
+                    searchCustomer.search(customerID);
+
+                    dispose();
+                    TellerActionScreen tas = new TellerActionScreen();
+                    TellerActionScreen.jLabel10.setText(customerIDString);
+                    TellerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+                    TellerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+                    TellerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+                    TellerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+                    TellerActionScreen.jLabel15.setText(searchCustomer.getCity());
+                    TellerActionScreen.jLabel17.setText(searchCustomer.getState());
+                    TellerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+                    tas.setResizable(false);
+                    tas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
