@@ -12,6 +12,7 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
     
     public int customerID;
     public String customerIDString;
+    public double interestRate;
     
     public CreateSavingsAccount() {
         initComponents();
@@ -104,7 +105,7 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
+                .addGap(0, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +182,8 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
                 .addGap(120, 120, 120))
         );
 
-        setSize(new java.awt.Dimension(331, 396));
-        setLocationRelativeTo(null);
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-331)/2, (screenSize.height-396)/2, 331, 396);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -205,6 +206,8 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
             jLabel10.setText("Enter ALL Text");
         }else if(depositString.equals("")){
             jLabel10.setText("Enter ALL Text");
+        }else if (overdraftString.equals("")){
+            jLabel10.setText("Enter ALL Text");
         }
         else{                   
             int    accountID = Integer.parseInt(accountIDString);
@@ -226,17 +229,17 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
             searchCustomer.search(customerID);
             
             dispose();
-            ManagerActionScreen mas = new ManagerActionScreen();
-            ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
-            ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
-            ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
-            ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
-            ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
-            ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
-            ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
-            ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
-            mas.setResizable(false);
-            mas.setVisible(true);
+            //ManagerActionScreen mas = new ManagerActionScreen();
+            //ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
+            //ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
+            //ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
+            //ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
+            //ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
+            //ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
+            //ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
+            //ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
+            //mas.setResizable(false);
+            //mas.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -303,6 +306,6 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,7 @@
 package gui;
 
+import database.InterestRates;
+
 public class ManagerActionScreen extends javax.swing.JFrame {
 
     public int customerID;
@@ -609,6 +611,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         CreateSavingsAccount cas = new CreateSavingsAccount();
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cas.customerID = customerID;
+        InterestRates newInt = new InterestRates();
+        cas.interestRate = newInt.getSavingsRate();
+        String intString = Double.toString(cas.interestRate);
+        cas.jTextField4.setText(intString);
         cas.setResizable(false);
         cas.setVisible(true);
     }//GEN-LAST:event_jMenuItemCreateSavingsActionPerformed
@@ -789,6 +795,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cca.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
+        InterestRates newInt = new InterestRates();
+        double intRate = newInt.getSavingsRate() / 2;
+        cca.interestRate = intRate;
         cca.jLabel8.setText(customerIDString);
         cca.setResizable(false);
         cca.setVisible(true); 

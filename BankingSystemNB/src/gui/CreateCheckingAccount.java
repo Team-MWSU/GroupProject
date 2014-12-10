@@ -12,6 +12,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
     
     public int customerID;
     public String customerIDString;
+    public double interestRate;
     
     public CreateCheckingAccount() {
         initComponents();
@@ -163,16 +164,15 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jTextField2)
                                         .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                    .addComponent(jButtonCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jButtonCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel1)))
@@ -220,8 +220,8 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(300, 396));
-        setLocationRelativeTo(null);
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-300)/2, (screenSize.height-396)/2, 300, 396);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -251,9 +251,6 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         }else if(!isNumeric(depositString)||(!isNumeric(accountIDString)))
         { jLabel10.setText("Invalid Input");
         }
-        else if(!isNumeric(linkedAccountString))
-        { jLabel10.setText("Invalid Input");
-        }
         else if((!linkedAccountString.equals(""))&&(newSave.getRecord(Integer.parseInt(linkedAccountString))==null))
         {
             jLabel10.setText("Account not found");
@@ -267,23 +264,38 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                                 
             int    accountID = Integer.parseInt(accountIDString);
             double    deposit = Double.parseDouble(depositString);
+            System.out.println(deposit);
             int linkedAccount;
-            if (linkedAccountString.equals(""))
-            {
-                linkedAccount=-1;
-            }
-            else
-            {
-                linkedAccount = Integer.parseInt(linkedAccountString);
-            }
-            database.Checking newChecking = new database.Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
-            
-            newChecking.addRecord(newChecking);
-            
-            people.Customer searchCustomer = new people.Customer();
-            searchCustomer.search(customerID);
-            
-            dispose();
+                    if(accountType.equals("TMB"))
+                    {
+                        interestRate = 0.0;
+                    }
+                    if(accountType.equals("GD") && deposit < 1000)
+                    {
+                        jLabel10.setText("Not Enough for Gold/Diamond");
+                    }
+                    else
+                    {
+                        
+                        if (linkedAccountString.equals(""))
+                        {
+                            linkedAccount=-1;
+                        }
+                        else
+                        {
+                            linkedAccount = Integer.parseInt(linkedAccountString);
+                        }
+                            
+                            database.Checking newChecking = new database.Checking(customerID, accountID, deposit, interestRate , date, linkedAccount, accountType, 0.0, true);
+
+                            newChecking.addRecord(newChecking);
+
+                            people.Customer searchCustomer = new people.Customer();
+                            searchCustomer.search(customerID);
+
+                            dispose();
+                    }
+            /*
             ManagerActionScreen mas = new ManagerActionScreen();
             ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
             ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
@@ -295,6 +307,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
             ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
             mas.setResizable(false);
             mas.setVisible(true);
+            * */
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
