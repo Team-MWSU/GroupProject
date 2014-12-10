@@ -31,7 +31,7 @@
                   <Component id="jLabel3" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
                   <Component id="jTextField1" alignment="1" min="-2" pref="152" max="-2" attributes="0"/>
                   <Component id="jButtonSelectCustomer" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
+                  <Component id="jButtonCreateCustomer" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
                   <Component id="jButton3" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="47" max="32767" attributes="0"/>
@@ -60,10 +60,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButtonSelectCustomer" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="jButtonCreateCustomer" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton3" min="-2" pref="44" max="-2" attributes="0"/>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,13 +83,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelectCustomerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonCreateCustomer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Customer"/>
         <Property name="toolTipText" type="java.lang.String" value="Create Customer"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCreateCustomerActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
