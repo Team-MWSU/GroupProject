@@ -2,6 +2,7 @@ package gui;
 
 //import accounts.Checking;
 import database.Checking;
+import java.util.Scanner;
 
 public class CreateCheckingAccount extends javax.swing.JFrame {
 
@@ -15,7 +16,11 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
     public CreateCheckingAccount() {
         initComponents();
     }
-
+    private boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextDouble();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -221,6 +226,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  
+        database.Savings newSave = new database.Savings();
         String accountIDString = jTextField2.getText(); //This should pull from the database.
         String accountType = (String)jComboBox5.getSelectedItem();          
         String depositString = jTextField3.getText(); //This should pull from the database.
@@ -242,6 +248,15 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
             jLabel10.setText("Enter ALL Text");
         }else if(accountIDString.equals("")){
             jLabel10.setText("Enter ALL Text");
+        }else if(!isNumeric(depositString)||(!isNumeric(accountIDString)))
+        { jLabel10.setText("Invalid Input");
+        }
+        else if(!isNumeric(linkedAccountString))
+        { jLabel10.setText("Invalid Input");
+        }
+        else if((!linkedAccountString.equals(""))&&(newSave.getRecord(Integer.parseInt(linkedAccountString))==null))
+        {
+            jLabel10.setText("Account not found");
         }
         else{
             /*
