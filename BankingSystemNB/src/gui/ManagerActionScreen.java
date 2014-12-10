@@ -509,51 +509,48 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(73, 73, 73)
-                                        .addComponent(jLabel1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9))))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,10 +586,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
-                .addGap(8, 8, 8)
-                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -644,10 +641,102 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCreateATMCardActionPerformed
 
     private void jMenuItemTransAccWithdrawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransAccWithdrawlActionPerformed
-        //dispose();
-        ManagerWithdrawl mw = new ManagerWithdrawl();
-        mw.setResizable(false);
-        mw.setVisible(true);
+        //dispose();        
+        int col = 0;
+        int selectedIndex;
+        int selectedRow = -1;
+        int accountID;
+        ManagerWithdrawl me = new ManagerWithdrawl();
+        selectedIndex = jTabbedPane1.getSelectedIndex();
+        switch(selectedIndex)
+        {
+            case 0://Savings
+                selectedRow = (jTableSavings.getSelectedRow());
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableSavings.getValueAt(selectedRow, col);
+                    me.accountID = accountID;
+                    me.accountType = "Savings";
+                    me.jLabel6.setText(Integer.toString(accountID));
+                    me.setResizable(false);
+                    me.setVisible(true);
+                }
+                break;
+            case 1://Checking
+                selectedRow = (jTableChecking.getSelectedRow());
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableChecking.getValueAt(selectedRow, col);
+                    me.accountID = accountID;
+                    me.accountType = "Checking";
+                    me.jLabel6.setText(Integer.toString(accountID));
+                    me.setResizable(false);
+                    me.setVisible(true);
+                }
+                break;
+            case 2://Loans
+                selectedRow = (jTableLoans.getSelectedRow());                
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableLoans.getValueAt(selectedRow, col);
+                    me.accountID = accountID;
+                    me.accountType = "Loans";
+                    me.jLabel6.setText(Integer.toString(accountID));
+                    me.setResizable(false);
+                    me.setVisible(true);
+                }
+                break;
+            case 3://CD
+                selectedRow = (jTableCD.getSelectedRow());                
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableCD.getValueAt(selectedRow, col);
+                    me.accountID = accountID;
+                    me.accountType = "CD";
+                    me.jLabel6.setText(Integer.toString(accountID));
+                    me.setResizable(false);
+                    me.setVisible(true);
+                }
+                break;
+            case 4://Credit Card
+                selectedRow = (jTableCreditCard.getSelectedRow());
+                if(selectedRow == -1)
+                {
+                  jLabel18.setText("Select an Account");
+                }
+                else
+                {
+                    accountID = (Integer)jTableCreditCard.getValueAt(selectedRow, col);
+                    me.accountID = accountID;
+                    me.accountType = "CCard";
+                    me.jLabel6.setText(Integer.toString(accountID));
+                    me.setResizable(false);
+                    me.setVisible(true);
+                }
+                break;
+            default:
+                jLabel18.setText("Select an Account");
+                break;
+        }
+        //ManagerWithdrawl mw = new ManagerWithdrawl();
+        //mw.setResizable(false);
+        //mw.setVisible(true);
     }//GEN-LAST:event_jMenuItemTransAccWithdrawlActionPerformed
 
     private void jMenuItemSetSavingsIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSetSavingsIRActionPerformed
@@ -764,7 +853,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         int selectedIndex;
         int selectedRow = -1;
         int accountID;
-        TellerDeposit td = new TellerDeposit();
+        ManagerDeposit md = new ManagerDeposit();
         selectedIndex = jTabbedPane1.getSelectedIndex();
         switch(selectedIndex)
         {
@@ -777,11 +866,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 else
                 {
                     accountID = (Integer)jTableSavings.getValueAt(selectedRow, col);
-                    td.accountID = accountID;
-                    td.accountType = "Savings";
-                    td.jLabel6.setText(Integer.toString(accountID));
-                    td.setResizable(false);
-                    td.setVisible(true);
+                    md.accountID = accountID;
+                    md.accountType = "Savings";
+                    md.jLabel16.setText(Integer.toString(accountID));
+                    md.setResizable(false);
+                    md.setVisible(true);
                 }
                 break;
             case 1://Checking
@@ -793,11 +882,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 else
                 {
                     accountID = (Integer)jTableChecking.getValueAt(selectedRow, col);
-                    td.accountID = accountID;
-                    td.accountType = "Checking";
-                    td.jLabel6.setText(Integer.toString(accountID));
-                    td.setResizable(false);
-                    td.setVisible(true);
+                    md.accountID = accountID;
+                    md.accountType = "Checking";
+                    md.jLabel16.setText(Integer.toString(accountID));
+                    md.setResizable(false);
+                    md.setVisible(true);
                 }
                 break;
             case 2://Loans
@@ -809,11 +898,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 else
                 {
                     accountID = (Integer)jTableLoans.getValueAt(selectedRow, col);
-                    td.accountID = accountID;
-                    td.accountType = "Loans";
-                    td.jLabel6.setText(Integer.toString(accountID));
-                    td.setResizable(false);
-                    td.setVisible(true);
+                    md.accountID = accountID;
+                    md.accountType = "Loans";
+                    md.jLabel16.setText(Integer.toString(accountID));
+                    md.setResizable(false);
+                    md.setVisible(true);
                 }
                 break;
             case 3://CD
@@ -825,11 +914,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 else
                 {
                     accountID = (Integer)jTableCD.getValueAt(selectedRow, col);
-                    td.accountID = accountID;
-                    td.accountType = "CD";
-                    td.jLabel6.setText(Integer.toString(accountID));
-                    td.setResizable(false);
-                    td.setVisible(true);
+                    md.accountID = accountID;
+                    md.accountType = "CD";
+                    md.jLabel16.setText(Integer.toString(accountID));
+                    md.setResizable(false);
+                    md.setVisible(true);
                 }
                 break;
             case 4://Credit Card
@@ -841,11 +930,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 else
                 {
                     accountID = (Integer)jTableCreditCard.getValueAt(selectedRow, col);
-                    td.accountID = accountID;
-                    td.accountType = "CCard";
-                    td.jLabel6.setText(Integer.toString(accountID));
-                    td.setResizable(false);
-                    td.setVisible(true);
+                    md.accountID = accountID;
+                    md.accountType = "CCard";
+                    md.jLabel16.setText(Integer.toString(accountID));
+                    md.setResizable(false);
+                    md.setVisible(true);
                 }
                 break;
             default:
