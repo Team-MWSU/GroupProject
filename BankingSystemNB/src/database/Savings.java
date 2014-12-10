@@ -84,6 +84,11 @@ public class Savings {
 				sav.Active = res.getBoolean(6);
 				sav.CustNum = res.getInt(7);
 			}
+                        
+                        if (res.isBeforeFirst())
+                        {
+                            return null;
+                        }
 		}
 		
 		catch (Exception ex)
