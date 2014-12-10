@@ -29,10 +29,10 @@ public class TellerActionScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonDeposit = new javax.swing.JButton();
+        jButtonWithdrawl = new javax.swing.JButton();
+        jButtonStopPayment = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -72,35 +72,35 @@ public class TellerActionScreen extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Teller Action Screen");
 
-        jButton1.setText("Deposit");
-        jButton1.setToolTipText("Deposit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDeposit.setText("Deposit");
+        jButtonDeposit.setToolTipText("Deposit");
+        jButtonDeposit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonDepositActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Withdrawl");
-        jButton2.setToolTipText("Withdrawl");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonWithdrawl.setText("Withdrawl");
+        jButtonWithdrawl.setToolTipText("Withdrawl");
+        jButtonWithdrawl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonWithdrawlActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Stop Payment");
-        jButton3.setToolTipText("Stop Payment");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonStopPayment.setText("Stop Payment");
+        jButtonStopPayment.setToolTipText("Stop Payment");
+        jButtonStopPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonStopPaymentActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Back");
-        jButton6.setToolTipText("Back");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBack.setText("Back");
+        jButtonBack.setToolTipText("Back");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonBackActionPerformed(evt);
             }
         });
 
@@ -253,7 +253,7 @@ public class TellerActionScreen extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(jLabel1)
@@ -291,11 +291,11 @@ public class TellerActionScreen extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonWithdrawl, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonStopPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
@@ -340,21 +340,21 @@ public class TellerActionScreen extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonWithdrawl, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonStopPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(693, 527));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //dispose();
+    private void jButtonDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDepositActionPerformed
         int col = 0;
         int selectedIndex;
         int selectedRow = -1;
@@ -448,10 +448,9 @@ public class TellerActionScreen extends javax.swing.JFrame {
                 break;
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonDepositActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //dispose();        
+    private void jButtonWithdrawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWithdrawlActionPerformed
         int col = 0;
         int selectedIndex;
         int selectedRow = -1;
@@ -544,23 +543,22 @@ public class TellerActionScreen extends javax.swing.JFrame {
                 jLabel18.setText("Select an Account");
                 break;
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonWithdrawlActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dispose();
+    private void jButtonStopPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopPaymentActionPerformed
         TellerStopPayment tsp = new TellerStopPayment();
         int customerID = Integer.parseInt(jLabel10.getText());
         tsp.customerID = customerID;
         tsp.setResizable(false);
         tsp.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonStopPaymentActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         dispose();
         TellerSelectCustomer tsc = new TellerSelectCustomer();
         tsc.setResizable(false);
         tsc.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -597,10 +595,10 @@ public class TellerActionScreen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonBack;
+    private static javax.swing.JButton jButtonDeposit;
+    private javax.swing.JButton jButtonStopPayment;
+    private javax.swing.JButton jButtonWithdrawl;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
     public static javax.swing.JLabel jLabel11;
