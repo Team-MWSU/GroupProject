@@ -144,12 +144,12 @@ public class Checking {
 	{
 		if (newCheck.SavingsAcct == -1)
 		{
-			String statement = "INSERT INTO checking VALUES ("+newCheck.OwnerID+","+newCheck.AccountID+","+newCheck.Balance+","+newCheck.Interest+",\""+newCheck.Opened.toString()+"\","+"NULL"+",\""+newCheck.Type+"\","+newCheck.AvgBal+","+newCheck.Active+");";
+			String statement = "INSERT INTO checking VALUES ("+newCheck.OwnerID+","+newCheck.AccountID+","+newCheck.Balance+","+newCheck.Interest+",\""+newCheck.Opened.toString()+"\","+"NULL"+",\""+newCheck.Type+"\","+newCheck.AvgBal+","+newCheck.Active+", null, null);";
 			db.insert(statement);
 		}
 		else
 		{
-			String statement = "INSERT INTO checking VALUES ("+newCheck.OwnerID+","+newCheck.AccountID+","+newCheck.Balance+","+newCheck.Interest+",\""+newCheck.Opened.toString()+"\","+newCheck.SavingsAcct+",\""+newCheck.Type+"\","+newCheck.AvgBal+","+newCheck.Active+");";
+			String statement = "INSERT INTO checking VALUES ("+newCheck.OwnerID+","+newCheck.AccountID+","+newCheck.Balance+","+newCheck.Interest+",\""+newCheck.Opened.toString()+"\","+newCheck.SavingsAcct+",\""+newCheck.Type+"\","+newCheck.AvgBal+","+newCheck.Active+", null, null);";
 			db.insert(statement);
 		}
 
