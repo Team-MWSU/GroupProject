@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
 
 public class ManagerScreen extends javax.swing.JFrame {
@@ -28,6 +29,11 @@ public class ManagerScreen extends javax.swing.JFrame {
         initComponents();
     }
 
+    private boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextInt();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,10 +144,20 @@ public class ManagerScreen extends javax.swing.JFrame {
         
         String customerIDString = jTextField1.getText();
         SQLDriver db = new SQLDriver();
+        database.Customer newCust = new database.Customer();
         
         if (customerIDString.equals("")){
             jLabel3.setText("Enter ALL Text");
-        }else{
+        }
+        else if(!isNumeric(customerIDString))
+        {
+            jLabel3.setText("Invalid Input");
+        }
+        else if(newCust.search(Integer.parseInt(customerIDString))==null)
+        {
+            jLabel3.setText("Customer Not Found");
+        }
+        else{
             int customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
             searchCustomer.search(customerID);
