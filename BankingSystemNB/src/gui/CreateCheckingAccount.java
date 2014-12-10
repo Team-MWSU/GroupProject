@@ -236,7 +236,7 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
         int year = Integer.parseInt(yearString);
         int day = Integer.parseInt(dayString);
         
-        String date = "" + year + "-" + month + "-" + day + "";
+        String date = year + "-" + month + "-" + day;
         
         if (depositString.equals("")){
             jLabel10.setText("Enter ALL Text");
@@ -252,10 +252,17 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                                 
             int    accountID = Integer.parseInt(accountIDString);
             double    deposit = Double.parseDouble(depositString);
-            int    linkedAccount = Integer.parseInt(linkedAccountString);
-            System.out.println(linkedAccount);
+            int linkedAccount;
+            if (linkedAccountString.equals(""))
+            {
+                linkedAccount=-1;
+            }
+            else
+            {
+                linkedAccount = Integer.parseInt(linkedAccountString);
+            }
+            database.Checking newChecking = new database.Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
             
-            Checking newChecking = new Checking(customerID, accountID, deposit, 0.0 , date, linkedAccount, accountType, 0.0, true);
             newChecking.addRecord(newChecking);
             
             people.Customer searchCustomer = new people.Customer();
