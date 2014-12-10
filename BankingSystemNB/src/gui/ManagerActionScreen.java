@@ -623,7 +623,11 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         //dispose();
         CreateCD crcd = new CreateCD();
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        InterestRates newInt = new InterestRates();
         crcd.customerID = customerID;
+        crcd.interestRate = newInt.getCDRate();
+        String intString = Double.toString(crcd.interestRate);
+        crcd.jTextFieldInterest.setText(intString);
         crcd.setResizable(false);
         crcd.setVisible(true);
     }//GEN-LAST:event_jMenuItemCreateCDActionPerformed
