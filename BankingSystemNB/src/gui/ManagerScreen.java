@@ -157,6 +157,7 @@ public class ManagerScreen extends javax.swing.JFrame {
         {
             jLabel3.setText("Customer Not Found");
         }
+
         else{
             int customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
