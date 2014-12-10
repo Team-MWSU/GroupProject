@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
 
 public class TellerSelectCustomer extends javax.swing.JFrame {
@@ -19,6 +20,12 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
     
     public TellerSelectCustomer() {
         initComponents();
+    }
+    
+    private boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextInt();
     }
 
     /**
@@ -123,9 +130,18 @@ public class TellerSelectCustomer extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String customerIDString = jTextField1.getText();
         SQLDriver db = new SQLDriver();
+        database.Customer newCust = new database.Customer();
         
         if (customerIDString.equals("")){
             jLabel3.setText("Enter Customer ID");
+        }
+        else if(!isNumeric(customerIDString))
+        {
+            jLabel3.setText("Invalid Input");
+        }
+        else if(newCust.search(Integer.parseInt(customerIDString))==null)
+        {
+            jLabel3.setText("Customer Not Found");
         }else{
             customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
