@@ -1,5 +1,5 @@
 package gui;
-
+import java.util.Scanner;
 public class ATM extends javax.swing.JFrame {
 
     /**
@@ -8,7 +8,11 @@ public class ATM extends javax.swing.JFrame {
     public ATM() {
         initComponents();
     }
-
+    public boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextDouble();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +40,7 @@ public class ATM extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("ATM");
 
-        jLabel2.setText("Withdrawl Amount");
+        jLabel2.setText("Withdrawal Amount");
 
         jLabel3.setText("Date");
 
@@ -157,26 +161,36 @@ public class ATM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAuthorizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAuthorizeActionPerformed
-        String inDay   = jComboBox2.getSelectedItem().toString();
-        String inMonth = jComboBox3.getSelectedItem().toString();
+        String inDay   = jComboBox3.getSelectedItem().toString();
+        String inMonth = jComboBox2.getSelectedItem().toString();
         String inYear  = jComboBox4.getSelectedItem().toString();
-        String withdrawl = jTextField1.getText();
+        String withdrawal = jTextField1.getText();
         
         if (inDay.equals("")){
             jLabel4.setText("Enter ALL Text");
         }else if(inMonth.equals("")){
             jLabel4.setText("Enter ALL Text");
-        }else if(inMonth.equals("")){
+        }else if(inYear.equals("")){
             jLabel4.setText("Enter ALL Text");
-        }else if(withdrawl.equals("")){
+        }else if(withdrawal.equals("")){
             jLabel4.setText("Enter ALL Text");
-        }else{
-            
-            /*
-                Again, this needs to push to the database instead. 
-            */
-            
-            
+        }else if(!isNumeric(withdrawal))
+        {
+            jLabel4.setText("Invalid Input");
+        }
+        else
+        {
+            String myDate = inYear+"-"+inMonth+"-"+inDay;
+            String AN = jComboATMAccountList.getSelectedItem().toString();
+            int AcctNum = Integer.parseInt(AN);
+            database.Checking newCheck = new database.Checking();
+            newCheck = newCheck.getRecord(AcctNum);
+            double WDamt = Double.parseDouble(withdrawal);
+            database.Transaction newTrans = new database.Transaction(0, myDate, "Debit Card Withdrawal", WDamt, AcctNum);
+            newCheck.addTrans(newTrans);
+            newCheck.Balance-=WDamt;
+            newCheck.updateRecord(newCheck);
+
             dispose();
         }
     }//GEN-LAST:event_jButtonAuthorizeActionPerformed
