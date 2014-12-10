@@ -715,6 +715,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemTransStopPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransStopPaymentActionPerformed
         //dispose();
         ManagerStopPayment msp = new ManagerStopPayment();
+        customerID = Integer.parseInt(jLabelCustomerID.getText());
+        msp.customerID = customerID;
+        msp.jLabelCustomer.setText(jLabelCustomerID.getText());
         msp.setResizable(false);
         msp.setVisible(true);
     }//GEN-LAST:event_jMenuItemTransStopPaymentActionPerformed
