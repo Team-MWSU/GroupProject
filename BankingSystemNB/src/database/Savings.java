@@ -83,10 +83,12 @@ public class Savings {
 				sav.OpenDate = res.getString(5);
 				sav.Active = res.getBoolean(6);
 				sav.CustNum = res.getInt(7);
+                                return sav;
 			}
                         
                         if (res.isBeforeFirst())
                         {
+                            System.out.println("test1");
                             return null;
                         }
 		}
@@ -95,7 +97,7 @@ public class Savings {
 		{
 			ex.printStackTrace();
 		}
-		return sav;
+                return null;
 	}
 	
 	public List<Transaction> getAllTrans(int Account)
