@@ -1,4 +1,5 @@
 package gui;
+import java.util.Scanner;
 
 public class WriteACheck extends javax.swing.JFrame {
 
@@ -8,7 +9,11 @@ public class WriteACheck extends javax.swing.JFrame {
     public WriteACheck() {
         initComponents();
     }
-
+    private boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextDouble();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -169,23 +174,38 @@ public class WriteACheck extends javax.swing.JFrame {
         String inMonth = jComboBox3.getSelectedItem().toString();
         String inYear  = jComboBox4.getSelectedItem().toString();
         String checkNumber = jTextField1.getText();
+        String Acct = jComboBox1.getSelectedItem().toString();
         String amount = jTextField3.getText();
         
         if (inDay.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else if(inMonth.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(inMonth.equals("")){
+        }else if(inYear.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else if(checkNumber.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else if(amount.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else{
+        }else if(!isNumeric(amount)||!isNumeric(checkNumber))
+        {
+            jLabel5.setText("Invalid Input");
+        }
+        else
+        {
             System.out.print(inDay + "/");
             System.out.print(inMonth + "/");
             System.out.print(inYear + "/");
             System.out.print(": $" + amount + " - Check#" + checkNumber  + "\n");
+            String myDate = inYear+"-"+inMonth+"-"+inDay;
+            database.Checking newCheck = new database.Checking();
+            double Amt = Double.parseDouble(amount);
+            int Account = Integer.parseInt(Acct);
+            newCheck = newCheck.getRecord(Integer.parseInt(Acct));
+            database.Transaction myTrans = new database.Transaction(Integer.parseInt(checkNumber), myDate, "Check", Amt, Account);
+            newCheck.addTrans(myTrans);
+            newCheck.Balance -= Double.parseDouble(amount);
+            newCheck.updateRecord(newCheck);
             /*
                 Again, this needs to push to the database instead. 
             */
