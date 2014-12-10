@@ -676,6 +676,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemTransDebitCknAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransDebitCknAcctActionPerformed
         //dispose();
         DebitCheckingAccount dca = new DebitCheckingAccount();
+        customerID = Integer.parseInt(jLabelCustomerID.getText());
+        dca.customerID = customerID;
+        dca.jLabel6.setText(jLabelCustomerID.getText());
         dca.setResizable(false);
         dca.setVisible(true);
     }//GEN-LAST:event_jMenuItemTransDebitCknAcctActionPerformed
