@@ -19,7 +19,6 @@ public class CustomerMakePayment extends javax.swing.JFrame {
     {
         Scanner sc = new Scanner(input);
         return sc.hasNextDouble();
-                
     }
 
     /**
@@ -264,7 +263,6 @@ public class CustomerMakePayment extends javax.swing.JFrame {
                 dispose();
             }
         
-            //Add code for the transaction below. This will have to work with the database. 
         }
     }//GEN-LAST:event_jButtonMakePaymentActionPerformed
 
