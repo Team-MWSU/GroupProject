@@ -149,14 +149,12 @@ public class Customer {
 	public void addRecord(Customer newCust)
 	{
 		String statement = "INSERT INTO customer VALUES (\""+newCust.LName+"\",\""+newCust.FName+"\","+"0"+",\""+newCust.SSN+"\",\""+newCust.Street+"\", \""+newCust.City+"\", \""+newCust.State+"\", \""+newCust.ZIP+"\");";
-		System.out.println(statement);
 		db.insert(statement);
 	}
 	
 	public void updateRecord(Customer newCust)
 	{
 		String statement = "UPDATE customer SET LName=\""+newCust.LName+"\", FName=\""+newCust.FName+"\", SSN=\""+newCust.SSN+"\", Street=\""+newCust.Street+"\", City=\""+newCust.City+"\", State=\""+newCust.State+"\", ZIP=\""+newCust.ZIP+"\" WHERE CustID="+newCust.CustNum+";";
-		System.out.println(statement);
 		db.insert(statement);
 	}
 	
