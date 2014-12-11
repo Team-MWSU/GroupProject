@@ -216,7 +216,6 @@ public class TellerWithdrawl extends javax.swing.JFrame {
                         else
                         {
                             workingSavings.withdraw(debitAmount);
-                            System.out.println(workingSavings.getAccountTotal());
                             newSavings.Value = workingSavings.getAccountTotal();
                             newSavings.updateRecord(newSavings);
                             System.out.println(newSavings.Value);
