@@ -120,6 +120,38 @@ public class Loan {
 		}
 		return loanArray;
 	}
+                
+        public List<Loan> getAllFlaggedRecords()
+	{
+		String statement = "SELECT * FROM loan WHERE flag = 1";
+		ResultSet res = (ResultSet)db.select(statement);
+		List<Loan> loanArray = new ArrayList<Loan>();
+		Loan myLoan = new Loan();
+		try
+		{
+			while (res.next())
+			{
+				myLoan = new Loan();
+				myLoan.OwnerID = res.getInt(1);
+				myLoan.LoanID = res.getInt(2);
+				myLoan.Type = res.getString(3);
+				myLoan.Interest = res.getDouble(4);
+				myLoan.Monthly = res.getDouble(5);
+				myLoan.Total = res.getDouble(6);
+				myLoan.NextDue = res.getString(7);
+				myLoan.CurrAmt = res.getDouble(8);
+				myLoan.Flag = res.getBoolean(9);
+				myLoan.LastFull = res.getString(10);
+				myLoan.Active = res.getBoolean(11);
+				loanArray.add(myLoan);
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		return loanArray;
+	}
 	
 	public Loan getRecord(int loanID)
 	{
