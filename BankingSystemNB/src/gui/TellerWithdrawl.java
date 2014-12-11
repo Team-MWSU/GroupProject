@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package gui;
+import java.util.Scanner;
 
 import accounts.Checking;
 import accounts.Savings;
@@ -28,6 +29,11 @@ public class TellerWithdrawl extends javax.swing.JFrame {
         initComponents();
     }
 
+    public boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextDouble();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +58,7 @@ public class TellerWithdrawl extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("Withdrawl");
+        jButton1.setText("Withdrawal");
         jButton1.setToolTipText("Withdrawl");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +82,7 @@ public class TellerWithdrawl extends javax.swing.JFrame {
         jComboBox2.setToolTipText("Month");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Teller Withdrawl");
+        jLabel1.setText("Teller Withdrawal");
 
         jLabel2.setText("Date");
 
@@ -181,6 +187,11 @@ public class TellerWithdrawl extends javax.swing.JFrame {
             jLabel5.setText("Enter ALL Text");
         }else if(amount.equals("")){
             jLabel5.setText("Enter ALL Text");
+        }else if(!isNumeric(amount)){
+            jLabel5.setText("Invalid Amount");
+        }else if(Double.parseDouble(amount)<0)
+        {
+            jLabel5.setText("Invalid Amount");
         }else{
             /*
                 Again, this needs to push to the database instead. 
