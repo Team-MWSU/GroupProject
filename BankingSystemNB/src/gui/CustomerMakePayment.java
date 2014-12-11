@@ -195,9 +195,7 @@ public class CustomerMakePayment extends javax.swing.JFrame {
             double Payment = Double.parseDouble(paymentAmount);
             int Account = Integer.parseInt(accountNumber);
             newTrans = new database.Transaction(0, myDate, "Payment", Payment, Account);
-            //short term loan, long term loan, credit card
             int selection = jComboBoxAccountType.getSelectedIndex();
-            System.out.println(selection);
             switch (selection){
                 case 0: 
                 {
