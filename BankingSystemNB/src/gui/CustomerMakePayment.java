@@ -1,4 +1,9 @@
 package gui;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class CustomerMakePayment extends javax.swing.JFrame {
 
@@ -9,6 +14,11 @@ public class CustomerMakePayment extends javax.swing.JFrame {
      */
     public CustomerMakePayment() {
         initComponents();
+    }
+    private boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextDouble();
     }
 
     /**
@@ -32,6 +42,11 @@ public class CustomerMakePayment extends javax.swing.JFrame {
         jComboBoxAccountNumber = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButtonCancel.setText("Cancel");
         jButtonCancel.setToolTipText("Return to Previous Screen");
@@ -108,15 +123,14 @@ public class CustomerMakePayment extends javax.swing.JFrame {
                                         .addComponent(jLabel2)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldPaymentAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBoxAccountNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jTextFieldPaymentAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxAccountNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jLabel1)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +155,7 @@ public class CustomerMakePayment extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonMakePayment, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(271, 274));
@@ -156,6 +170,7 @@ public class CustomerMakePayment extends javax.swing.JFrame {
         String accountType = jComboBoxAccountType.getSelectedItem().toString();
         String accountNumber  = jComboBoxAccountNumber.getSelectedItem().toString();
         String paymentAmount   = jTextFieldPaymentAmount.getText();
+        boolean success = false;
 
         
         if (paymentAmount.equals("")){
@@ -164,16 +179,90 @@ public class CustomerMakePayment extends javax.swing.JFrame {
             jLabel5.setText("Enter ALL Text");
         }else if(accountType.equals("")){
             jLabel5.setText("Enter ALL Text");
+        }else if(!isNumeric(paymentAmount)){
+            jLabel5.setText("Amount invalid");
+        }else if(Double.parseDouble(paymentAmount)<=0){
+            jLabel5.setText("Amount invalid");
         }else{
-
+            DateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal = Calendar.getInstance();
+            String myDate = dFormat.format(cal.getTime());
+            cal.add(Calendar.MONTH, 1);
+            String fDate = dFormat.format(cal.getTime());
             
-            /*
-                Again, this needs to push to the database instead. 
-            */
-                
-            dispose();
+            database.Transaction newTrans;
+            double Payment = Double.parseDouble(paymentAmount);
+            int Account = Integer.parseInt(accountNumber);
+            newTrans = new database.Transaction(0, myDate, "Payment", Payment, Account);
+            int selection = jComboBoxAccountType.getSelectedIndex();
+            switch (selection){
+                case 0: 
+                {
+                    database.Loan myLoan = new database.Loan();
+                    myLoan = myLoan.getRecord(Integer.parseInt(accountNumber));
+                    if(Payment > myLoan.CurrAmt)
+                    {
+                        jLabel5.setText("Payment exceeds amount owed");
+                    }
+                    else{
+                        myLoan.addTrans(newTrans);
+                        myLoan.CurrAmt-=Payment;
+                        if(Payment>=myLoan.Monthly)
+                        {
+                            myLoan.NextDue = fDate;
+                            myLoan.LastFull = myDate;
+                        }
+                        myLoan.updateRecord(myLoan);
+                        success=true;
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    database.Loan myLoan = new database.Loan();
+                    myLoan = myLoan.getRecord(Integer.parseInt(accountNumber));
+                    if(Payment > myLoan.CurrAmt)
+                    {
+                        jLabel5.setText("Payment exceeds amount owed");
+                    }
+                    else{
+                        myLoan.addTrans(newTrans);
+                        myLoan.CurrAmt-=Payment;
+                        if(Payment>=myLoan.Monthly)
+                        {
+                            myLoan.NextDue = fDate;
+                            myLoan.LastFull = myDate;
+                        }
+                        myLoan.updateRecord(myLoan);
+                        success=true;
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    database.CCard myCard = new database.CCard();
+                    myCard = myCard.getRecord(Integer.parseInt(accountNumber));
+                    if(Payment > myCard.UsedCredit)
+                    {
+                        jLabel5.setText("Payment exceeds amount owed");
+                    }
+                    else{
+                        myCard.addTrans(newTrans);
+                        myCard.UsedCredit-=Payment;
+                        myCard.OpenCredit+=Payment;
+                        myCard.NextDue = fDate;
+                        myCard.updateRecord(myCard);
+                        success=true;
+                    }
+                    break;
+                }
+                    
+            }
+            if (success==true)
+            {
+                dispose();
+            }
         
-            //Add code for the transaction below. This will have to work with the database. 
         }
     }//GEN-LAST:event_jButtonMakePaymentActionPerformed
 
@@ -203,6 +292,10 @@ public class CustomerMakePayment extends javax.swing.JFrame {
     private void jComboBoxAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAccountNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxAccountNumberActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jComboBoxAccountType.setSelectedIndex(0);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

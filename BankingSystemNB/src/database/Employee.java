@@ -58,14 +58,12 @@ public class Employee {
 	public void addRecord(Employee newEmp)
 	{
 		String statement = "INSERT INTO employee VALUES (\""+newEmp.LName+"\", \""+newEmp.FName+"\", "+newEmp.EmpID+", \""+newEmp.UName+"\",\""+newEmp.Pass+"\", "+newEmp.Manager+");";
-		System.out.println(statement);
 		db.insert(statement);
 	}
 	
 	public void updateRecord(Employee newEmp)
 	{
 		String statement = "UPDATE employee SET LName=\""+newEmp.LName+"\", FName=\""+newEmp.FName+"\", UName=\""+newEmp.UName+"\", Pass=\""+newEmp.Pass+"\", Manager="+newEmp.Manager+" WHERE EmpID="+newEmp.EmpID+";";
-		System.out.println(statement);
 		db.insert(statement);
 	}
 	

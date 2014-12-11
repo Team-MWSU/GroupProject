@@ -105,6 +105,35 @@ public class Checking {
 		return trans.rsToTransactionList(res);
 	}
 	
+        public List<Checking> getAllRecords(int CustID)
+	{
+		String statement = "SELECT * FROM checking WHERE CustID="+CustID;
+		ResultSet res = (ResultSet)db.select(statement);
+		Checking check = new Checking();
+		List<Checking> checkArray = new ArrayList<Checking>();
+		try
+		{
+			while (res.next())
+			{
+				check.OwnerID = res.getInt(1);
+				check.AccountID = res.getInt(2);
+				check.Balance = res.getDouble(3);
+				check.Interest = res.getDouble(4);
+				check.Opened = res.getString(5);
+				check.SavingsAcct = res.getInt(6);
+				check.Type = res.getString(7);
+				check.AvgBal = res.getDouble(8);
+				check.Active = res.getBoolean(9);
+				checkArray.add(check);
+			}
+		}
+		catch (Exception ex)
+		{
+			
+		}
+		return checkArray;
+	}
+        
 	public List<Checking> getAllRecords()
 	{
 		String statement = "SELECT * FROM checking";
@@ -161,13 +190,11 @@ public class Checking {
 		{	
 		
 			String statement = "UPDATE checking SET CustID="+newCheck.OwnerID+", Value="+newCheck.Balance+", Interest = "+newCheck.Interest+", Opened=\""+newCheck.Opened+"\", SavingsAcct="+"NULL"+", Type=\""+newCheck.Type+"\", AvgBal="+newCheck.AvgBal+", Active="+newCheck.Active+" WHERE AccountID="+newCheck.AccountID;
-			System.out.println(statement);
 			db.insert(statement);
 		}
 		else
 		{
 			String statement = "UPDATE checking SET CustID="+newCheck.OwnerID+", Value="+newCheck.Balance+", Interest = "+newCheck.Interest+", Opened=\""+newCheck.Opened+"\", SavingsAcct="+newCheck.SavingsAcct+", Type=\""+newCheck.Type+"\", AvgBal="+newCheck.AvgBal+", Active="+newCheck.Active+" WHERE AccountID="+newCheck.AccountID;
-			System.out.println(statement);
 			db.insert(statement);
 		}
 

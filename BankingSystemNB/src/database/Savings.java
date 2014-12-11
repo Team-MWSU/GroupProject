@@ -88,7 +88,6 @@ public class Savings {
                         
                         if (res.isBeforeFirst())
                         {
-                            System.out.println("test1");
                             return null;
                         }
 		}
@@ -129,14 +128,12 @@ public class Savings {
 	public void addTrans(Transaction trans)
 	{
 		String statement = "INSERT INTO savingsrecord VALUES ("+trans.TransactionID+","+trans.Account+",\""+trans.TransDate+"\",\""+trans.Description+"\","+trans.Value+");";
-		System.out.println(statement);
 		db.insert(statement);
 	}
 	
 	public void updateRecord(Savings myRecord)
 	{
 		String statement = "UPDATE savings SET OwnerID="+myRecord.CustNum+", Interest="+myRecord.Interest+", Balance="+myRecord.Value+", Overdraft="+myRecord.Overdraft+", Opened=\""+myRecord.OpenDate+"\", Active="+myRecord.Active+" WHERE AccountID="+myRecord.Account+";";
-		System.out.println(statement);
 		db.insert(statement);
 	}
 	
@@ -180,7 +177,6 @@ public class Savings {
 	public Transaction getTrans(int TransID)
 	{
 		String statement = "SELECT * from savingsrecord WHERE TransactionID = "+TransID;
-		System.out.println(statement);
 		ResultSet res = (ResultSet)db.select(statement);
 		Transaction tempTrans = new Transaction();
 		try{

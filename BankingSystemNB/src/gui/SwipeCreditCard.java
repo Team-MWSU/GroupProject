@@ -1,4 +1,5 @@
 package gui;
+import java.util.Scanner;
 
 public class SwipeCreditCard extends javax.swing.JFrame {
 
@@ -8,7 +9,11 @@ public class SwipeCreditCard extends javax.swing.JFrame {
     public SwipeCreditCard() {
         initComponents();
     }
-
+    public boolean isNumeric(String input)
+    {
+        Scanner sc = new Scanner(input);
+        return sc.hasNextDouble();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,27 +165,54 @@ public class SwipeCreditCard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAuthorizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAuthorizeActionPerformed
-        String inDay   = jComboBox2.getSelectedItem().toString();
-        String inMonth = jComboBox3.getSelectedItem().toString();
+        String inDay   = jComboBox3.getSelectedItem().toString();
+        String inMonth = jComboBox2.getSelectedItem().toString();
         String inYear  = jComboBox4.getSelectedItem().toString();
         String description = jTextField1.getText();
-        String amount = jTextField3.getText();
+        String Amount = jTextField3.getText();
+        String Account = jComboBoxAccountList.getSelectedItem().toString();
+        boolean success=false;
         
         if (inDay.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else if(inMonth.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(inMonth.equals("")){
+        }else if(inYear.equals("")){
             jLabel5.setText("Enter ALL Text");
         }else if(description.equals("")){
             jLabel5.setText("Enter ALL Text");
-        }else if(amount.equals("")){
+        }else if(Amount.equals("")){
             jLabel5.setText("Enter ALL Text");
+        }else if(!isNumeric(Amount)){
+            jLabel5.setText("Invalid Amount");
         }else{
-            //There needs to be a transaction created here...
+            String myDate = inYear+"-"+inMonth+"-"+inDay;
+            double Amt = Double.parseDouble(Amount);
+            int Acct = Integer.parseInt(Account);
+            database.CCard newCard = new database.CCard();
+            newCard = newCard.getRecord(Acct);
+            if (Amt < 0)
+            {
+                jLabel5.setText("Invalid Amount");
+            }
+            else if(newCard.OpenCredit>Amt)
+            {
+                database.Transaction myTrans = new database.Transaction(0, myDate, description, Amt, Acct);
+                newCard.addTrans(myTrans);
+                newCard.OpenCredit-=Amt;
+                newCard.UsedCredit+=Amt;
+                newCard.updateRecord(newCard);
+                success=true;
+            }
+            else
+            {
+                jLabel5.setText("Insufficient Funds");
+            }
             
-            
-            dispose();
+            if(success==true)
+            {
+                dispose();
+            }
         }
     }//GEN-LAST:event_jButtonAuthorizeActionPerformed
 
