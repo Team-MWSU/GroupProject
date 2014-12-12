@@ -1,0 +1,181 @@
+You can connect to the database, through your terminal using the following code:
+
+`mysql -h 162.226.167.3 -P 3306 -u testuser -p BankHW`
+
+You must enter the password `password`, when prompted.
+
+bankHW = database
+
+* Should change the package from `bankHW` to `database` for clarity.
+
+
+Create the MySQL Database
+
+```
+DROP DATABASE BankHW;
+
+CREATE DATABASE BankHW;
+
+USE BankHW;
+
+CREATE USER testuser IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'testuser'@'%' WITH GRANT OPTION;
+
+CREATE TABLE customer
+(
+  LName varchar(30) NOT NULL,
+  FName Varchar(30),
+  CustID Int(10) NOT NULL AUTO_INCREMENT,
+  SSN Varchar(10),
+  Street Varchar(128),
+  City Varchar(30),
+  State Varchar(2),
+  ZIP Varchar(5),
+  PRIMARY KEY (CustID)
+);
+
+CREATE TABLE employee(
+  LName VARCHAR(30),  
+  FName VARCHAR(30),  
+  EmpID Int(10) NOT NULL AUTO_INCREMENT,  
+  UName VARCHAR(30),  
+  Pass VARCHAR(30),  
+  Manager boolean,  
+  PRIMARY KEY (EmpID)
+); 
+
+CREATE TABLE savings(
+  AccountID Int(10) NOT NULL AUTO_INCREMENT,
+  Interest decimal(4,2) NOT NULL,
+  Balance decimal(12,2) UNSIGNED NOT NULL,
+  Overdraft decimal(5,2) NOT NULL,
+  Opened date,
+  Active boolean,
+  CustID Int(10) NOT NULL,
+  PRIMARY KEY (AccountID),
+  FOREIGN KEY (CustID) REFERENCES customer(CustID)
+);
+
+CREATE TABLE savingsrecord(
+  TransactionID int(10) NOT NULL AUTO_INCREMENT,
+  AccountID Int(10) NOT NULL,
+  TransDate date,
+  Description varchar(256) NOT NULL,
+  Amount decimal(10,2) NOT NULL,
+  PRIMARY KEY (TransactionID),
+  FOREIGN KEY (AccountID) REFERENCES savings(AccountID)
+);
+
+CREATE TABLE cd(
+  CustID Int(10) NOT NULL,
+  AccountID int(10) NOT NULL AUTO_INCREMENT,
+  Value decimal(10,2) UNSIGNED NOT NULL,
+  Interest decimal(5,3) NOT NULL,
+  Maturity date NOT NULL,
+  Opened date NOT NULL,
+  Rollover date,
+  Penalty decimal(10,2),
+  Active boolean,
+  PRIMARY KEY (AccountID),
+  FOREIGN KEY (CustID) REFERENCES customer(CustID)
+);
+
+CREATE TABLE checking(
+  CustID Int(10) NOT NULL,
+  AccountID int(10) NOT NULL AUTO_INCREMENT,
+  Value decimal(10,2) UNSIGNED NOT NULL,
+  Interest decimal(5,3) NOT NULL,
+  Opened date NOT NULL,
+  SavingsAcct Int(10),
+  Type varchar(10) NOT NULL,
+  AvgBal decimal(12,2),
+  Active boolean NOT NULL,
+  PRIMARY KEY (AccountID),
+  FOREIGN KEY (CustID) REFERENCES customer(CustID),
+  FOREIGN KEY (SavingsAcct) REFERENCES savings(AccountID)
+);
+
+CREATE TABLE checkingrecord(
+  TransactionID	 int(10) NOT NULL AUTO_INCREMENT,
+  AccountID int(10) NOT NULL,
+  TransDate date NOT NULL,
+  Amount decimal(10,2) NOT NULL,
+  Description varchar(256),
+  PRIMARY KEY (TransactionID),
+  FOREIGN KEY (AccountID) REFERENCES checking(AccountID)
+);
+
+CREATE TABLE loan(
+  CustID Int(10) NOT NULL,
+  AccountID int(10) NOT NULL AUTO_INCREMENT,
+  Type varchar(10) NOT NULL,
+  Interest decimal(5,3) NOT NULL,
+  Monthly decimal(7,2) NOT NULL,
+  TotalAmt decimal(10,2) NOT NULL,
+  NextDue date NOT NULL,
+  CurrAmt decimal(10,2) UNSIGNED NOT NULL,
+  Flag boolean NOT NULL,
+  LastFull date NOT NULL,
+  Active boolean NOT NULL,
+  PRIMARY KEY (AccountID),
+  FOREIGN KEY (CustID) REFERENCES customer(CustID)
+);
+
+CREATE TABLE loanrecord(
+  TransactionID int(10) NOT NULL AUTO_INCREMENT,
+  AccountID int(10) NOT NULL,
+  TransDate date NOT NULL,
+  Amount decimal(10,2) NOT NULL,
+  Description varchar(256),
+  PRIMARY KEY (TransactionID),
+  FOREIGN KEY (AccountID) REFERENCES loan(AccountID)
+);
+
+CREATE TABLE ccard(
+  CustID Int(10) NOT NULL,
+  AccountID int(10) NOT NULL AUTO_INCREMENT,
+  Interest decimal(5,3) NOT NULL,
+  TotalCredit decimal(12,2) NOT NULL,
+  OpenCredit decimal(12,2) UNSIGNED NOT NULL,
+  UsedCredit decimal(12,2) NOT NULL,
+  NextDue date NOT NULL,
+  Penalty boolean,
+  Active boolean NOT NULL,
+  PRIMARY KEY (AccountID),
+  FOREIGN KEY (CustID) REFERENCES customer(CustID)
+);
+
+CREATE TABLE ccardrecord(
+  TransactionID	 int(10) NOT NULL AUTO_INCREMENT,
+  AccountID int(10) NOT NULL,
+  TransDate date NOT NULL,
+  Amount decimal(10,2) NOT NULL,
+  Description varchar(256),
+  PRIMARY KEY (TransactionID),
+  FOREIGN KEY (AccountID) REFERENCES ccard(AccountID)
+);
+
+CREATE TABLE interestrates(
+  CDInterest decimal(5,3),
+  LoanInterest decimal(5,3),
+  CardInterest decimal(5,3),
+  SavingsInterest decimal(5,3)
+);
+
+insert into interestrates values(1.5, 7.5, 15.0, 1.2);
+insert into customer values("Jones", "Ronald", 0, "423453245", "114 North 4th", "Clarkesdale", "MO", "64493");
+insert into customer values("Ingrem", "Mark", 0, "345653425", "1805 Jules", "St. Joseph", "MO", "64503");
+insert into customer values("Harrison", "Sherry", 0, "423148894", "2109 Sylvania", "St. Joseph", "MO", "64501");
+insert into customer values("Morgeson", "John", 0, "677879013", "4305 W 3rd", "Wathena", "KS", "54910");
+insert into customer values("Gilkerson", "Gary", 0, "345599870", "221 South Highly", "St. Joseph", "MO, "64503");
+insert into customer values("Francis", "Mary", 0, "423567890", "335 Jules", "St. Joseph", "MO", "64503");
+insert into customer values("Johnson", "Carolyn", 0, "345812332", "1402 Mocking Bird", "St. Joseph", "MO", "64502");
+insert into customer values("Waite", "Larry", 0, "345879912", "2105 Senior Dr.", "St. Joseph", "MO", "64503");
+insert into customer values("Macklin", "Marilyn", 0, "423168945", "1801 Lovers Ln", "St. Joseph", "MO", "64502");
+insert into customer values("MyGlynn", "Lana", 0, "235445789", "2508 Stonecrest", "St. Joseph", "MO", "64502");
+insert into customer values("Munzer", "John", 0, "436789213", "4156 N. Mulberry", "St. Joseph", "MO", "64502");
+insert into customer values("White", "Mary", 0, "233435656", "1523 Kioa", "Ellwood", "KS", "56708");
+insert into customer values("Gronius", "Jerry", 0, "435678787", "8902 Martha Ln.", "Gower", "MO", "63301");
+insert into customer values("Williams", "Martin", 0, "563432913", "1532 Lovers Ln.", "St. Joseph", "MO", "64502");
+insert into customer values("Jones", "Broderick", 0, "345679898", "703 Park Ln", "St Joseph", "MO", "64501");
