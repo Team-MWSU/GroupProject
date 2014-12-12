@@ -183,7 +183,7 @@ insert into customer values("Gronius", "Jerry", 0, "435678787", "8902 Martha Ln.
 insert into customer values("Williams", "Martin", 0, "563432913", "1532 Lovers Ln.", "St. Joseph", "MO", "64502");
 insert into customer values("Jones", "Broderick", 0, "345679898", "703 Park Ln", "St Joseph", "MO", "64501");
 
-insert into ccard values (1, 0, 55, 55, 55, 0, "2055-01-01", 0, 1);
+insert into ccard values (1, 0, 55, 55, 55, 0, "1955-01-01", 0, 1);
 insert into ccard values (3, 0, 4, 100, 0, 100, "2014-12-11", false, true);
 insert into ccardrecord values (0,2,"2012-01-01", 10, "Death Rays");
 insert into ccardrecord values (0,2,"1999-12-31", 5, "Partying");
