@@ -162,6 +162,7 @@ public class ManagerScreen extends javax.swing.JFrame {
         else{
             
             CustomerInformationTable newTab = new CustomerInformationTable(customerID);
+            dispose();
             /*
             int customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
