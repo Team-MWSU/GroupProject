@@ -590,13 +590,13 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(jLabel5))
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(76, 76, 76)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -1053,8 +1053,16 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         vmd.setVisible(true);
         
         TestDate date = new TestDate();
+        InterestRates ir = new InterestRates();
         
         vmd.jLabelDate.setText(date.getGlobalDate().toString());
+        
+        vmd.jLabelCheckingIR.setText(Double.toString(ir.getSavingsRate()*2));
+        vmd.jLabelSavingsIR.setText(Double.toString(ir.getSavingsRate()));
+        vmd.jLabelCDIR.setText(Double.toString(ir.getCDRate()));
+        vmd.jLabelLoanIR.setText(Double.toString(ir.getLoanRate()));
+        vmd.jLabelCCardIR.setText(Double.toString(ir.getCCardRate()));
+        
         
         
     }//GEN-LAST:event_jMenuItemManagersOfficeActionPerformed

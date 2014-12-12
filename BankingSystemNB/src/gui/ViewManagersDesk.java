@@ -36,8 +36,14 @@ public class ViewManagersDesk extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButtonLeaveOffice = new javax.swing.JButton();
         jLabelCheckingIR1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabelCCardIR = new javax.swing.JLabel();
+        jLabelCDIR = new javax.swing.JLabel();
+        jLabelLoanIR = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -70,12 +76,12 @@ public class ViewManagersDesk extends javax.swing.JFrame {
 
         jLabelCheckingIR.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabelCheckingIR);
-        jLabelCheckingIR.setBounds(905, 143, 46, 30);
+        jLabelCheckingIR.setBounds(910, 150, 46, 30);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Checking:");
+        jLabel4.setText("GD Check:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(836, 143, 63, 30);
+        jLabel4.setBounds(840, 150, 70, 30);
 
         jButtonLeaveOffice.setText("Leave Office");
         jButtonLeaveOffice.addActionListener(new java.awt.event.ActionListener() {
@@ -90,11 +96,6 @@ public class ViewManagersDesk extends javax.swing.JFrame {
         getContentPane().add(jLabelCheckingIR1);
         jLabelCheckingIR1.setBounds(905, 143, 46, 30);
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Checking:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(836, 143, 63, 30);
-
         jLabelSavingsIR.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabelSavingsIR);
         jLabelSavingsIR.setBounds(910, 180, 46, 30);
@@ -103,6 +104,37 @@ public class ViewManagersDesk extends javax.swing.JFrame {
         jLabel7.setText("Savings:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(840, 180, 70, 30);
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("CD:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(840, 230, 23, 16);
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Loan");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(840, 270, 30, 16);
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("CCard:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(840, 310, 50, 16);
+
+        jLabelCCardIR.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabelCCardIR);
+        jLabelCCardIR.setBounds(910, 310, 50, 20);
+
+        jLabelCDIR.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabelCDIR);
+        jLabelCDIR.setBounds(910, 230, 50, 20);
+
+        jLabelLoanIR.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabelLoanIR);
+        jLabelLoanIR.setBounds(910, 270, 50, 20);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/WoodDesktop.jpg"))); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(0, -4, 1010, 720);
 
         setSize(new java.awt.Dimension(1005, 733));
         setLocationRelativeTo(null);
@@ -153,11 +185,17 @@ public class ViewManagersDesk extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    public static javax.swing.JLabel jLabelCCardIR;
+    public static javax.swing.JLabel jLabelCDIR;
     public static javax.swing.JLabel jLabelCheckingIR;
     private javax.swing.JLabel jLabelCheckingIR1;
     public static javax.swing.JLabel jLabelDate;
+    public static javax.swing.JLabel jLabelLoanIR;
     public static final javax.swing.JLabel jLabelSavingsIR = new javax.swing.JLabel();
     private javax.swing.JLabel jLabelTitle;
     // End of variables declaration//GEN-END:variables
