@@ -628,6 +628,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         crcd.interestRate = newInt.getCDRate();
         String intString = Double.toString(crcd.interestRate);
         crcd.jTextFieldInterest.setText(intString);
+        crcd.jTextField4.setText("50");
         crcd.setResizable(false);
         crcd.setVisible(true);
     }//GEN-LAST:event_jMenuItemCreateCDActionPerformed

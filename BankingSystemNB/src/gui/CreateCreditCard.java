@@ -45,8 +45,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
         jButtonCancel = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,14 +92,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Penalty");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,14 +114,12 @@ public class CreateCreditCard extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel3))
                                 .addGap(54, 54, 54)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField4)
                                     .addComponent(jTextField3)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)))
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,11 +166,7 @@ public class CreateCreditCard extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,7 +183,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
         String accountIDString = jTextField2.getText(); //This should pull from the database.
         String interestRateString = jTextField4.getText();
         String depositString = jTextField3.getText(); //This should pull from the database.
-        String penaltyString = jTextField1.getText();
         
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -243,34 +226,13 @@ public class CreateCreditCard extends javax.swing.JFrame {
                 double    deposit = Double.parseDouble(depositString);
                 CCard newCard = new CCard(customerID, accountID, interestRate, deposit, deposit, 0.0, nextPaymentString, false, true);
                 newCard.addRecord(newCard);
-        
-                customerIDString = Integer.toString(customerID);
-                
-                people.Customer searchCustomer = new people.Customer();
-                searchCustomer.search(customerID);
-
                 dispose();
-                ManagerActionScreen mas = new ManagerActionScreen();
-                ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
-                ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
-                ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
-                ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
-                ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
-                ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
-                ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
-                ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
-                mas.setResizable(false);
-                mas.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,8 +282,6 @@ public class CreateCreditCard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
