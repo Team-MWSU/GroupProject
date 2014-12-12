@@ -1,10 +1,28 @@
 package gui;
 
+import database.CD;
+import database.TestDate;
+import static java.lang.Math.pow;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class CloseCD extends javax.swing.JFrame {
 
     /**
      * Creates new form CloseCD
      */
+    
+    public int customerID;
+    public static boolean closeCD = false;
+    public static boolean penaltyFlag = false;
+    
     public CloseCD() {
         initComponents();
     }
@@ -143,7 +161,112 @@ public class CloseCD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonCloseCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseCDActionPerformed
-        dispose();
+        double amount = 0;
+        double interest = 0;
+        double total = 0;
+        CD newCD = new CD();
+        String accountIDString = jTextField1.getText();
+        NumberFormat numFormatter = new DecimalFormat("#0.00");  
+        
+        String monthString = (String)jComboBox2.getSelectedItem();   
+        String dayString = (String)jComboBox3.getSelectedItem();   
+        String yearString = (String)jComboBox4.getSelectedItem(); 
+        
+        int month = Integer.parseInt(monthString);
+        int day = Integer.parseInt(dayString);
+        int year = Integer.parseInt(yearString);
+        month -= 1;
+        year -= 1900;             
+        Date tDate = new Date(year, month, day);   
+        
+        Date oDate = new Date();
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        
+        if (accountIDString.equals(""))
+        {
+            jLabelEnterText.setText("Enter ALL Text");
+        }
+        else
+        { 
+            int accountID = Integer.parseInt(accountIDString);
+            newCD = newCD.getRecord(accountID);
+            System.out.println("BALANCE" + newCD.Balance);
+            if(newCD.OwnerID != customerID)
+            {
+                jLabelEnterText.setText("Doesn't belong to customer " + customerID);
+            }
+            else
+            {
+                amount = newCD.Balance;
+                
+                Date mDate = new Date();
+                
+                try {
+                    mDate = formatter.parse(newCD.Maturity);
+                } catch (ParseException ex) {
+                    Logger.getLogger(CloseCD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                Date rDate = new Date();
+                try {
+                    rDate = formatter.parse(newCD.Rollover);
+                } catch (ParseException ex) {
+                    Logger.getLogger(CloseCD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                try {
+                    oDate = formatter.parse(newCD.Opened);
+                } catch (ParseException ex) {
+                    Logger.getLogger(CloseCD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                interest = newCD.Interest / 100;
+                Calendar startCalendar = new GregorianCalendar();
+                startCalendar.setTime(oDate);
+                Calendar endCalendar = new GregorianCalendar();
+                endCalendar.setTime(tDate);
+                int diffYear = endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR);
+                int diffMonth = diffYear * 12 + endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
+            
+                total = amount * pow(1 + interest, (double)diffMonth);
+                System.out.println("INTEREST" + total);
+                
+                if((tDate.before(mDate) || tDate.after(rDate)) && (closeCD == false))
+                {
+                    CloseCDPopup ccp = new CloseCDPopup();
+                    ccp.setResizable(false);
+                    ccp.setVisible(true);
+                }
+                else
+                {
+                    closeCD = true;
+                }
+            }
+        }
+        
+        if(closeCD == true)
+        {
+            double penalty = 0.0;
+            if(penaltyFlag == true)
+            {
+                penalty = newCD.Penalty;
+                total = total - penalty;
+                System.out.println("PENALTY" + total);
+            }
+            newCD.Balance = 0;
+            newCD.Active = false;
+            newCD.updateRecord(newCD);
+            
+            CloseCDAmount cca = new CloseCDAmount();
+            cca.jLabelCalc.setText("$" + amount + " + $" + numFormatter.format(total + penalty - amount));
+            cca.jLabelPenalty.setText("$" + numFormatter.format(total + penalty) + " - $" + penalty);
+            cca.jLabelInterest.setText("$" + numFormatter.format(total + penalty));
+            cca.jLabelTotal.setText("$" + numFormatter.format(total));
+            cca.setResizable(false);
+            cca.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButtonCloseCDActionPerformed
 
     /**
