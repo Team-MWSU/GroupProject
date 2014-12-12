@@ -816,7 +816,10 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         //dispose();
         CreateShortTermLoan cstl = new CreateShortTermLoan();
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        InterestRates newInt = new InterestRates();
+        double interest = newInt.getLoanRate();
         cstl.customerID = customerID;
+        cstl.jTextField3.setText(Double.toString(interest));
         String customerIDString = Integer.toString(customerID);
         cstl.jLabel11.setText(customerIDString);
         cstl.setResizable(false);
