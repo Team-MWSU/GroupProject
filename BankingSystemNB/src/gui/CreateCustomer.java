@@ -280,6 +280,12 @@ public class CreateCustomer extends javax.swing.JFrame {
             
             */
             dispose();
+            CreateCustomerPopup ccp = new CreateCustomerPopup();
+            database.Customer temp = new database.Customer();
+            temp = temp.search(customerLastName);
+            ccp.jLabelCustomerID.setText(Integer.toString(temp.CustNum));
+            ccp.setResizable(false);
+            ccp.setVisible(true);
             //ManagerScreen ms = new ManagerScreen();
             //ms.setResizable(false);
             //ms.setVisible(true);

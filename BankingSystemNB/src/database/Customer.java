@@ -37,7 +37,7 @@ public class Customer {
 	
 	String LName;
 	String FName;
-	int CustNum;
+	public int CustNum;
 	String SSN;
 	String Street;
 	String City;
