@@ -5,8 +5,7 @@
  */
 package gui;
 
-import accounts.ExportNoticesCSV;
-
+import database.TestDate;
 /**
  *
  * @author Jordan
@@ -97,7 +96,8 @@ public class ConfirmationMoveClockForward extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYesActionPerformed
-        //Need to add the class to move the clock forward.
+        TestDate date = new TestDate();
+        date.updateGlobalDate(40);
         dispose();
     }//GEN-LAST:event_jButtonYesActionPerformed
 

@@ -1,6 +1,7 @@
 package gui;
 
 import database.InterestRates;
+import database.TestDate;
 
 public class ManagerActionScreen extends javax.swing.JFrame {
 
@@ -94,7 +95,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItemExportCSV = new javax.swing.JMenuItem();
         jMenuItemAdjustTime = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemReloadDatabase = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -476,7 +477,12 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Tools");
 
-        jMenuItem4.setText("View Current Interest Rates");
+        jMenuItem4.setText("Enter Manager's Office");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItemExportCSV.setText("Export Late Notices (.csv)");
@@ -495,8 +501,13 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemAdjustTime);
 
-        jMenuItem1.setText("Reload Database");
-        jMenu1.add(jMenuItem1);
+        jMenuItemReloadDatabase.setText("Reload Database");
+        jMenuItemReloadDatabase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReloadDatabaseActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemReloadDatabase);
 
         jMenuBar2.add(jMenu1);
 
@@ -1018,7 +1029,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCloseCreditCardActionPerformed
 
     private void jMenuItemAdjustTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdjustTimeActionPerformed
-        // TODO add your handling code here:
+        ConfirmationMoveClockForward ccf = new ConfirmationMoveClockForward();
+        ccf.setResizable(false);
+        ccf.setVisible(true);
     }//GEN-LAST:event_jMenuItemAdjustTimeActionPerformed
 
     private void jMenuItemExportCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportCSVActionPerformed
@@ -1026,6 +1039,24 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         cen.setResizable(false);
         cen.setVisible(true);
     }//GEN-LAST:event_jMenuItemExportCSVActionPerformed
+
+    private void jMenuItemReloadDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReloadDatabaseActionPerformed
+        ConfirmationReloadDatabase crd = new ConfirmationReloadDatabase();
+        crd.setResizable(false);
+        crd.setVisible(true);
+    }//GEN-LAST:event_jMenuItemReloadDatabaseActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        ViewManagersDesk vmd = new ViewManagersDesk();
+        vmd.setResizable(false);
+        vmd.setVisible(true);
+        
+        TestDate date = new TestDate();
+        
+        vmd.jLabelDate.setText(date.getGlobalDate().toString());
+        
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1087,7 +1118,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCreate;
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenu jMenuInterestRate;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemAdjustTime;
@@ -1107,6 +1137,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCreateSavings;
     private javax.swing.JMenuItem jMenuItemEditCustInfo;
     private javax.swing.JMenuItem jMenuItemExportCSV;
+    private javax.swing.JMenuItem jMenuItemReloadDatabase;
     private javax.swing.JMenuItem jMenuItemSetCheckingIR;
     private javax.swing.JMenuItem jMenuItemSetSavingsIR;
     private javax.swing.JMenuItem jMenuItemTransAccDeposit;

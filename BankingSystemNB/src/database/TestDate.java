@@ -6,6 +6,7 @@ package database;
 
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
@@ -17,10 +18,11 @@ public class TestDate {
     public TestDate(){
         
     }
-    
-    public void updateDate(){
-        String statement = "UPDATE loan SET testdate=" + this.date + ";";
-	db.insert(statement);
+        
+    public void updateGlobalDate(int days){
+
+        String statement = "UPDATE testdate SET testdate = DATE_ADD(testdate,INTERVAL " + days + " DAY)";
+        db.insert(statement);
         return;
     }
     
