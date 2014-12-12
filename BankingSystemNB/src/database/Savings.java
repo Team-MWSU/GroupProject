@@ -127,8 +127,13 @@ public class Savings {
 	
 	public void addTrans(Transaction trans)
 	{
-		String statement = "INSERT INTO savingsrecord VALUES ("+trans.TransactionID+","+trans.Account+",\""+trans.TransDate+"\",\""+trans.Description+"\","+trans.Value+");";
-		db.insert(statement);
+                Checking myCheck = new Checking();
+                myCheck.getRecord(trans.Account);
+                if (myCheck.Balance > trans.Value)
+                {
+                    String statement = "INSERT INTO savingsrecord VALUES ("+trans.TransactionID+","+trans.Account+",\""+trans.TransDate+"\",\""+trans.Description+"\","+trans.Value+");";
+                    db.insert(statement);
+                }
 	}
 	
 	public void updateRecord(Savings myRecord)
