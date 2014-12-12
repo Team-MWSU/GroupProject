@@ -1084,7 +1084,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         
         vmd.jLabelDate.setText(date.getGlobalDate().toString());
         
-        vmd.jLabelCheckingIR.setText(Double.toString(ir.getSavingsRate()*2));
+        vmd.jLabelCheckingIR.setText(Double.toString(ir.getSavingsRate()*0.5));
         vmd.jLabelSavingsIR.setText(Double.toString(ir.getSavingsRate()));
         vmd.jLabelCDIR.setText(Double.toString(ir.getCDRate()));
         vmd.jLabelLoanIR.setText(Double.toString(ir.getLoanRate()));
