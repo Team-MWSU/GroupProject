@@ -276,7 +276,6 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                     }
                     else
                     {
-                        
                         if (linkedAccountString.equals(""))
                         {
                             linkedAccount=-1;
@@ -289,10 +288,6 @@ public class CreateCheckingAccount extends javax.swing.JFrame {
                             database.Checking newChecking = new database.Checking(customerID, accountID, deposit, interestRate , date, linkedAccount, accountType, 0.0, true);
 
                             newChecking.addRecord(newChecking);
-
-                            people.Customer searchCustomer = new people.Customer();
-                            searchCustomer.search(customerID);
-
                             dispose();
                     }
             /*

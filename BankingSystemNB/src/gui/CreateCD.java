@@ -164,7 +164,7 @@ public class CreateCD extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                             .addComponent(jButtonCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -211,8 +211,8 @@ public class CreateCD extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-300)/2, (screenSize.height-396)/2, 300, 396);
+        setSize(new java.awt.Dimension(300, 396));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -274,25 +274,6 @@ public class CreateCD extends javax.swing.JFrame {
                 
 		CD newCD = new CD(customerID, accountID, deposit, interestRate, matureDateString, date, rollOverDateString, 50);
 		newCD.addRecord(newCD);
-            
-            customerIDString = Integer.toString(customerID);
-               /* 
-            people.Customer searchCustomer = new people.Customer();
-            searchCustomer.search(customerID);
-            
-            dispose();
-            ManagerActionScreen mas = new ManagerActionScreen();
-            ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
-            ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
-            ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
-            ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
-            ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
-            ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
-            ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
-            ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
-            mas.setResizable(false);
-            mas.setVisible(true);
-            */
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -353,7 +334,7 @@ public class CreateCD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField4;
     public javax.swing.JTextField jTextFieldInterest;
     // End of variables declaration//GEN-END:variables
 }
