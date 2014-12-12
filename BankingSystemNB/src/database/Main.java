@@ -167,8 +167,10 @@ public class Main {
 				}
 				case 7:
 				{
-					Employee newEmp = new Employee();
-					System.out.println(newEmp.validLogin("smartin", "password"));
+                                    //int Owner, int Deposit, double Bal, double Int, int Matur, String Open, double Pen)
+//	public CCard(int Owner, int Card, double Int, double Total, double Open, double Used, String Next, String Pen)
+					CCard newCard = new CCard(2, 1, 29, 1000, 200, 800, "2014-12-17", false);
+                                        newCard.updateRecord(newCard);
 				}
 				}
 
