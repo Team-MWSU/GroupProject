@@ -11,7 +11,7 @@ public class DBTest {
 
 			Customer newCust = new Customer("Plistensen", "Gardocky", 90211, "987654321", "300 Sesame St.", "Springfield","MO", "31005");
 			CCard newCard = new CCard(90211, 4, 9.9, 100, 50, 50, "1900-12-13", "No Penalty", true);
-			CD newCD = new CD(90211, 50, 1000, 9.9, "2050-01-02", "2010-01-02", "2050-01-07", "no penalty");
+			CD newCD = new CD(90211, 50, 1000, 9.9, "2050-01-02", "2010-01-02", "2050-01-07", 0);
 			Savings newSave = new Savings(90211, 9.9, 9999, 1000, 300, "2012-10-10", true);
 			Checking newCheck = new Checking(90211, 9999, 1000, 9.9, "1999-10-11", 9999, "IMB", 1000, true);
 			Loan newLoan = new Loan(90211, 9999, "Short", 9.9, 120.00, 10000, "2014-11-10", 9000, true, "2010-01-01", true);
