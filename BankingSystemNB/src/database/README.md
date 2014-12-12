@@ -36,19 +36,19 @@ CREATE TABLE customer
 );
 
 CREATE TABLE employee(
-LName 	VARCHAR(30),  
-FName 	VARCHAR(30),  
-EmpID 	Int(10) NOT NULL AUTO_INCREMENT,  
-UName VARCHAR(30),  
-Pass VARCHAR(30),  
-Manager boolean,  
-PRIMARY KEY (EmpID)
+  LName VARCHAR(30),  
+  FName VARCHAR(30),  
+  EmpID Int(10) NOT NULL AUTO_INCREMENT,  
+  UName VARCHAR(30),  
+  Pass VARCHAR(30),  
+  Manager boolean,  
+  PRIMARY KEY (EmpID)
 ); 
 
 CREATE TABLE savings(
   AccountID Int(10) NOT NULL AUTO_INCREMENT,
   Interest decimal(4,2) NOT NULL,
-  Balance decimal(12,2) NOT NULL,
+  Balance decimal(12,2) UNSIGNED NOT NULL,
   Overdraft decimal(5,2) NOT NULL,
   Opened date,
   Active boolean,
@@ -70,12 +70,13 @@ CREATE TABLE savingsrecord(
 CREATE TABLE cd(
   CustID Int(10) NOT NULL,
   AccountID int(10) NOT NULL AUTO_INCREMENT,
-  Value decimal(10,2) NOT NULL,
+  Value decimal(10,2) UNSIGNED NOT NULL,
   Interest decimal(5,3) NOT NULL,
   Maturity date NOT NULL,
   Opened date NOT NULL,
   Rollover date,
-  Penalty varchar(256),
+  Penalty decimal(10,2),
+  Active boolean,
   PRIMARY KEY (AccountID),
   FOREIGN KEY (CustID) REFERENCES customer(CustID)
 );
@@ -83,15 +84,13 @@ CREATE TABLE cd(
 CREATE TABLE checking(
   CustID Int(10) NOT NULL,
   AccountID int(10) NOT NULL AUTO_INCREMENT,
-  Value decimal(10,2) NOT NULL,
+  Value decimal(10,2) UNSIGNED NOT NULL,
   Interest decimal(5,3) NOT NULL,
   Opened date NOT NULL,
   SavingsAcct Int(10),
   Type varchar(10) NOT NULL,
   AvgBal decimal(12,2),
   Active boolean NOT NULL,
-  Card Varchar(16),
-  CardDate date,
   PRIMARY KEY (AccountID),
   FOREIGN KEY (CustID) REFERENCES customer(CustID),
   FOREIGN KEY (SavingsAcct) REFERENCES savings(AccountID)
@@ -115,7 +114,7 @@ CREATE TABLE loan(
   Monthly decimal(7,2) NOT NULL,
   TotalAmt decimal(10,2) NOT NULL,
   NextDue date NOT NULL,
-  CurrAmt decimal(10,2) NOT NULL,
+  CurrAmt decimal(10,2) UNSIGNED NOT NULL,
   Flag boolean NOT NULL,
   LastFull date NOT NULL,
   Active boolean NOT NULL,
@@ -138,10 +137,10 @@ CREATE TABLE ccard(
   AccountID int(10) NOT NULL AUTO_INCREMENT,
   Interest decimal(5,3) NOT NULL,
   TotalCredit decimal(12,2) NOT NULL,
-  OpenCredit decimal(12,2) NOT NULL,
+  OpenCredit decimal(12,2) UNSIGNED NOT NULL,
   UsedCredit decimal(12,2) NOT NULL,
   NextDue date NOT NULL,
-  Penalty varchar(256),
+  Penalty boolean,
   Active boolean NOT NULL,
   PRIMARY KEY (AccountID),
   FOREIGN KEY (CustID) REFERENCES customer(CustID)
@@ -172,11 +171,11 @@ insert into customer values("Morgeson", "John", 0, "677879013", "4305 W 3rd", "W
 insert into customer values("Gilkerson", "Gary", 0, "345599870", "221 South Highly", "St. Joseph", "MO, "64503");
 insert into customer values("Francis", "Mary", 0, "423567890", "335 Jules", "St. Joseph", "MO", "64503");
 insert into customer values("Johnson", "Carolyn", 0, "345812332", "1402 Mocking Bird", "St. Joseph", "MO", "64502");
-insert into customer values("Waite", "Larry", 0, "345879912", "2105 Senior Dr.", "St. Joseph", "MO", 64503");
+insert into customer values("Waite", "Larry", 0, "345879912", "2105 Senior Dr.", "St. Joseph", "MO", "64503");
 insert into customer values("Macklin", "Marilyn", 0, "423168945", "1801 Lovers Ln", "St. Joseph", "MO", "64502");
 insert into customer values("MyGlynn", "Lana", 0, "235445789", "2508 Stonecrest", "St. Joseph", "MO", "64502");
 insert into customer values("Munzer", "John", 0, "436789213", "4156 N. Mulberry", "St. Joseph", "MO", "64502");
 insert into customer values("White", "Mary", 0, "233435656", "1523 Kioa", "Ellwood", "KS", "56708");
-insert into customer values("Gronius", "Jerry", 0, "435678787", "8902 Martha Ln.", Gower", "MO", "63301");
+insert into customer values("Gronius", "Jerry", 0, "435678787", "8902 Martha Ln.", "Gower", "MO", "63301");
 insert into customer values("Williams", "Martin", 0, "563432913", "1532 Lovers Ln.", "St. Joseph", "MO", "64502");
 insert into customer values("Jones", "Broderick", 0, "345679898", "703 Park Ln", "St Joseph", "MO", "64501");
