@@ -133,6 +133,36 @@ public class CCard {
 		}
 		return cardArray;
 	}
+        
+        public List<CCard> getAllFlaggedRecords()
+	{
+		String statement = "SELECT * FROM ccard WHERE penalty = 1";
+		ResultSet res = (ResultSet)db.select(statement);
+		List<CCard> ccardArray = new ArrayList<CCard>();
+		CCard myCCard= new CCard();
+		try
+		{
+			while (res.next())
+			{
+				myCCard = new CCard();
+				myCCard.OwnerID = res.getInt(1);
+				myCCard.CardID = res.getInt(2);
+				myCCard.Interest = res.getDouble(3);
+				myCCard.TotalCredit = res.getDouble(4);
+				myCCard.OpenCredit = res.getDouble(5);
+				myCCard.UsedCredit = res.getDouble(6);
+				myCCard.NextDue = res.getString(7);
+				myCCard.Penalty = res.getBoolean(8);
+				myCCard.Active = res.getBoolean(9);
+				ccardArray.add(myCCard);
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		return ccardArray;
+	}
 	
 	
 	public void addRecord(CCard newCard)
@@ -199,6 +229,45 @@ public class CCard {
 		db.insert(statement);
 	}
 	
+        public void updateFlags(){
+                String statement = "SELECT * FROM ccard";
+		ResultSet res = (ResultSet)db.select(statement);
+		CCard myCCard = new CCard();
+                TestDate currentTestDate = new TestDate();
+                java.util.Date currentDate = currentTestDate.getGlobalDate();
+		try
+		{
+			while (res.next())
+			{
+				myCCard = new CCard();
+				myCCard.OwnerID = res.getInt(1);
+				myCCard.CardID = res.getInt(2);
+				myCCard.Interest = res.getDouble(3);
+				myCCard.TotalCredit = res.getDouble(4);
+				myCCard.OpenCredit = res.getDouble(5);
+				myCCard.UsedCredit = res.getDouble(6);
+				myCCard.NextDue = res.getString(7);
+				myCCard.Penalty = res.getBoolean(8);
+				myCCard.Active = res.getBoolean(9);
+                                
+                                TestDate myTestDate = new TestDate();
+                                myTestDate.setDateString(myCCard.NextDue);
+                                java.util.Date dueDate = myTestDate.getDate();
+                                
+                                if(currentDate.after(dueDate)){
+                                    myCCard.Penalty = true;
+                                    updateRecord(myCCard);
+                                }
+                                
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		return;
+        }
+        
 	public void Print()
 	{
 		System.out.println(OwnerID+CardID+Interest+TotalCredit+OpenCredit+UsedCredit+NextDue+Penalty);
