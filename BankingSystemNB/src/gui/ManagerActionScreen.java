@@ -964,6 +964,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCloseShortLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseShortLoanActionPerformed
         //dispose();
         CloseShortTermLoan cstl = new CloseShortTermLoan();
+        cstl.customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cstl.setResizable(false);
         cstl.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseShortLoanActionPerformed
@@ -996,6 +997,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCloseLongLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseLongLoanActionPerformed
         //dispose();
         CloseLongTermLoan cltl = new CloseLongTermLoan();
+        cltl.customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         cltl.setResizable(false);
         cltl.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseLongLoanActionPerformed

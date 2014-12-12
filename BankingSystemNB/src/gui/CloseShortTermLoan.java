@@ -4,6 +4,8 @@
  */
 package gui;
 
+import database.Loan;
+
 /**
  *
  * @author Joel Jacobsen
@@ -13,6 +15,9 @@ public class CloseShortTermLoan extends javax.swing.JFrame {
     /**
      * Creates new form CloseShortTermLoan
      */
+    
+    public int customerID;
+    
     public CloseShortTermLoan() {
         initComponents();
     }
@@ -141,7 +146,33 @@ public class CloseShortTermLoan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonCloseLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseLoanActionPerformed
-        dispose();
+                String accountIDString = jTextField1.getText();
+        Loan newLoan = new Loan();
+        
+        if (accountIDString.equals("")){
+            jLabel4.setText("Enter ALL Text");
+        }
+        else{ 
+            int accountID = Integer.parseInt(accountIDString); 
+            newLoan = newLoan.getRecord(accountID);
+            if(customerID != newLoan.OwnerID)
+            {
+                jLabel4.setText("Account does not belong to customer " + customerID);
+            }
+            else
+            {
+                if(newLoan.CurrAmt > 0)
+                {
+                    jLabel4.setText("Cant Close, balance $" + newLoan.CurrAmt);
+                }
+                else
+                {
+                    newLoan.Active = false;
+                    newLoan.updateRecord(newLoan);
+                    dispose();
+                }
+            }
+        }
     }//GEN-LAST:event_jButtonCloseLoanActionPerformed
 
     /**

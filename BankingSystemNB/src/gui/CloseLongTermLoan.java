@@ -4,6 +4,8 @@
  */
 package gui;
 
+import database.Loan;
+
 /**
  *
  * @author Joel Jacobsen
@@ -13,6 +15,9 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
     /**
      * Creates new form CloseLongTermLoan
      */
+    
+    public int customerID;
+    
     public CloseLongTermLoan() {
         initComponents();
     }
@@ -74,8 +79,6 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
         jLabel1.setText("Close Long-Term Loan");
         jLabel1.setToolTipText("Close Long-Term Loan");
 
-        jLabel4.setText("Enter ALL Text");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,9 +93,11 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(35, 35, 35))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
@@ -107,7 +112,7 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonCloseLoan, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                             .addComponent(jButtonCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,8 +124,8 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(6, 6, 6)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +135,7 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
                 .addComponent(jButtonCloseLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(300, 322));
@@ -142,7 +147,33 @@ public class CloseLongTermLoan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonCloseLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseLoanActionPerformed
-        dispose();
+        String accountIDString = jTextField1.getText();
+        Loan newLoan = new Loan();
+        
+        if (accountIDString.equals("")){
+            jLabel4.setText("Enter ALL Text");
+        }
+        else{ 
+            int accountID = Integer.parseInt(accountIDString); 
+            newLoan = newLoan.getRecord(accountID);
+            if(customerID != newLoan.OwnerID)
+            {
+                jLabel4.setText("Account does not belong to customer " + customerID);
+            }
+            else
+            {
+                if(newLoan.CurrAmt > 0)
+                {
+                    jLabel4.setText("Cant Close, balance $" + newLoan.CurrAmt);
+                }
+                else
+                {
+                    newLoan.Active = false;
+                    newLoan.updateRecord(newLoan);
+                    dispose();
+                }
+            }
+        }
     }//GEN-LAST:event_jButtonCloseLoanActionPerformed
 
     /**
