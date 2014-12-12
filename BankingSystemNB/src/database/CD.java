@@ -35,9 +35,10 @@ public class CD {
 	public double Balance;
 	public double Interest;
 	public String Maturity;
+        private int MatLen;
 	public String Opened;
 	public String Rollover;
-	public String Penalty;
+	public double Penalty;
 	SQLDriver db = new SQLDriver();
 	
 	public CD()
@@ -49,10 +50,10 @@ public class CD {
 		Maturity = null;
 		Opened = null;
 		Rollover = null;
-		Penalty = "";
+		Penalty = 0;
 	}
 	
-	public CD (int Owner, int Deposit, double Bal, double Int, String Mat, String Open, String Roll, String Pen)
+	public CD (int Owner, int Deposit, double Bal, double Int, String Mat, String Open, String Roll, double Pen)
 	{
 		OwnerID = Owner;
 		DepositID = Deposit;
@@ -63,6 +64,45 @@ public class CD {
 		Rollover = Roll;
 		Penalty = Pen;
 	}
+        
+        public CD (int Owner, int Deposit, double Bal, double Int, int Matur, String Open, double Pen)
+        {
+            OwnerID = Owner;
+            DepositID = Deposit;
+            Balance = Bal;
+            Interest = Int;
+            MatLen = Matur;
+            Opened = Open;
+            Penalty = Pen;
+            Maturity = getMaturity(Opened, MatLen);
+            Rollover = getRollover(Maturity);
+            
+        }
+        
+        private String getMaturity(String Opened, int MatLen)
+        {
+            String statement = "select date_add(\""+Opened+"\", INTERVAL +"+MatLen+" MONTH);";
+            ResultSet rs = (ResultSet)db.select(statement);
+            try{
+                rs.next();
+                return rs.getString(1);
+            }
+            catch(Exception ex){}
+            return null;
+        }
+        
+        private String getRollover(String Mat)
+        {
+            String statement = "SELECT date_add(\""+Mat+"\", INTERVAL 7 DAY);";
+            ResultSet rs = (ResultSet)db.select(statement);
+            try
+            {
+                rs.next();
+                return rs.getString(1);
+            }
+            catch(Exception ex){}
+            return null;
+        }
 	
 	public void addRecord(CD newCD)
 	{
@@ -95,7 +135,7 @@ public class CD {
 				newCD.Maturity = res.getString(5);
 				newCD.Opened = res.getString(6);
 				newCD.Rollover = res.getString(7);
-				newCD.Penalty = res.getString(8);
+				newCD.Penalty = res.getDouble(8);
 				cdArray.add(newCD);
 			}
 		}
@@ -124,7 +164,7 @@ public class CD {
 				newCD.Maturity = res.getString(5);
 				newCD.Opened = res.getString(6);
 				newCD.Rollover = res.getString(7);
-				newCD.Penalty = res.getString(8);
+				newCD.Penalty = res.getDouble(8);
 				cdArray.add(newCD);
 			}
 			return newCD;
