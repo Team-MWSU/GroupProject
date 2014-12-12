@@ -165,8 +165,15 @@ public class Checking {
 	
 	public void addTrans(Transaction myTrans)
 	{
-		String statement = "INSERT INTO checkingrecord VALUES ("+myTrans.TransactionID+","+myTrans.Account+",\""+myTrans.TransDate+"\","+myTrans.Value+",\""+myTrans.Description+"\");";
-		db.insert(statement);
+                Checking testCheck = new Checking();
+                testCheck = testCheck.getRecord(myTrans.Account);
+                if(myTrans.Value < testCheck.Balance)
+                {
+                    String statement = "INSERT INTO checkingrecord VALUES ("+myTrans.TransactionID+","+myTrans.Account+",\""+myTrans.TransDate+"\","+myTrans.Value+",\""+myTrans.Description+"\");";
+                    db.insert(statement);
+                }
+                
+                
 	}
 	
 	public void addRecord(Checking newCheck)
