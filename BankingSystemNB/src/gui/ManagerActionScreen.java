@@ -1001,6 +1001,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private void jMenuItemCloseCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCDActionPerformed
         //dispose();
         CloseCD ccd = new CloseCD();
+        ccd.customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         ccd.setResizable(false);
         ccd.setVisible(true);
     }//GEN-LAST:event_jMenuItemCloseCDActionPerformed
