@@ -138,7 +138,7 @@ public class Savings {
 	
 	public void updateRecord(Savings myRecord)
 	{
-		String statement = "UPDATE savings SET OwnerID="+myRecord.CustNum+", Interest="+myRecord.Interest+", Balance="+myRecord.Value+", Overdraft="+myRecord.Overdraft+", Opened=\""+myRecord.OpenDate+"\", Active="+myRecord.Active+" WHERE AccountID="+myRecord.Account+";";
+		String statement = "UPDATE savings SET AccountID="+myRecord.CustNum+", Interest="+myRecord.Interest+", Balance="+myRecord.Value+", Overdraft="+myRecord.Overdraft+", Opened=\""+myRecord.OpenDate+"\", Active="+myRecord.Active+" WHERE AccountID="+myRecord.Account+";";
 		db.insert(statement);
 	}
 	

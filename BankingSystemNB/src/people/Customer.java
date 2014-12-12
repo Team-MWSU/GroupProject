@@ -48,7 +48,7 @@ public class Customer extends Person {
          
         public List<CustomerAccounts> getCustomerAccounts()
 	{
-		String statement = "SELECT AccountID FROM savings WHERE OwnerID="+this.ID+";";
+		String statement = "SELECT AccountID FROM savings WHERE CustID="+this.ID+";";
 		List<CustomerAccounts> AccountList = new ArrayList<CustomerAccounts>();
 		ResultSet rs = (ResultSet)db.select(statement);
 		CustomerAccounts CA = new CustomerAccounts();
