@@ -666,6 +666,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         //dispose();
         CreateLongTermLoan cltl = new CreateLongTermLoan();
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        InterestRates newInt = new InterestRates();
+        double interest = newInt.getLoanRate();
+        cltl.jTextField3.setText(Double.toString(interest));
         cltl.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         cltl.jLabel9.setText(customerIDString);
@@ -844,6 +847,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         //dispose();
         CreateCreditCard ccc = new CreateCreditCard();
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
+        InterestRates newInt = new InterestRates();
+        double interest = newInt.getCCardRate();
+        ccc.jTextField4.setText(Double.toString(interest));
         ccc.customerID = customerID;
         String customerIDString = Integer.toString(customerID);
         ccc.jLabel7.setText(customerIDString);

@@ -67,7 +67,7 @@
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                                  <EmptySpace pref="40" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jTextField5" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                                       <Component id="jTextField4" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
@@ -316,6 +316,9 @@
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Loan Interest Rate"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCacnel">
       <Properties>
