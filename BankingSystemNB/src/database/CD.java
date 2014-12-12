@@ -39,6 +39,7 @@ public class CD {
 	public String Opened;
 	public String Rollover;
 	public double Penalty;
+        public boolean Active;
 	SQLDriver db = new SQLDriver();
 	
 	public CD()
@@ -51,6 +52,8 @@ public class CD {
 		Opened = null;
 		Rollover = null;
 		Penalty = 0;
+                Active=true;
+                
 	}
 	
 	public CD (int Owner, int Deposit, double Bal, double Int, String Mat, String Open, String Roll, double Pen)
@@ -63,6 +66,7 @@ public class CD {
 		Opened = Open;
 		Rollover = Roll;
 		Penalty = Pen;
+                Active=true;
 	}
         
         public CD (int Owner, int Deposit, double Bal, double Int, int Matur, String Open, double Pen)
@@ -76,6 +80,7 @@ public class CD {
             Penalty = Pen;
             Maturity = getMaturity(Opened, MatLen);
             Rollover = getRollover(Maturity);
+            Active=true;
             
         }
         
@@ -106,14 +111,13 @@ public class CD {
 	
 	public void addRecord(CD newCD)
 	{
-		String statement = "INSERT INTO cd VALUES ("+newCD.OwnerID+","+"0"+","+newCD.Balance+","+newCD.Interest+",\""+newCD.Maturity+"\",\""+newCD.Opened+"\",\""+newCD.Rollover+"\",\""+newCD.Penalty+"\");";
-		db.insert(statement);
+		String statement = "INSERT INTO cd VALUES ("+newCD.OwnerID+","+"0"+","+newCD.Balance+","+newCD.Interest+",\""+newCD.Maturity+"\",\""+newCD.Opened+"\",\""+newCD.Rollover+"\","+newCD.Penalty+", "+newCD.Active+");";
+                db.insert(statement);
 	}
 	
 	public void updateRecord(CD newCD)
 	{
-		String statement = "UPDATE cd SET CustID = "+newCD.OwnerID+", AccountID="+newCD.DepositID+", Value = "+newCD.Balance+", Interest="+newCD.Interest+", Maturity=\""+newCD.Maturity+"\", Opened=\""+newCD.Opened+"\", Rollover=\""+newCD.Rollover+"\", Penalty=\""+newCD.Penalty+"\" WHERE AccountID="+newCD.DepositID+";";
-		System.out.println(statement);
+		String statement = "UPDATE cd SET CustID = "+newCD.OwnerID+", AccountID="+newCD.DepositID+", Value = "+newCD.Balance+", Interest="+newCD.Interest+", Maturity=\""+newCD.Maturity+"\", Opened=\""+newCD.Opened+"\", Rollover=\""+newCD.Rollover+"\", Penalty=\""+newCD.Penalty+"\", Active="+newCD.Active+" WHERE AccountID="+newCD.DepositID+";";
 		db.insert(statement);
 	}
 	
