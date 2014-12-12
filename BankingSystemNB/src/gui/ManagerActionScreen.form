@@ -243,10 +243,26 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSetCheckingIR">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Set Checking Interest Rate"/>
+                <Property name="text" type="java.lang.String" value="Set CD Interest Rate"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSetCheckingIRActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSetLoanIR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Set Loan Interest Rate"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSetLoanIRActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSetCCIR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Set Credit Card Interest Rate"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSetCCIRActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

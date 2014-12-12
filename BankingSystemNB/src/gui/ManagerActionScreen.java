@@ -91,6 +91,8 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jMenuInterestRate = new javax.swing.JMenu();
         jMenuItemSetSavingsIR = new javax.swing.JMenuItem();
         jMenuItemSetCheckingIR = new javax.swing.JMenuItem();
+        jMenuItemSetLoanIR = new javax.swing.JMenuItem();
+        jMenuItemSetCCIR = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemManagersOffice = new javax.swing.JMenuItem();
         jMenuItemExportCSV = new javax.swing.JMenuItem();
@@ -465,13 +467,29 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         });
         jMenuInterestRate.add(jMenuItemSetSavingsIR);
 
-        jMenuItemSetCheckingIR.setText("Set Checking Interest Rate");
+        jMenuItemSetCheckingIR.setText("Set CD Interest Rate");
         jMenuItemSetCheckingIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSetCheckingIRActionPerformed(evt);
             }
         });
         jMenuInterestRate.add(jMenuItemSetCheckingIR);
+
+        jMenuItemSetLoanIR.setText("Set Loan Interest Rate");
+        jMenuItemSetLoanIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSetLoanIRActionPerformed(evt);
+            }
+        });
+        jMenuInterestRate.add(jMenuItemSetLoanIR);
+
+        jMenuItemSetCCIR.setText("Set Credit Card Interest Rate");
+        jMenuItemSetCCIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSetCCIRActionPerformed(evt);
+            }
+        });
+        jMenuInterestRate.add(jMenuItemSetCCIR);
 
         jMenuBar2.add(jMenuInterestRate);
 
@@ -832,7 +850,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
     private void jMenuItemSetCheckingIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSetCheckingIRActionPerformed
         //dispose();
-        SetCheckingInterestRate scir = new SetCheckingInterestRate();
+        SetCDInterestRate scir = new SetCDInterestRate();
         scir.setResizable(false);
         scir.setVisible(true);
     }//GEN-LAST:event_jMenuItemSetCheckingIRActionPerformed
@@ -1067,6 +1085,18 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemManagersOfficeActionPerformed
 
+    private void jMenuItemSetLoanIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSetLoanIRActionPerformed
+        SetLoanInterestRate slir = new SetLoanInterestRate();
+        slir.setResizable(false);
+        slir.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSetLoanIRActionPerformed
+
+    private void jMenuItemSetCCIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSetCCIRActionPerformed
+        SetCardInterestRate sccir = new SetCardInterestRate();
+        sccir.setResizable(false);
+        sccir.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSetCCIRActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1147,7 +1177,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemExportCSV;
     private javax.swing.JMenuItem jMenuItemManagersOffice;
     private javax.swing.JMenuItem jMenuItemReloadDatabase;
+    private javax.swing.JMenuItem jMenuItemSetCCIR;
     private javax.swing.JMenuItem jMenuItemSetCheckingIR;
+    private javax.swing.JMenuItem jMenuItemSetLoanIR;
     private javax.swing.JMenuItem jMenuItemSetSavingsIR;
     private javax.swing.JMenuItem jMenuItemTransAccDeposit;
     private javax.swing.JMenuItem jMenuItemTransAccWithdrawl;
