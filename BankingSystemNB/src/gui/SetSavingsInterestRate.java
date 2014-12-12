@@ -95,16 +95,16 @@ public class SetSavingsInterestRate extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+        //ManagerActionScreen mas = new ManagerActionScreen();
+        //mas.setResizable(false);
+        //mas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         dispose();
-        ManagerActionScreen mas = new ManagerActionScreen();
-        mas.setResizable(false);
-        mas.setVisible(true);
+        //ManagerActionScreen mas = new ManagerActionScreen();
+        //mas.setResizable(false);
+        //mas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
