@@ -1010,7 +1010,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCloseATMCardActionPerformed
 
     private void jMenuItemCloseCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseCreditCardActionPerformed
-        //dispose();
         CloseCreditCard ccc = new CloseCreditCard();
         customerID = Integer.parseInt(ManagerActionScreen.jLabelCustomerID.getText());
         ccc.customerID = this.customerID;
@@ -1023,7 +1022,9 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAdjustTimeActionPerformed
 
     private void jMenuItemExportCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportCSVActionPerformed
-        // TODO add your handling code here:
+        ConfirmationExportNotices cen = new ConfirmationExportNotices();
+        cen.setResizable(false);
+        cen.setVisible(true);
     }//GEN-LAST:event_jMenuItemExportCSVActionPerformed
 
     /**
