@@ -272,17 +272,6 @@ public class CreateShortTermLoan extends javax.swing.JFrame {
                 searchCustomer.search(customerID);
 
                 dispose();
-                ManagerActionScreen mas = new ManagerActionScreen();
-                ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
-                ManagerActionScreen.jLabel11.setText(searchCustomer.getFirstName());
-                ManagerActionScreen.jLabel12.setText(searchCustomer.getLastName());
-                ManagerActionScreen.jLabel13.setText(searchCustomer.getSSNumber());
-                ManagerActionScreen.jLabel14.setText(searchCustomer.getStreetAddress());
-                ManagerActionScreen.jLabel15.setText(searchCustomer.getCity());
-                ManagerActionScreen.jLabel17.setText(searchCustomer.getState());
-                ManagerActionScreen.jLabel16.setText(searchCustomer.getZipCode());
-                mas.setResizable(false);
-                mas.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
