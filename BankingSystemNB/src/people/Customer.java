@@ -128,6 +128,23 @@ public class Customer extends Person {
 		}
 		catch(Exception ex)
 		{}
+                database.Checking newChecking = new database.Checking();
+               // newChecking.get
+                statement = "SELECT TransactionID FROM checkingrecord WHERE AccountID="+this.ID+";";
+		rs = (ResultSet)db.select(statement);
+		try
+		{
+			while(rs.next())
+			{
+				CA = new CustomerAccounts();
+				CA.AccountID=rs.getInt(1);
+				CA.CustID=this.ID;
+				CA.AccountType="Checks";
+				AccountList.add(CA);
+			}
+		}
+		catch(Exception ex)
+		{}
 		return AccountList;
 		
 	}
