@@ -27,6 +27,7 @@ package database;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Loan {
 
@@ -245,4 +246,51 @@ public class Loan {
 		Transaction trans = new Transaction();
 		return trans.rsToTransactionList(res);
 	}
+        
+        public void updateFlags(){
+                String statement = "SELECT * FROM loan";
+		ResultSet res = (ResultSet)db.select(statement);
+		Loan myLoan = new Loan();
+                TestDate currentTestDate = new TestDate();
+                Date currentDate = currentTestDate.getGlobalDate();
+                System.out.println(currentDate);
+		try
+		{
+			while (res.next())
+			{
+				myLoan = new Loan();
+				myLoan.OwnerID = res.getInt(1);
+				myLoan.LoanID = res.getInt(2);
+				myLoan.Type = res.getString(3);
+				myLoan.Interest = res.getDouble(4);
+				myLoan.Monthly = res.getDouble(5);
+				myLoan.Total = res.getDouble(6);
+				myLoan.NextDue = res.getString(7);
+				myLoan.CurrAmt = res.getDouble(8);
+				myLoan.Flag = res.getBoolean(9);
+				myLoan.LastFull = res.getString(10);
+				myLoan.Active = res.getBoolean(11);
+                                
+                                TestDate myTestDate = new TestDate();
+                                myTestDate.setDateString(myLoan.NextDue);
+                                System.out.println("Next Due: " + myLoan.NextDue);
+                                Date dueDate = myTestDate.getDate();
+                                System.out.println("Due Date: " + dueDate);
+                                
+                                
+                                
+                                if(currentDate.after(dueDate)){
+                                    myLoan.Flag = true;
+                                    updateRecord(myLoan);
+                                }
+                                
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		return;
+        }
+        
 }
