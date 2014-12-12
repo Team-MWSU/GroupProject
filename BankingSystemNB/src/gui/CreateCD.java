@@ -274,6 +274,7 @@ public class CreateCD extends javax.swing.JFrame {
                 
 		CD newCD = new CD(customerID, accountID, deposit, interestRate, matureDateString, date, rollOverDateString, 50);
 		newCD.addRecord(newCD);
+                dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
