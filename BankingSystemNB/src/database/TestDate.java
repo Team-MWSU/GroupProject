@@ -62,7 +62,6 @@ public class TestDate {
         
         try{
             myDate = dateFormat.parse(myString);
-            System.out.println("I'm here: " + myDate);
             this.date = myDate;
         }catch(Exception ex){
             ex.printStackTrace();

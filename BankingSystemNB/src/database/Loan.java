@@ -253,7 +253,6 @@ public class Loan {
 		Loan myLoan = new Loan();
                 TestDate currentTestDate = new TestDate();
                 Date currentDate = currentTestDate.getGlobalDate();
-                System.out.println(currentDate);
 		try
 		{
 			while (res.next())
@@ -273,9 +272,7 @@ public class Loan {
                                 
                                 TestDate myTestDate = new TestDate();
                                 myTestDate.setDateString(myLoan.NextDue);
-                                System.out.println("Next Due: " + myLoan.NextDue);
                                 Date dueDate = myTestDate.getDate();
-                                System.out.println("Due Date: " + dueDate);
                                 
                                 
                                 
