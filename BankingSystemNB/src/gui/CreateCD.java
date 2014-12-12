@@ -272,7 +272,7 @@ public class CreateCD extends javax.swing.JFrame {
             double    deposit = Double.parseDouble(depositString);
             double interestRate = Double.parseDouble(interestRateString);
                 
-		CD newCD = new CD(customerID, accountID, deposit, interestRate, matureDateString, date, rollOverDateString, penaltyString);
+		CD newCD = new CD(customerID, accountID, deposit, interestRate, matureDateString, date, rollOverDateString, 50);
 		newCD.addRecord(newCD);
             
             customerIDString = Integer.toString(customerID);
