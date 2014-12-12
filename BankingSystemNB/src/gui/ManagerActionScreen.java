@@ -519,7 +519,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemAdjustTime);
 
-        jMenuItemReloadDatabase.setText("Reload Database");
+        jMenuItemReloadDatabase.setText("Reload Database Backup");
         jMenuItemReloadDatabase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemReloadDatabaseActionPerformed(evt);
