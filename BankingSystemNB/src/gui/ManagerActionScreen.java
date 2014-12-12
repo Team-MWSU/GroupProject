@@ -476,7 +476,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Tools");
 
-        jMenuItem4.setText("One more thing..");
+        jMenuItem4.setText("View Current Interest Rates");
         jMenu1.add(jMenuItem4);
 
         jMenuItemExportCSV.setText("Export Late Notices (.csv)");
@@ -511,7 +511,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)

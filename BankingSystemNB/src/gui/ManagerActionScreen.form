@@ -258,7 +258,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="One more thing.."/>
+                <Property name="text" type="java.lang.String" value="View Current Interest Rates"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemExportCSV">
