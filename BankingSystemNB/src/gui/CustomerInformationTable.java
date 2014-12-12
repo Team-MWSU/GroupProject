@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -284,11 +285,19 @@ public class CustomerInformationTable extends JFrame{
  
 
             }
-                        modelSavings.fireTableDataChanged();
+            
+            modelSavings.fireTableDataChanged();
             modelChecking.fireTableDataChanged();
             modelLoans.fireTableDataChanged();
             modelCD.fireTableDataChanged();
             modelCreditCard.fireTableDataChanged();
+            
+            checkingAccountList = new String[0];
+            savingsAccountList = new String[0];
+            creditCardAccountList = new String[0];
+            shortTermLoanAccountList = new String[0];
+            longTermLoanAccountList = new String[0];
+            accountTypesList = new String[0];
             
             checkingAccountList = tempCheckingAcctList.toArray(new String[tempCheckingAcctList.size()]);
             savingsAccountList = tempSavingsAcctList.toArray(new String[tempSavingsAcctList.size()]);
