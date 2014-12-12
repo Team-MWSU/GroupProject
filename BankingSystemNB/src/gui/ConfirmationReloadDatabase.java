@@ -5,7 +5,7 @@
  */
 package gui;
 
-import accounts.ExportNoticesCSV;
+import database.ReloadDatabase;
 
 /**
  *
@@ -97,7 +97,7 @@ public class ConfirmationReloadDatabase extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYesActionPerformed
-        //Need to add the script to reload the database.
+        ReloadDatabase rd = new ReloadDatabase();
         dispose();
     }//GEN-LAST:event_jButtonYesActionPerformed
 

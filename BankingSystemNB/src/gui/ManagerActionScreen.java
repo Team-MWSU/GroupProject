@@ -92,7 +92,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         jMenuItemSetSavingsIR = new javax.swing.JMenuItem();
         jMenuItemSetCheckingIR = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItemManagersOffice = new javax.swing.JMenuItem();
         jMenuItemExportCSV = new javax.swing.JMenuItem();
         jMenuItemAdjustTime = new javax.swing.JMenuItem();
         jMenuItemReloadDatabase = new javax.swing.JMenuItem();
@@ -477,13 +477,13 @@ public class ManagerActionScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Tools");
 
-        jMenuItem4.setText("Enter Manager's Office");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemManagersOffice.setText("Enter Manager's Office");
+        jMenuItemManagersOffice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemManagersOfficeActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        jMenu1.add(jMenuItemManagersOffice);
 
         jMenuItemExportCSV.setText("Export Late Notices (.csv)");
         jMenuItemExportCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -1047,7 +1047,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         crd.setVisible(true);
     }//GEN-LAST:event_jMenuItemReloadDatabaseActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemManagersOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManagersOfficeActionPerformed
         ViewManagersDesk vmd = new ViewManagersDesk();
         vmd.setResizable(false);
         vmd.setVisible(true);
@@ -1057,7 +1057,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
         vmd.jLabelDate.setText(date.getGlobalDate().toString());
         
         
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemManagersOfficeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1120,7 +1120,6 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenu jMenuInterestRate;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemAdjustTime;
     private javax.swing.JMenuItem jMenuItemCloseATMCard;
     private javax.swing.JMenuItem jMenuItemCloseCD;
@@ -1138,6 +1137,7 @@ public class ManagerActionScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCreateSavings;
     private javax.swing.JMenuItem jMenuItemEditCustInfo;
     private javax.swing.JMenuItem jMenuItemExportCSV;
+    private javax.swing.JMenuItem jMenuItemManagersOffice;
     private javax.swing.JMenuItem jMenuItemReloadDatabase;
     private javax.swing.JMenuItem jMenuItemSetCheckingIR;
     private javax.swing.JMenuItem jMenuItemSetSavingsIR;
