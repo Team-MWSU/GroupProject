@@ -143,6 +143,7 @@ public class ManagerScreen extends javax.swing.JFrame {
     private void jButtonSelectCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectCustomerActionPerformed
         
         String customerIDString = jTextField1.getText();
+        int customerID = Integer.parseInt(customerIDString);
         SQLDriver db = new SQLDriver();
         database.Customer newCust = new database.Customer();
         
@@ -159,6 +160,9 @@ public class ManagerScreen extends javax.swing.JFrame {
         }
 
         else{
+            
+            CustomerInformationTable newTab = new CustomerInformationTable(customerID);
+            /*
             int customerID = Integer.parseInt(customerIDString);
             people.Customer searchCustomer = new people.Customer();
             searchCustomer.search(customerID);
@@ -203,7 +207,7 @@ public class ManagerScreen extends javax.swing.JFrame {
                 differentTables[i].setModel(DbUtils.resultSetToTableModel(rs));
             }
             */
-
+/*
             List<String> tempCheckingAcctList = new ArrayList<String>();
             List<String> tempCreditCardAcctList = new ArrayList<String>();
             List<String> tempSavingsAcctList = new ArrayList<String>();
@@ -408,7 +412,7 @@ public class ManagerScreen extends javax.swing.JFrame {
             
             
             
-            
+            */
             
             
             

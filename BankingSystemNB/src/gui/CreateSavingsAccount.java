@@ -228,6 +228,9 @@ public class CreateSavingsAccount extends javax.swing.JFrame {
                         people.Customer searchCustomer = new people.Customer();
             searchCustomer.search(customerID);
             
+            
+            //CustomerInformationTable newTab = new CustomerInformationTable(customerID);         
+            
             dispose();
             //ManagerActionScreen mas = new ManagerActionScreen();
             //ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
