@@ -122,7 +122,7 @@ public class Customer {
 	
 	public Customer search(String LName)
 	{
-		String statement = "SELECT * FROM customer WHERE LName ="+LName;
+		String statement = "SELECT * FROM customer WHERE LName =\""+LName+"\";";
 		try
 		{
 			ResultSet res = (ResultSet)db.select(statement);
