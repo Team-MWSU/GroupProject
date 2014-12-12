@@ -168,9 +168,11 @@ public class Main {
 				case 7:
 				{
                                     //int Owner, int Deposit, double Bal, double Int, int Matur, String Open, double Pen)
+                                    //	public Checking(int Owner, int Account, double Bal, double Int, String Open, int Savings, String AcctType, double Average, boolean ActiveAcct)
+
 //	public CCard(int Owner, int Card, double Int, double Total, double Open, double Used, String Next, String Pen)
-					CCard newCard = new CCard(2, 1, 29, 1000, 200, 800, "2014-12-17", false);
-                                        newCard.updateRecord(newCard);
+					Checking newCheck = new Checking(2, 0, 10000, 9.9, "2014-10-01", -1, "GD", 500, true);
+                                        newCheck.addRecord(newCheck);
 				}
 				}
 
