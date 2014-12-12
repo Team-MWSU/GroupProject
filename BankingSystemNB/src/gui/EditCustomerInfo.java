@@ -284,6 +284,16 @@ public class EditCustomerInfo extends javax.swing.JFrame {
             //theCustomer.delete();
             //theCustomer.add();
             
+            database.Customer newCust = new database.Customer(theCustomer.getLastName(), theCustomer.getFirstName(), theCustomer.getID(), theCustomer.getSSNumber(), theCustomer.getStreetAddress(), theCustomer.getCity(), theCustomer.getState(), theCustomer.getZipCode());
+            newCust.updateRecord(newCust);
+            ManagerActionScreen.jLabelCustomerID.setText(customerIDString);
+            ManagerActionScreen.jLabel11.setText(theCustomer.getFirstName());
+            ManagerActionScreen.jLabel12.setText(theCustomer.getLastName());
+            ManagerActionScreen.jLabel13.setText(theCustomer.getSSNumber());
+            ManagerActionScreen.jLabel14.setText(theCustomer.getStreetAddress());
+            ManagerActionScreen.jLabel15.setText(theCustomer.getCity());
+            ManagerActionScreen.jLabel17.setText(theCustomer.getState());
+            ManagerActionScreen.jLabel16.setText(theCustomer.getZipCode());
             theCustomer.print();
             
             dispose();
